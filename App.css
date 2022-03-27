@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'roboto-regular';
+    src: local('roboto-regular'), url(../assets/fonts/roboto.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'roboto-700';
+    src: local('roboto-700'), url(../assets/fonts/roboto-700.ttf) format('truetype');
+}
