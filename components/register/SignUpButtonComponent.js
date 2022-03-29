@@ -8,8 +8,9 @@ export default class SignUpButtonComponent extends Component {
         <TouchableOpacity /* Conditional navigation not supported at the moment */
           onPress={() => console.log("Navigate to Untitled")}
           style={styles.signUp_Button}
-        ></TouchableOpacity>
-        <Text style={styles.signUp_Text}>Sign Up</Text>
+        >
+          <Text style={styles.signUp_Text}>Sign Up</Text>
+        </TouchableOpacity>
       </TouchableOpacity>
     );
   }
@@ -27,15 +28,13 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   signUp_Text: {
-    top: "38.11%",
+    top: "25%",
+    left: 0,
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "rgba(255,255,255,1)",
     fontSize: 16,
-    height: "23.77%",
-    lineHeight: 10,
-    left: 0,
-    right: 0,
-    textAlign: "center"
+    textAlign: "center",
+    right: 0
   }
 });

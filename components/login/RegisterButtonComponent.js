@@ -9,11 +9,50 @@ export default class RegisterButtonComponent extends Component {
         <TouchableOpacity /* Conditional navigation not supported at the moment */
           onPress={() => this.props.navigation.navigate('Register')}
           style={styles.register_Button}
-        ></TouchableOpacity>
-        <Text style={styles.register_Text}>Register</Text>
+        >
+          <Text style={styles.register_Text}>Register</Text>
+        </TouchableOpacity>
       </TouchableOpacity>
     );
   }
+/*
+  registerClick = async (props) =>
+  {
+    console.log("Navigate to Untitled")
+
+    try 
+    { 
+      var obj = {username:global.username.trim(),password:global.password.trim()}; 
+        console.log(obj);
+      var js = JSON.stringify(obj); 
+      const response = await fetch('https://cop4331-g30-large.herokuapp.com/api/login', 
+      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
+      var res = JSON.parse(await response.text());
+
+      console.log("ID = " + "'" + res.id + "'");
+      if( res.id === '' ) 
+      { 
+        
+        props.setState({message: "Username/Password combination incorrect" }); 
+      } 
+      else 
+      { 
+        global.firstName = res.firstName;
+        global.lastName = res.lastName; 
+        global.userId = res.id.toString();
+
+        console.log("ID = " + "'" + global.userId + "'");
+        props.navigation.navigate('Dashboard');
+      } 
+    } 
+    catch(e) 
+    {
+      props.state.setState({message: e.message }); 
+    }
+
+    //global.password = "";
+    //global.username = "";
+  }*/
 }
 
 const styles = StyleSheet.create({
@@ -28,15 +67,13 @@ const styles = StyleSheet.create({
     right: 0
   },
   register_Text: {
-    top: "38.03%",
+    top: "25%",
     left: 0,
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "rgba(255,255,255,1)",
     fontSize: 16,
-    lineHeight: 10,
-    right: 0,
     textAlign: "center",
-    height: "23.94%"
+    right: 0
   }
 });

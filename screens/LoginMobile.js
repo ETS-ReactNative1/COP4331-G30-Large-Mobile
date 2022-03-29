@@ -21,80 +21,102 @@ global.userId = "";
 
 //function LoginMobile(props) {
 export default class LoginMobile extends Component {
+/*
+constructor() 
+{ 
+  super() 
+  this.state = 
+  { 
+    message: 'oh ya'
+  }
+}*/
+
+state = {
+  message: ''
+}
+
+handleMessageChange = message =>
+{
+  this.setState({message})
+}
+
   render() {
     return (
       <View style={styles.container}>
         <ImageBackground source={require("../assets/images/background.png")} 
           resizeMode="cover"
           style={styles.background}>
+
           <View style={styles.login_Login}>
             <View style={styles.login_LoginBackground}>
-            <Image
-              source={require("../assets/images/dailygrind3.png")}
-              resizeMode="contain"
-              style={styles.logo}
-            ></Image>
-            <View style={styles.username}>
-              <TextInput
-                placeholder="Username"
-                style={styles.usernameField1}
-                onChangeText={(val) => {this.usernameChangedHandler}}
-              ></TextInput>
-              <FontAwesomeIcon
-                name="user"
-                style={styles.userIcon1}
-              ></FontAwesomeIcon>
-            </View>
-            <View style={styles.password}>
-              <TextInput
-                placeholder="Password"
-                secureTextEntry={true}
-                style={styles.passwordField1}
-                onChangeText={(val) => {this.passwordChangedHandler}}
-              ></TextInput>
-              <FontAwesomeIcon
-                name="key"
-                style={styles.passwordIcon1}
-              ></FontAwesomeIcon>
-            </View>
-            <LoginButtonComponent
-              navigation = {this.props.navigation}
-              style={styles.loginButtonComponent}
-            ></LoginButtonComponent>
-            <ForgotPasswordButtonComponent
-              style={styles.forgotPasswordButtonComponent}
-            ></ForgotPasswordButtonComponent>
+              <Image
+                source={require("../assets/images/dailygrind5.png")}
+                resizeMode="contain"
+                style={styles.logo}
+              ></Image>
+              <Text name="incorrect" style={styles.text_Incorrect}>{this.state.message}</Text>
+              <View style={styles.username}>
+                <TextInput
+                  placeholder="Username"
+                  style={styles.usernameField1}
+                  onChangeText={(val) => {this.usernameChangedHandler(val)}}
+                ></TextInput>
+                <FontAwesomeIcon
+                  name="user"
+                  style={styles.userIcon1}
+                ></FontAwesomeIcon>
+              </View>
+              <View style={styles.password}>
+                <TextInput
+                  placeholder="Password"
+                  secureTextEntry={true}
+                  style={styles.passwordField1}
+                  onChangeText={(val) => {this.passwordChangedHandler(val)}}
+                ></TextInput>
+                <FontAwesomeIcon
+                  name="key"
+                  style={styles.passwordIcon1}
+                ></FontAwesomeIcon>
+              </View>
+              <LoginButtonComponent
+                navigation = {this.props.navigation}
+                state = {this.state}
+                onMessageChange = {this.handleMessageChange}
+                style={styles.loginButtonComponent}
+              ></LoginButtonComponent>
+              <ForgotPasswordButtonComponent
+                style={styles.forgotPasswordButtonComponent}
+              ></ForgotPasswordButtonComponent>
             </View>
           </View>
+
           <View style={styles.login_Register}>
             <View style={styles.login_RegisterBackground}>
-            <Text style={styles.text_NotRegistered}>Not Registered?</Text>
-            <RegisterButtonComponent
-              navigation = {this.props.navigation}
-              style={styles.registerButtonComponent}
-            ></RegisterButtonComponent>
+              <Text style={styles.text_NotRegistered}>Not Registered?</Text>
+              <RegisterButtonComponent
+                navigation = {this.props.navigation}
+                state = {this.state}
+                style={styles.registerButtonComponent}
+              ></RegisterButtonComponent>
             </View>
           </View>
+
         </ImageBackground>
       </View>
     )
   }
-}
-/*
-forgotPasswordClick = () =>
-{
 
+  usernameChangedHandler = async(val) =>
+  {
+    global.username = val;
+  }
+
+  passwordChangedHandler = async(val) =>
+  {
+    global.password = val;
+  }
 }
 
-usernameChangedHandler = async(val) =>
-{
-  global.username = val;
-}
-
-passwordChangedHandler = async(val) =>
-{
-  global.password = val;
-}*/
 
 const styles = StyleSheet.create({
   container: {
@@ -111,7 +133,7 @@ const styles = StyleSheet.create({
     top: "12.49%",
     height: "53.31%",
     position: "absolute",
-    right: 21,
+    right: 22,
     left: 22
   },
   login_LoginBackground: {
@@ -140,16 +162,26 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%"
   },
+  text_Incorrect: {
+    top: "28.5%",
+    left: 0,
+    position: "absolute",
+    fontFamily: "roboto_regular",
+    color: "rgba(242, 38, 19, 1)",
+    fontSize: 16,
+    textAlign: "center",
+    right: 0
+  },
   username: {
     top: "35.7%",
-    left: 17,
+    left: "8%",
     height: 41,
     position: "absolute",
-    right: 17
+    right: "8%"
   },
   usernameField1: {
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "#121212",
     height: 41,
     borderWidth: 1,
@@ -173,14 +205,14 @@ const styles = StyleSheet.create({
   },
   password: {
     top: "50.83%",
-    left: 17,
+    left: "8%",
     height: 41,
     position: "absolute",
-    right: 17
+    right: "8%"
   },
   passwordField1: {
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "#121212",
     height: 41,
     borderWidth: 1,
@@ -221,7 +253,7 @@ const styles = StyleSheet.create({
     height: "15.14%",
     position: "absolute",
     left: 22,
-    right: 21
+    right: 22
   },
   login_RegisterBackground: {
     top: "0%",
@@ -246,7 +278,7 @@ const styles = StyleSheet.create({
     top: "18.74%",
     left: 0,
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "rgba(0,0,0,1)",
     fontSize: 16,
     right: 0,

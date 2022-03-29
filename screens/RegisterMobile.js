@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
     top: "15.99%",
     height: "68.02%",
     position: "absolute",
-    left: 24,
-    right: 24
+    left: 22,
+    right: 22
   },
   register_RegisterBackground: {
     top: "0%",
@@ -129,24 +129,24 @@ const styles = StyleSheet.create({
   header_Register: {
     top: "5.42%",
     position: "absolute",
-    fontFamily: "roboto-700",
+    fontFamily: "roboto_700",
     color: "rgba(15,163,177,1)",
     fontSize: 28,
-    height: 34,
+    //height: 34,
     left: 0,
     right: 0,
     textAlign: "center"
   },
   fullName: {
     top: "18.94%",
-    left: 13,
+    left: "8%",
     height: 41,
     position: "absolute",
-    right: 16
+    right: "8%"
   },
   fullNameField: {
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "#121212",
     height: 41,
     borderWidth: 1,
@@ -170,14 +170,14 @@ const styles = StyleSheet.create({
   },
   email: {
     top: "30.71%",
-    left: 13,
+    left: "8%",
     height: 41,
     position: "absolute",
-    right: 16
+    right: "8%"
   },
   emailField: {
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "#121212",
     height: 41,
     borderWidth: 1,
@@ -201,14 +201,14 @@ const styles = StyleSheet.create({
   },
   phone: {
     top: "42.72%",
-    left: 13,
+    left: "8%",
     height: 41,
     position: "absolute",
-    right: 16
+    right: "8%"
   },
   phoneField: {
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "#121212",
     height: 41,
     borderWidth: 1,
@@ -232,14 +232,14 @@ const styles = StyleSheet.create({
   },
   username: {
     top: "54.63%",
-    left: 13,
+    left: "8%",
     height: 41,
     position: "absolute",
-    right: 16
+    right: "8%"
   },
   usernameField: {
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "#121212",
     height: 41,
     borderWidth: 1,
@@ -263,14 +263,14 @@ const styles = StyleSheet.create({
   },
   password: {
     top: "66.48%",
-    left: 13,
+    left: "8%",
     height: 41,
     position: "absolute",
-    right: 16
+    right: "8%"
   },
   passwordField: {
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "#121212",
     height: 41,
     borderWidth: 1,

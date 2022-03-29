@@ -1,16 +1,48 @@
-
 import React from 'react'; 
+import * as Font from "expo-font";
 import { StyleSheet, Text, View } from 'react-native'; 
 import { createStackNavigator } from "react-navigation-stack"; 
 import { createAppContainer } from "react-navigation"; 
 import LoginMobile from './screens/LoginMobile';
 import RegisterMobile from './screens/RegisterMobile';
+import DashboardMobile from './screens/DashboardMobile';
+
+//import { AppLoading } from "expo";
+//import './stylesheets/font.css';
+//import './App.module.css';
 //import CardScreen from './screens/CardScreen'; 
 
-export default class App extends React.Component { 
- render() { 
- return <AppContainer />; 
- } 
+let customFonts = {
+    'roboto_regular': require("./assets/fonts/roboto-regular.ttf"),
+    'roboto_700': require("./assets/fonts/roboto-700.ttf")
+};
+
+export default class App extends React.Component {
+
+  state = {
+    loaded: false
+  };
+
+  // Load fonts
+  async _loadFontsAsync() {
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
+  }
+
+  componentDidMount() {
+    this._loadFontsAsync();
+  }
+
+  render() {
+    // If the fonts haven't loaded
+    /*
+    if (!this.state.loaded) {
+      return <AppLoading />;
+    }*/
+
+    // App starts
+    return <AppContainer />;
+  }
 }
 
 const AppNavigator = createStackNavigator({ 
@@ -25,35 +57,15 @@ const AppNavigator = createStackNavigator({
       navigationOptions: { 
         header: null // Will hide header for HomePage 
         } 
-      }  
+      },
+  Dashboard: { 
+  screen: DashboardMobile, 
+      navigationOptions: { 
+        header: null // Will hide header for HomePage 
+        } 
+      }
   },{ 
   initialRouteName: "Login" 
 });
 
 const AppContainer = createAppContainer(AppNavigator);
-
-/*
-export { default as LoginMobile } from "../screens/LoginMobile.js";
-
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});*/

@@ -1,46 +1,62 @@
 import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { createStackNavigator, createAppContainer } from 'react-navigation'; 
 
-function LoginButtonComponent(props) {
-  return (
-    <TouchableOpacity style={[styles.container, props.style]}>
-      <TouchableOpacity
-        onPress={this.loginClick}
-        style={styles.login_Button}
-      ></TouchableOpacity>
-      <Text style={styles.login_Text}>{props.Login_Text || "Login"}</Text>
-    </TouchableOpacity>
-  );
-}
-
-loginClick = async () =>
-{
-  try 
-  { 
-    var obj = {login:global.username.trim(),password:global.password.trim()}; 
-    var js = JSON.stringify(obj); 
-    const response = await fetch('https://cop4331-g30-large.herokuapp.com/api/login', 
-    {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
-    var res = JSON.parse(await response.text()); 
-    if( res.id <= 0 ) 
-    { 
-      this.setState({message: "Username/Password combination incorrect" }); 
-    } 
-    else 
-    { 
-      global.firstName += res.FirstName;
-      global.lastName = res.LastName; 
-      global.userId = res._id;
-      this.props.navigation.navigate('Login');
-    } 
-  } 
-  catch(e) 
-  { 
-    this.setState({message: e.message }); 
+export default class LoginButtonComponent extends Component {
+    render() {
+      return (
+      <TouchableOpacity style={[styles.container, this.props.style]}>
+        <TouchableOpacity
+          onPress = {() => this.loginClick(this.props)}
+          style={styles.login_Button}
+        >
+          <Text style={styles.login_Text}>{this.props.Login_Text || "Login"}</Text>
+        </TouchableOpacity>
+      </TouchableOpacity>
+    )
   }
-  //global.password = "";
-  //global.username = "";
+
+  loginClick = async (props) =>
+  {
+    try 
+    {
+      // Get typed username and password
+      var obj = {username:global.username.trim(),password:global.password.trim()}; 
+
+      // Request user info
+      var js = JSON.stringify(obj); 
+      const response = await fetch('https://cop4331-g30-large.herokuapp.com/api/login', 
+      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
+      var res = JSON.parse(await response.text());
+
+      // If no user found
+      if( res.id === '' ) 
+      { 
+        // Change message on login screen
+        props.onMessageChange("Username or Password Incorrect"); 
+      } 
+      else 
+      { 
+        global.firstName = res.firstName;
+        global.lastName = res.lastName; 
+        global.userId = res.id.toString();
+
+        // Navigate to dashboard
+        console.log("Navigate to Dashboard");
+        props.navigation.navigate('Dashboard');
+      } 
+    } 
+    catch(e) 
+    {
+      props.onMessageChange(e.message); 
+    }
+
+    //global.password = "";
+    //global.username = "";
+  }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {},
@@ -54,17 +70,13 @@ const styles = StyleSheet.create({
     borderRadius: 50
   },
   login_Text: {
-    top: "38.03%",
+    top: "25%",
     left: 0,
     position: "absolute",
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "rgba(255,255,255,1)",
     fontSize: 16,
     textAlign: "center",
-    right: 0,
-    lineHeight: 10,
-    height: "23.94%"
+    right: 0
   }
 });
-
-export default LoginButtonComponent;

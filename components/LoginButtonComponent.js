@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     borderRadius: 50
   },
   text1: {
-    fontFamily: "roboto-regular",
+    fontFamily: "roboto_regular",
     color: "rgba(255,255,255,1)",
     fontSize: 16,
     marginTop: 10,
