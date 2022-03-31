@@ -6,6 +6,9 @@ import { createAppContainer } from "react-navigation";
 import LoginMobile from './screens/LoginMobile';
 import RegisterMobile from './screens/RegisterMobile';
 import DashboardMobile from './screens/DashboardMobile';
+import SliderNativeComponent from 'react-native/Libraries/Components/Slider/SliderNativeComponent';
+import AppLoading from 'expo-app-loading';
+import ForgotPasswordMobile from './screens/ForgotPasswordMobile';
 
 //import { AppLoading } from "expo";
 //import './stylesheets/font.css';
@@ -13,8 +16,8 @@ import DashboardMobile from './screens/DashboardMobile';
 //import CardScreen from './screens/CardScreen'; 
 
 let customFonts = {
-    'roboto_regular': require("./assets/fonts/roboto-regular.ttf"),
-    'roboto_700': require("./assets/fonts/roboto-700.ttf")
+    'roboto-regular': require("./assets/fonts/roboto-regular.ttf"),
+    'roboto-700': require("./assets/fonts/roboto-700.ttf"),
 };
 
 export default class App extends React.Component {
@@ -34,36 +37,40 @@ export default class App extends React.Component {
   }
 
   render() {
-    // If the fonts haven't loaded
-    /*
-    if (!this.state.loaded) {
-      return <AppLoading />;
-    }*/
+    while (Font.isLoading('roboto_regular') && Font.isLoading('roboto_700'))
+    {}
 
     // App starts
     return <AppContainer />;
   }
 }
 
+// ADD SCREENS HERE
 const AppNavigator = createStackNavigator({ 
  Login: { 
   screen: LoginMobile, 
       navigationOptions: { 
-        header: null // Will hide header for HomePage 
+        headerShown: false // Will hide header for HomePage 
         } 
       },
   Register: { 
   screen: RegisterMobile, 
       navigationOptions: { 
-        header: null // Will hide header for HomePage 
+        headerShown: false // Will hide header for HomePage 
         } 
       },
   Dashboard: { 
   screen: DashboardMobile, 
       navigationOptions: { 
-        header: null // Will hide header for HomePage 
+        headerShown: false // Will hide header for HomePage 
         } 
-      }
+      },
+  ForgotPassword: {
+  screen: ForgotPasswordMobile, 
+      navigationOptions: { 
+        headerShown: false // Will hide header for HomePage 
+        } 
+      },
   },{ 
   initialRouteName: "Login" 
 });

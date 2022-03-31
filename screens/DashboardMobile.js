@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Image, TextInput, Text, ImageBackground } from "react-native";
-import GoBackButtonComponent from "../components/register/GoBackButtonComponent";
+import GoBackButtonComponent from "../components/GoBackButtonComponent";
 
 export default class DashboardMobile extends Component {
   render() {

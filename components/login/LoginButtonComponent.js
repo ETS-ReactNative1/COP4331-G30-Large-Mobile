@@ -3,8 +3,8 @@ import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import { createStackNavigator, createAppContainer } from 'react-navigation'; 
 
 export default class LoginButtonComponent extends Component {
-    render() {
-      return (
+  render() {
+    return (
       <TouchableOpacity style={[styles.container, this.props.style]}>
         <TouchableOpacity
           onPress = {() => this.loginClick(this.props)}
@@ -21,7 +21,9 @@ export default class LoginButtonComponent extends Component {
     try 
     {
       // Get typed username and password
-      var obj = {username:global.username.trim(),password:global.password.trim()}; 
+      var obj = {username:global.username_login.trim(),password:global.password_login.trim()}; 
+
+      props.onMessageChange("");
 
       // Request user info
       var js = JSON.stringify(obj); 
@@ -36,9 +38,7 @@ export default class LoginButtonComponent extends Component {
         props.onMessageChange("Username or Password Incorrect"); 
       } 
       else 
-      { 
-        global.firstName = res.firstName;
-        global.lastName = res.lastName; 
+      {
         global.userId = res.id.toString();
 
         // Navigate to dashboard
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     top: "25%",
     left: 0,
     position: "absolute",
-    fontFamily: "roboto_regular",
+    fontFamily: "roboto-regular",
     color: "rgba(255,255,255,1)",
     fontSize: 16,
     textAlign: "center",

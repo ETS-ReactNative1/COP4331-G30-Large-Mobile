@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     top: "25%",
     left: 0,
     position: "absolute",
-    fontFamily: "roboto_regular",
+    fontFamily: "roboto-regular",
     color: "rgba(255,255,255,1)",
     fontSize: 16,
     textAlign: "center",

@@ -8,10 +8,8 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { render } from "react-dom";
 import { borderColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
-global.firstName = "";
-global.lastName = "";
-global.username = "";
-global.password = "";
+global.username_login = "";
+global.password_login = "";
 global.userId = "";
 
 //import { ImageBackground } from "react-native-web";
@@ -31,14 +29,14 @@ constructor()
   }
 }*/
 
-state = {
-  message: ''
-}
+  state = {
+    message: ''
+  }
 
-handleMessageChange = message =>
-{
-  this.setState({message})
-}
+  handleMessageChange = message =>
+  {
+    this.setState({message})
+  }
 
   render() {
     return (
@@ -49,12 +47,16 @@ handleMessageChange = message =>
 
           <View style={styles.login_Login}>
             <View style={styles.login_LoginBackground}>
+            
+              {/* Logo */}
               <Image
                 source={require("../assets/images/dailygrind5.png")}
                 resizeMode="contain"
                 style={styles.logo}
               ></Image>
-              <Text name="incorrect" style={styles.text_Incorrect}>{this.state.message}</Text>
+              <Text style={styles.text_Incorrect}>{this.state.message}</Text>
+
+              {/* Username Input */}
               <View style={styles.username}>
                 <TextInput
                   placeholder="Username"
@@ -66,6 +68,8 @@ handleMessageChange = message =>
                   style={styles.userIcon1}
                 ></FontAwesomeIcon>
               </View>
+
+              {/* Password Input */}
               <View style={styles.password}>
                 <TextInput
                   placeholder="Password"
@@ -78,13 +82,18 @@ handleMessageChange = message =>
                   style={styles.passwordIcon1}
                 ></FontAwesomeIcon>
               </View>
+
+              {/* Login Button */}
               <LoginButtonComponent
                 navigation = {this.props.navigation}
                 state = {this.state}
                 onMessageChange = {this.handleMessageChange}
                 style={styles.loginButtonComponent}
               ></LoginButtonComponent>
+
+              {/* Forgot Password Button */}
               <ForgotPasswordButtonComponent
+                navigation = {this.props.navigation}
                 style={styles.forgotPasswordButtonComponent}
               ></ForgotPasswordButtonComponent>
             </View>
@@ -108,12 +117,12 @@ handleMessageChange = message =>
 
   usernameChangedHandler = async(val) =>
   {
-    global.username = val;
+    global.username_login = val;
   }
 
   passwordChangedHandler = async(val) =>
   {
-    global.password = val;
+    global.password_login = val;
   }
 }
 
@@ -166,7 +175,7 @@ const styles = StyleSheet.create({
     top: "28.5%",
     left: 0,
     position: "absolute",
-    fontFamily: "roboto_regular",
+    fontFamily: "roboto-700",
     color: "rgba(242, 38, 19, 1)",
     fontSize: 16,
     textAlign: "center",
@@ -181,7 +190,7 @@ const styles = StyleSheet.create({
   },
   usernameField1: {
     position: "absolute",
-    fontFamily: "roboto_regular",
+    fontFamily: "roboto-regular",
     color: "#121212",
     height: 41,
     borderWidth: 1,
@@ -212,7 +221,7 @@ const styles = StyleSheet.create({
   },
   passwordField1: {
     position: "absolute",
-    fontFamily: "roboto_regular",
+    fontFamily: "roboto-regular",
     color: "#121212",
     height: 41,
     borderWidth: 1,
@@ -278,7 +287,7 @@ const styles = StyleSheet.create({
     top: "18.74%",
     left: 0,
     position: "absolute",
-    fontFamily: "roboto_regular",
+    fontFamily: "roboto-regular",
     color: "rgba(0,0,0,1)",
     fontSize: 16,
     right: 0,
