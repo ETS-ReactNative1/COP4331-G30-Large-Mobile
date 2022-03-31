@@ -45,15 +45,18 @@ constructor()
           resizeMode="cover"
           style={styles.background}>
 
+          {/* Body */}
           <View style={styles.login_Login}>
             <View style={styles.login_LoginBackground}>
-            
+
               {/* Logo */}
               <Image
                 source={require("../assets/images/dailygrind5.png")}
                 resizeMode="contain"
                 style={styles.logo}
               ></Image>
+
+              {/* Error text */}
               <Text style={styles.text_Incorrect}>{this.state.message}</Text>
 
               {/* Username Input */}
@@ -96,9 +99,11 @@ constructor()
                 navigation = {this.props.navigation}
                 style={styles.forgotPasswordButtonComponent}
               ></ForgotPasswordButtonComponent>
+
             </View>
           </View>
 
+          {/* Body */}
           <View style={styles.login_Register}>
             <View style={styles.login_RegisterBackground}>
               <Text style={styles.text_NotRegistered}>Not Registered?</Text>
@@ -148,7 +153,7 @@ const styles = StyleSheet.create({
   login_LoginBackground: {
     top: "0%",
     left: 0,
-    height: "99.72%",
+    height: "100%",
     position: "absolute",
     backgroundColor: "rgba(255,255,255,1)",
     borderRadius: 15,

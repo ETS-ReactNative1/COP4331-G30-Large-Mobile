@@ -1,35 +1,46 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, TextInput } from "react-native";
+import { StyleSheet, View, Text, TextInput, ImageBackground } from "react-native";
 import GoBackButtonComponent from "../components/GoBackButtonComponent";
 import Icon from "react-native-vector-icons/FontAwesome";
 import ResetPassButtonComponent from "../components/forgot_password/ResetPassButtonComponent";
 
 export default class ForgotPasswordMobile extends Component {
-  render(){
+  render() {
     return (
       <View style={styles.container}>
-        <GoBackButtonComponent
-          navigation = {this.props.navigation}
-          style={styles.goBackButtonComponent1}
-        ></GoBackButtonComponent>
-        <View style={styles.forgotPassword_ForgotPassword}>
-          <View style={styles.forgotPassword_Background}>
+        <ImageBackground source={require("../assets/images/background.png")} 
+          resizeMode="cover"
+          style={styles.background}>
 
-            <Text style={styles.header_Forgot}>Forgot Your Password?</Text>
-            <Text style={styles.prompt_User_Text}>
-              Enter the email linked to your account.
-            </Text>
+          {/* Return Button */}
+          <GoBackButtonComponent
+            navigation = {this.props.navigation}
+            style={styles.goBackButtonComponent1}
+          ></GoBackButtonComponent>
 
-            <View style={styles.email}>
-              <TextInput placeholder="E-Mail" style={styles.emailField}></TextInput>
-              <Icon name="envelope" style={styles.eMailIcon}></Icon>
+          {/* Body */}
+          <View style={styles.forgotPassword_ForgotPassword}>
+            <View style={styles.forgotPassword_Background}>
+
+              {/* Directions */}
+              <Text style={styles.header_Forgot}>Forgot Your Password?</Text>
+              <Text style={styles.prompt_User_Text}> Enter the email linked to your account.</Text>
+
+              {/* Email Input */}
+              <View style={styles.email}>
+                <TextInput placeholder="E-Mail" style={styles.emailField}></TextInput>
+                <Icon name="envelope" style={styles.eMailIcon}></Icon>
+              </View>
+
+              {/* Reset Password Button */}
+              <ResetPassButtonComponent
+                style={styles.resetPasswordButtonComponent}
+              ></ResetPassButtonComponent>
+
             </View>
-
-            <ResetPassButtonComponent
-              style={styles.resetPasswordButtonComponent}
-            ></ResetPassButtonComponent>
           </View>
-        </View>
+
+        </ImageBackground>
       </View>
     );
   }
@@ -37,23 +48,32 @@ export default class ForgotPasswordMobile extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor:"rgba(255,255,255,1)"
+  },
+  background: {
+    flex: 1,
+    justifyContent: "center",
+    width:"100%",
+    height:"100%"
   },
   goBackButtonComponent1: {
     position: "absolute",
-    top: "5.16%",
+    top: "6.5%",
+    right: 24,
     height: 50,
-    width: 48,
-    right: 22
+    width: 50
   },
   forgotPassword_ForgotPassword: {
-    height: "64.54%",
+    height: "45%",
     position: "absolute",
     left: 25,
-    top: "17.73%",
+    top: "25%",
     right: 25
   },
   forgotPassword_Background: {
+    top: "0%",
+    left: 0,
     height: "100%",
     position: "absolute",
     backgroundColor: "rgba(255,255,255,1)",
@@ -63,12 +83,12 @@ const styles = StyleSheet.create({
       width: 3,
       height: 3
     },
-    elevation: 30,
+    elevation: 10,
     shadowOpacity: 0.25,
     shadowRadius: 10,
-    top: "0%",
-    left: 0,
-    right: 0
+    right: 0,
+    borderColor: "rgba(210,210,210,210)",
+    borderWidth: 1
   },
   header_Forgot: {
     top: "9.78%",
@@ -82,7 +102,7 @@ const styles = StyleSheet.create({
     right: 0
   },
   prompt_User_Text: {
-    top: "35.29%",
+    top: "25%",
     position: "absolute",
     fontFamily: "roboto-regular",
     color: "#121212",
@@ -93,11 +113,11 @@ const styles = StyleSheet.create({
     right: 23
   },
   email: {
-    top: "49.04%",
-    left: 15,
+    top: "51%",
+    left: "8%",
     height: 41,
     position: "absolute",
-    right: 15
+    right: "8%"
   },
   emailField: {
     position: "absolute",
@@ -125,9 +145,9 @@ const styles = StyleSheet.create({
   },
   resetPasswordButtonComponent: {
     position: "absolute",
-    top: "67.13%",
+    top: "75%",
     left: 53,
-    height: 44,
+    height: "13.33%",
     right: 53
   }
 });

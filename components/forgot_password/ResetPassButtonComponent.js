@@ -33,13 +33,12 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   reset_Text: {
-    top: "25.66%",
+    top: "25%",
     left: 0,
     position: "absolute",
     fontFamily: "roboto-regular",
     color: "rgba(255,255,255,1)",
     fontSize: 16,
-    height: 19,
     textAlign: "center",
     right: 0
   }

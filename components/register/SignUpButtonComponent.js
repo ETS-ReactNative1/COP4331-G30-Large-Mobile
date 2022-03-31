@@ -5,7 +5,7 @@ export default class SignUpButtonComponent extends Component {
   render() {
     return (
       <TouchableOpacity style={[styles.container, this.props.style]}>
-        <TouchableOpacity /* Conditional navigation not supported at the moment */
+        <TouchableOpacity
           //onPress={() => console.log("Navigate to Untitled")}
           onPress = {() => this.signUpClick(this.props)}
           style={styles.signUp_Button}
@@ -14,6 +14,59 @@ export default class SignUpButtonComponent extends Component {
         </TouchableOpacity>
       </TouchableOpacity>
     );
+  }
+
+  signUpClick = async (props) =>
+  {
+    try 
+    {
+      // Reset attributes
+      props.onUsernameValidChange(true);
+      props.onPasswordValidChange(true);
+      props.onEmailValidChange(true);
+      props.onMessageChange("");
+
+      if (!this.isInputValid(props))
+      {
+        return;
+      }
+
+      // Get all relevant information
+      var obj = {
+        firstName:global.firstName.trim(),
+        lastName:global.lastName.trim(),
+        username:global.username.trim(),
+        phone:global.phone.trim(),
+        email:global.email.trim(),
+        password:global.password.trim()
+      };
+
+      // Request user info
+      var js = JSON.stringify(obj); 
+      const response = await fetch('https://cop4331-g30-large.herokuapp.com/api/register', 
+      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
+      var res = JSON.parse(await response.text());
+
+      props.onEmailSentChange(true); 
+
+      if (!(res.error === ""))
+      {
+        props.onMessageChange(res.error); 
+      }
+
+      //global.firstName = res.firstName;
+      //global.lastName = res.lastName; 
+      //global.userId = res.id.toString();
+
+      // Navigate to dashboard
+      //console.log("Navigate to Dashboard");
+      //props.navigation.navigate('Dashboard');
+    } 
+    catch(e) 
+    {
+      props.onMessageChange(e.message); 
+      //console.log(e.message);
+    }
   }
 
   isInputValid(props)
@@ -112,55 +165,6 @@ export default class SignUpButtonComponent extends Component {
     }
 
     return true;
-  }
-
-  signUpClick = async (props) =>
-  {
-    try 
-    {
-      props.onMessageChange("");
-
-      if (!this.isInputValid(props))
-      {
-        return;
-      }
-
-      // Get all relevant information
-      var obj = {
-        firstName:global.firstName.trim(),
-        lastName:global.lastName.trim(),
-        username:global.username.trim(),
-        phone:global.phone.trim(),
-        email:global.email.trim(),
-        password:global.password.trim()
-      };
-
-      // Request user info
-      var js = JSON.stringify(obj); 
-      const response = await fetch('https://cop4331-g30-large.herokuapp.com/api/register', 
-      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
-      var res = JSON.parse(await response.text());
-
-      props.onEmailSentChange(true); 
-
-      if (!(res.error === ""))
-      {
-        props.onMessageChange(res.error); 
-      }
-
-      //global.firstName = res.firstName;
-      //global.lastName = res.lastName; 
-      //global.userId = res.id.toString();
-
-      // Navigate to dashboard
-      //console.log("Navigate to Dashboard");
-      //props.navigation.navigate('Dashboard');
-    } 
-    catch(e) 
-    {
-      props.onMessageChange(e.message); 
-      //console.log(e.message);
-    }
   }
 }
 

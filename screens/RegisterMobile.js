@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
   },
   goBackButtonComponent: {
     position: "absolute",
-    top: "4.65%",
+    top: "6.5%",
     right: 24,
     height: 50,
     width: 50
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     borderWidth: 1
   },
   header_Register: {
-    top: "5.42%",
+    top: "6.5%",
     position: "absolute",
     fontFamily: "roboto-700",
     color: "rgba(15,163,177,1)",
