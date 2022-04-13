@@ -32,14 +32,18 @@ export default class LoginButtonComponent extends Component {
       var res = JSON.parse(await response.text());
 
       // If no user found
-      if( res.id === '' ) 
+      //if( res.id === '' ) 
+      if (response.status !== 200)
       { 
         // Change message on login screen
-        props.onMessageChange("Username or Password Incorrect"); 
+        props.onMessageChange("Username or Password Incorrect");
       } 
       else 
       {
         global.userId = res.id.toString();
+        global.firstName = res.firstName;
+        global.lastName = res.lastName;
+        global.username = global.username_login;
 
         // Navigate to dashboard
         console.log("Navigate to Dashboard");

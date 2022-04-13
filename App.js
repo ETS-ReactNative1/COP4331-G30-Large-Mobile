@@ -1,7 +1,8 @@
 import React from 'react'; 
 import * as Font from "expo-font";
 import { StyleSheet, Text, View } from 'react-native'; 
-import { createStackNavigator } from "react-navigation-stack"; 
+import { createStackNavigator } from "react-navigation-stack";
+import { createDrawerNavigator } from "react-navigation-drawer";
 import { createAppContainer } from "react-navigation"; 
 import LoginMobile from './screens/LoginMobile';
 import RegisterMobile from './screens/RegisterMobile';
@@ -9,6 +10,7 @@ import DashboardMobile from './screens/DashboardMobile';
 import SliderNativeComponent from 'react-native/Libraries/Components/Slider/SliderNativeComponent';
 import AppLoading from 'expo-app-loading';
 import ForgotPasswordMobile from './screens/ForgotPasswordMobile';
+import DrawerContentComponent from './components/dashboard/DrawerContentComponent';
 
 //import { AppLoading } from "expo";
 //import './stylesheets/font.css';
@@ -45,34 +47,54 @@ export default class App extends React.Component {
   }
 }
 
+const AppDrawerNavigator = createDrawerNavigator({
+  Dashboard: { 
+    screen: DashboardMobile
+  },
+  Logout: {
+    screen: LoginMobile
+  },
+},{ 
+  initialRouteName: "Dashboard",
+  drawerPosition: 'right',
+  drawerContent: {},
+  //contentComponent: DrawerContentComponent,
+  navigationOptions: {},
+
+  contentOptions: {
+    //activeTintColor: '0FA3B1'
+  },
+  drawerBackgroundColor: '#FFF'
+});
+
 // ADD SCREENS HERE
 const AppNavigator = createStackNavigator({ 
- Login: { 
-  screen: LoginMobile, 
-      navigationOptions: { 
-        headerShown: false // Will hide header for HomePage 
-        } 
-      },
+  Login: { 
+    screen: LoginMobile, 
+    navigationOptions: { 
+      headerShown: false // Will hide header for HomePage 
+    } 
+  },
   Register: { 
-  screen: RegisterMobile, 
-      navigationOptions: { 
-        headerShown: false // Will hide header for HomePage 
-        } 
-      },
-  Dashboard: { 
-  screen: DashboardMobile, 
-      navigationOptions: { 
-        headerShown: false // Will hide header for HomePage 
-        } 
-      },
+    screen: RegisterMobile, 
+    navigationOptions: { 
+      headerShown: false // Will hide header for HomePage 
+    } 
+  },
   ForgotPassword: {
-  screen: ForgotPasswordMobile, 
-      navigationOptions: { 
-        headerShown: false // Will hide header for HomePage 
-        } 
-      },
-  },{ 
-  initialRouteName: "Login" 
+    screen: ForgotPasswordMobile, 
+    navigationOptions: { 
+      headerShown: false // Will hide header for HomePage 
+    } 
+  },
+  Dashboard: { 
+    screen: AppDrawerNavigator, 
+    navigationOptions: { 
+      headerShown: false // Will hide header for HomePage 
+    } 
+  },
+},{ 
+  initialRouteName: "Login"
 });
 
 const AppContainer = createAppContainer(AppNavigator);

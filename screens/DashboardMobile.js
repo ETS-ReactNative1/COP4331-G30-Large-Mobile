@@ -1,41 +1,109 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import FeatherIcon from "react-native-vector-icons/Feather";
-import Svg, { Ellipse } from "react-native-svg";
+import { StyleSheet, View, Image, Text } from "react-native";
+import AddHabitButtonComponent from "../components/dashboard/AddHabitButtonComponent";
+import MenuButtonComponent from "../components/dashboard/MenuButtonComponent";
+//import { Center } from "@builderx/utils";
+import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import EntypoIcon from "react-native-vector-icons/Entypo";
+import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
-export default class Dashboard extends Component {
+export default class DashboardMobile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.rect2}>
-          <FeatherIcon name="plus-circle" style={styles.icon}></FeatherIcon>
-          <FeatherIcon name="align-right" style={styles.icon2}></FeatherIcon>
-          <Text style={styles.xTimeMilestone}>x time Milestone</Text>
-          <View style={styles.rect}></View>
-          <Svg viewBox="0 0 197 197" style={styles.ellipse}>
-            <Ellipse
-              stroke="rgba(15,163,177,1)"
-              strokeWidth={1}
-              fill="rgba(255,255,255,1)"
-              cx={99}
-              cy={99}
-              rx={98}
-              ry={98}
-            ></Ellipse>
-          </Svg>
-          <FeatherIcon name="check-circle" style={styles.icon4}></FeatherIcon>
+        <Image
+          source={require("../assets/images/background3.png")}
+          resizeMode="stretch"
+          style={styles.image3}
+        ></Image>
+        
+        <Text style={styles.header_Dashboard}>Dashboard</Text>
+
+        <AddHabitButtonComponent
+          style={styles.addHabitButtonComponent}
+        ></AddHabitButtonComponent>
+
+        <MenuButtonComponent
+          navigation = {this.props.navigation}
+          style={styles.menuButtonComponent}
+        ></MenuButtonComponent>
+
+        <View style={styles.dashboard_Milestone}>
+          <Text style={styles.milestone_Text}>x Month Milestone</Text>
+          <View style={styles.progressBar}>
+            <View style={styles.progress}></View>
+          </View>
         </View>
-        <View style={styles.list}>
-          <View style={styles.habit_Example}>
-            <View style={styles.example_Background}>
-            <FeatherIcon name="circle" style={styles.example_Check}></FeatherIcon>
-            <MaterialCommunityIconsIcon
-              name="dumbbell"
-              style={styles.example_Icon}
-            ></MaterialCommunityIconsIcon>
-            <Text style={styles.example_Title}>Habit Name</Text>
-            <Text style={styles.exampleTask}>Example Task</Text>
+        <View style={styles.dashboard_Profile}>
+          <Image
+            source={require("../assets/images/Pingu_1.png")}
+            resizeMode="cover"
+            style={styles.profilePicture}
+          ></Image>
+          <View style={styles.welcome_Group}>
+            <Text style={styles.welcome_Message}>
+              Welcome{"\n"}
+              Back,{"\n"}
+              {global.firstName === "" ? global.username : global.firstName}!
+            </Text>
+            {/*<Text style={styles.welcome_Name}>{global.username}! </Text>*/}
+          </View>
+        </View>
+        <View style={styles.dashboard_Habits}>
+          <View style={styles.dashboard_HabitsBackground}>
+            <View style={styles.dashboard_HabitsContainer}>
+
+              <View style={styles.list}>
+                <View style={styles.habit}>
+                  <View style={styles.habit_Shadow}>
+                    <View style={styles.habit_Background}>
+                      <MaterialCommunityIconsIcon
+                        name="dumbbell"
+                        style={styles.habit_HabitIcon}
+                      ></MaterialCommunityIconsIcon>
+                      <View style ={styles.habit_Desc}>
+                        <Text style={styles.habit_Title}>Habit Name</Text>
+                        <Text style={styles.habit_Task}>Example Task</Text>
+                      </View>
+                      <FontAwesomeIcon
+                        name="circle-o"
+                        style={styles.habit_CheckIcon}
+                      ></FontAwesomeIcon>
+                    </View>
+                  </View>
+                </View>
+              </View>
+
+              {/* Test */}
+              {/*
+              <View style={styles.list1}>
+                <View style={styles.habit1}>
+                  <View style={styles.habitBackground1}></View>
+                  <FontAwesomeIcon
+                    name="circle-o"
+                    style={styles.habitCheckIcon1}
+                  ></FontAwesomeIcon>
+                  <MaterialCommunityIconsIcon
+                    name="dumbbell"
+                    style={styles.habitHabitIcon1}
+                  ></MaterialCommunityIconsIcon>
+                  <Text style={styles.habitTitle1}>Habit Name</Text>
+                  <Text style={styles.habitTask1}>Example Task</Text>
+                </View>
+              </View>
+              <View style={styles.list2}>
+                <View style={styles.addHabit}>
+                  <View style={styles.addHabitBackground}></View>
+                  <EntypoIcon
+                    name="plus"
+                    style={styles.addHabitIcon}
+                  ></EntypoIcon>
+                  <Text style={styles.addHabit_Text}>Add a Habit</Text>
+                </View>
+              </View>
+              <Text style={styles.endOfList}>End of List</Text>
+              */}
             </View>
           </View>
         </View>
@@ -43,18 +111,150 @@ export default class Dashboard extends Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:"rgba(255,255,255,1)"
+    backgroundColor: "rgba(255,255,255,1)"
   },
-  rect2: {
+  image3: {
+    top: 0,
+    left: 0,
+    width: "100%",
+    position: "absolute",
+    bottom: 209,
+    opacity: 0.9,
+    backgroundColor: "rgba(100,100,100,1)"
+  },
+  header_Dashboard: {
+    top: 47,
+    position: "absolute",
+    fontFamily: "roboto-700",
+    color: "rgba(255,255,255,1)",
+    fontSize: 28,
+    height: 34,
+    left: 0,
+    right: 0,
+    textAlign: "center"
+  },
+  addHabitButtonComponent: {
+    position: "absolute",
+    top: 39,
+    left: 15,
+    height: 50,
+    width: 50
+  },
+  menuButtonComponent: {
+    position: "absolute",
+    top: 42,
+    height: 45,
+    width: 45,
+    right: 15
+  },
+  dashboard_Milestone: {
+    top: "14.21%",
+    left: 0,
+    height: "7.03%",
+    position: "absolute",
+    right: 0
+  },
+  milestone_Text: {
+    top: 0,
+    position: "absolute",
+    fontFamily: "roboto-700",
+    color: "rgba(255,255,255,1)",
+    textAlign: "center",
+    width: "100%"
+  },
+  progressBar: {
+    top: 23,
+    left: 55,
+    height: "55.75%",
+    position: "absolute",
+    right: 56,
+    backgroundColor: "rgba(255,255,255,1)",
+    borderWidth: 1,
+    borderColor: "rgba(15,163,177,1)",
+    borderStyle: "solid"
+  },
+  progress: {
+    top: 0,
+    left: 0,
+    position: "absolute",
+    backgroundColor: "rgba(15,163,177,1)",
+    width: "75.69%",
+    bottom: 0
+  },
+  dashboard_Profile: {
+    top: "22.99%",
+    left: 0,
+    position: "absolute",
+    right: 0,
+    height: "23.24%"
+  },
+  profilePicture: {
+    top: "3.47%",
+    left: "10%",
+    width: 160,
+    height: 160,
+    position: "absolute",
+    borderWidth: 4,
+    borderColor: "rgba(255,155,66,1)",
+    borderRadius: 100,
+    borderStyle: "solid"
+  },
+  welcome_Group: {
+    top: "16.85%",
+    left: 221,
+    position: "absolute",
+    right: "10%",
+    height: "66.28%"
+  },
+  welcome_Message: {
+    top: 0,
+    position: "absolute",
+    fontFamily: "roboto-700",
+    color: "rgba(255,255,255,1)",
+    fontSize: 28,
+    textAlign: "left",
+    right: 0
+  },
+  welcome_Name: {
+    position: "absolute",
+    fontFamily: "roboto-700",
+    color: "rgba(255,255,255,1)",
+    fontSize: 28,
+    textAlign: "left",
+    right: 0,
+    top: 0
+  },
+  dashboard_Habits: {
+    top: "47.7%",
+    left: 0,
+    height: "52.3%",
+    position: "absolute",
+    right: 0,
+    
+  },
+  dashboard_HabitsBackground: {
     top: "0%",
     left: 0,
-    height: "57.02%",
+    position: "absolute",
+    right: 0,
+    borderRadius: 50,
+    backgroundColor: "rgba(255,255,255,1)",
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
+    bottom: 0,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+  },
+  dashboard_HabitsContainer: {
+    top: "3.5%",
+    left: 8,
     position: "absolute",
     backgroundColor: "rgba(255,255,255,1)",
+    borderWidth: 1,
+    borderColor: "rgba(220,220,220,1)",
     shadowColor: "rgba(0,0,0,1)",
     shadowOffset: {
       height: 3,
@@ -63,112 +263,227 @@ const styles = StyleSheet.create({
     elevation: 10,
     shadowOpacity: 0.25,
     shadowRadius: 10,
-    right: 1
-  },
-  icon: {
-    top: 39,
-    left: 15,
-    position: "absolute",
-    color: "rgba(15,163,177,1)",
-    fontSize: 50
-  },
-  icon2: {
-    top: 39,
-    position: "absolute",
-    color: "rgba(15,163,177,1)",
-    fontSize: 50,
-    right: 12
-  },
-  xTimeMilestone: {
-    top: 99,
-    left: 129,
-    position: "absolute",
-    fontFamily: "roboto-regular",
-    color: "#121212"
-  },
-  rect: {
-    top: 126,
-    left: 55,
-    height: 37,
-    position: "absolute",
-    backgroundColor: "#E6E6E6",
-    right: 55
-  },
-  ellipse: {
-    top: 186,
-    width: 197,
-    height: 197,
-    position: "absolute",
-    left: 82
-  },
-  icon4: {
-    top: 305,
-    left: 303,
-    position: "absolute",
-    color: "rgba(128,128,128,1)",
-    fontSize: 40
+    borderRadius: 50,
+    height: "100%",
+    right: 8,
+    bottom: 0,
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
+    
   },
   list: {
-    top: 457,
+    top: "8.09%",
     left: 0,
-    height: 88,
+    height: "25.49%",
+    position: "absolute",
+    right: 0,
+    flex: 1,
+    flexDirection: 'row',
+    //alignItems: 'center',
+    justifyContent: 'center'
+  },
+  habit: {
+    top: 0,
+    height: "100%",
+    //position: "absolute",
+    width: "91.21%",
+    //left: 16,
+    //alignSelf: "center"
+    //flexDirection: "row",
+    //flexWrap:"wrap",
+  },
+  habit_Shadow: {
+    top: 5,
+    left: 0,
+    height: "92.05%",
+    position: "absolute",
+    backgroundColor: "rgba(15,129,140,1)",
+    borderRadius: 50,
+    overflow: "visible",
+    right: 0
+  },
+  habit_Background: {
+    top: 0,
+    left: "0%",
+    width: "100%",
+    height: "92.05%",
+    position: "absolute",
+    backgroundColor: "rgba(15,163,177,0.9)",
+    borderRadius: 50,
+    overflow: "visible",
+    flex: 1,
+    flexDirection: 'row',
+    //alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  habit_CheckIcon: {
+    //top: 0,
+    //bottom: 0,
+    //marginTop: "5%",
+    //position: "absolute",
+    color: "rgba(255,255,255,1)",
+    fontSize: 50,
+    //right: "-135%",
+    //left: "100%",
+    right: "20%",
+    alignSelf: "center",
+  },
+  habit_HabitIcon: {
+    //top: 0,
+    //bottom: 0,
+    //marginTop: "5%",
+    //position: "absolute",
+    color: "rgba(255,255,255,1)",
+    fontSize: 50,
+    left: "20%",
+    alignSelf: "center",
+  },
+  habit_Desc: {
+    top: 0,
+    left: 0,
+    height: "100%",
+    //position: "absolute",
+    right: 0,
+    flex: 1,
+    flexDirection: 'column',
+    //alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  habit_Title: {
+    top: "10%",
+    left: 0,
+    right: 0,
+    //position: "absolute",
+    fontFamily: "roboto-700",
+    color: "rgba(255,255,255,1)",
+    fontSize: 16,
+    textAlign: "center",
+    alignSelf: "center",
+  },
+  habit_Task: {
+    left: 0,
+    right: 0,
+    bottom: "10%",
+    //position: "absolute",
+    fontFamily: "roboto-regular",
+    color: "rgba(255,255,255,1)",
+    textAlign: "center",
+    alignSelf: "center",
+
+  },/* ----------------------------------------------------------------------------------------------===== */
+  list1: {
+    top: "36.7%",
+    left: 0,
+    height: "22.49%",
     position: "absolute",
     right: 0
   },
-  habit_Example: {
+  habit1: {
     top: 0,
-    height: 88,
+    height: "100.02%",
     position: "absolute",
-    left: 22,
-    right: 22
-  },
-  example_Background: {
-    top: "75%",
-    left: "0%",
-    width: "100.01%",
-    height: 81,
-    position: "absolute",
-    backgroundColor: "rgba(230,230,230,1)",
-    borderRadius: 50,
-    shadowColor: "rgba(0,0,0,1)",
-    shadowOffset: {
-      height: 5,
-      width: 0
-    },
-    elevation: 5,
-    shadowOpacity: 1,
-    shadowRadius: 0
-  },
-  example_Check: {
-    top: 19,
-    position: "absolute",
-    color: "rgba(128,128,128,1)",
-    fontSize: 40,
+    left: 16,
     right: 16
   },
-  example_Icon: {
+  habitBackground1: {
+    top: 0,
+    left: "0%",
+    width: "100.01%",
+    height: "92.05%",
+    position: "absolute",
+    backgroundColor: "rgba(15,163,177,1)",
+    borderRadius: 50,
+    overflow: "visible",
+    shadowColor: "rgba(10,137,148,1)",
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    elevation: 75,
+    shadowOpacity: 0.5,
+    shadowRadius: 25
+  },
+  habitCheckIcon1: {
     top: 12,
+    position: "absolute",
+    color: "rgba(255,255,255,1)",
+    fontSize: 50,
+    right: 14
+  },
+  habitHabitIcon1: {
     left: 14,
     position: "absolute",
-    color: "rgba(128,128,128,1)",
-    fontSize: 50
+    color: "rgba(255,255,255,1)",
+    fontSize: 50,
+    top: 10
   },
-  example_Title: {
-    top: 9,
+  habitTitle1: {
+    top: 14,
     left: 0,
     position: "absolute",
     fontFamily: "roboto-700",
-    color: "#121212",
+    color: "rgba(255,255,255,1)",
     fontSize: 16,
     right: 0,
     textAlign: "center"
   },
-  exampleTask: {
-    top: 49,
+  habitTask1: {
     left: 0,
     position: "absolute",
     fontFamily: "roboto-regular",
-    color: "#121212",
+    color: "rgba(255,255,255,1)",
+    right: 0,
+    textAlign: "center",
+    bottom: 21
+  },
+  list2: {
+    top: "66.02%",
+    left: 0,
+    height: "22.25%",
+    position: "absolute",
+    right: 0
+  },
+  addHabit: {
+    top: 0,
+    height: "100.02%",
+    position: "absolute",
+    left: 16,
+    right: 16
+  },
+  addHabitBackground: {
+    top: 0,
+    left: "0%",
+    width: "100.01%",
+    height: "92.05%",
+    position: "absolute",
+    borderRadius: 50,
+    overflow: "visible",
+    borderWidth: 1,
+    borderColor: "rgba(211,211,211,1)",
+    borderStyle: "dashed",
+    backgroundColor: "rgba(245,245,245,1)"
+  },
+  addHabitIcon: {
+    top: 0,
+    position: "absolute",
+    color: "rgba(194,189,189,1)",
+    fontSize: 50
+  },
+  addHabit_Text: {
+    left: 0,
+    position: "absolute",
+    fontFamily: "roboto-regular",
+    color: "rgba(185,182,182,1)",
+    right: 0,
+    textAlign: "center",
+    bottom: 12
+  },
+  endOfList: {
+    left: 0,
+    position: "absolute",
+    fontFamily: "roboto-regular",
+    color: "rgba(155,155,155,1)",
+    bottom: 8,
     right: 0,
     textAlign: "center"
   }

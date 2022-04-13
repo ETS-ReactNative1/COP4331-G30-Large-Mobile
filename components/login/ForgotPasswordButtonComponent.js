@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 
 export default class ForgotPasswordButtonComponent extends Component {
-    render() {
+  render() {
     return (
       <TouchableOpacity 
       onPress={() => this.forgotPassButtonClick(this.props)}
