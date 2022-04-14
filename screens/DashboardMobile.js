@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
 import AddHabitButtonComponent from "../components/dashboard/AddHabitButtonComponent";
 import MenuButtonComponent from "../components/dashboard/MenuButtonComponent";
+import HabitViewerComponent from "../components/dashboard/HabitViewerComponent";
 //import { Center } from "@builderx/utils";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -53,7 +54,8 @@ export default class DashboardMobile extends Component {
         <View style={styles.dashboard_Habits}>
           <View style={styles.dashboard_HabitsBackground}>
             <View style={styles.dashboard_HabitsContainer}>
-
+              <HabitViewerComponent></HabitViewerComponent>
+              {/*
               <View style={styles.list}>
                 <View style={styles.habit}>
                   <View style={styles.habit_Shadow}>
@@ -73,7 +75,7 @@ export default class DashboardMobile extends Component {
                     </View>
                   </View>
                 </View>
-              </View>
+              </View>*/}
 
               {/* Test */}
               {/*
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
     right: 15
   },
   dashboard_Milestone: {
-    top: "14.21%",
+    top: "14%",
     left: 0,
     height: "7.03%",
     position: "absolute",
@@ -185,7 +187,7 @@ const styles = StyleSheet.create({
     bottom: 0
   },
   dashboard_Profile: {
-    top: "22.99%",
+    top: "24%",
     left: 0,
     position: "absolute",
     right: 0,
@@ -194,8 +196,8 @@ const styles = StyleSheet.create({
   profilePicture: {
     top: "3.47%",
     left: "10%",
-    width: 160,
-    height: 160,
+    width: 185,
+    height: 185,
     position: "absolute",
     borderWidth: 4,
     borderColor: "rgba(255,155,66,1)",
@@ -228,12 +230,11 @@ const styles = StyleSheet.create({
     top: 0
   },
   dashboard_Habits: {
-    top: "47.7%",
+    top: "50%",
     left: 0,
-    height: "52.3%",
+    height: "49%",
     position: "absolute",
     right: 0,
-    
   },
   dashboard_HabitsBackground: {
     top: "0%",

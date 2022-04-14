@@ -32,7 +32,6 @@ export default class LoginButtonComponent extends Component {
       var res = JSON.parse(await response.text());
 
       // If no user found
-      //if( res.id === '' ) 
       if (response.status !== 200)
       { 
         // Change message on login screen
@@ -40,10 +39,15 @@ export default class LoginButtonComponent extends Component {
       } 
       else 
       {
+        props.onMessageChange("Success");
+
         global.userId = res.id.toString();
         global.firstName = res.firstName;
         global.lastName = res.lastName;
         global.username = global.username_login;
+        global.email = res.email;
+        //console.log(res.email);
+        global.phone = res.phone;
 
         // Navigate to dashboard
         console.log("Navigate to Dashboard");

@@ -58,7 +58,7 @@ const AppDrawerNavigator = createDrawerNavigator({
   initialRouteName: "Dashboard",
   drawerPosition: 'right',
   drawerContent: {},
-  //contentComponent: DrawerContentComponent,
+  contentComponent: DrawerContentComponent,
   navigationOptions: {},
 
   contentOptions: {

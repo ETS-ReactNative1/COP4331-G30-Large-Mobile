@@ -35,7 +35,18 @@ constructor()
 
   handleMessageChange = message =>
   {
-    this.setState({message})
+    if (message !== "Success")
+    {
+      // Show error message
+      this.setState({message})
+    }
+    else
+    {
+      // Clear text inputs
+      this.usernameInput.clear();
+      this.passwordInput.clear();
+    }
+
   }
 
   render() {
@@ -65,6 +76,7 @@ constructor()
                   placeholder="Username"
                   style={styles.usernameField1}
                   onChangeText={(val) => {this.usernameChangedHandler(val)}}
+                  ref={input => { this.usernameInput = input }}
                 ></TextInput>
                 <FontAwesomeIcon
                   name="user"
@@ -79,6 +91,7 @@ constructor()
                   secureTextEntry={true}
                   style={styles.passwordField1}
                   onChangeText={(val) => {this.passwordChangedHandler(val)}}
+                  ref={input => { this.passwordInput = input }}
                 ></TextInput>
                 <FontAwesomeIcon
                   name="key"

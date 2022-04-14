@@ -69,6 +69,7 @@ export default class SignUpButtonComponent extends Component {
     }
   }
 
+  // Determines registration input validity
   isInputValid(props)
   {
     // If required fields empty
