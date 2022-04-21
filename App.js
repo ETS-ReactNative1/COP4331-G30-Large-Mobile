@@ -1,12 +1,13 @@
-import React from 'react'; 
+import React from 'react';
 import * as Font from "expo-font";
-import { StyleSheet, Text, View } from 'react-native'; 
+import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from "react-navigation-stack";
 import { createDrawerNavigator } from "react-navigation-drawer";
-import { createAppContainer } from "react-navigation"; 
+import { createAppContainer } from "react-navigation";
 import LoginMobile from './screens/LoginMobile';
 import RegisterMobile from './screens/RegisterMobile';
 import DashboardMobile from './screens/DashboardMobile';
+import CustomizationMobile from './screens/CustomizationMobile';
 import SliderNativeComponent from 'react-native/Libraries/Components/Slider/SliderNativeComponent';
 import AppLoading from 'expo-app-loading';
 import ForgotPasswordMobile from './screens/ForgotPasswordMobile';
@@ -15,7 +16,7 @@ import DrawerContentComponent from './components/dashboard/DrawerContentComponen
 //import { AppLoading } from "expo";
 //import './stylesheets/font.css';
 //import './App.module.css';
-//import CardScreen from './screens/CardScreen'; 
+//import CardScreen from './screens/CardScreen';
 
 let customFonts = {
     'roboto-regular': require("./assets/fonts/roboto-regular.ttf"),
@@ -48,13 +49,13 @@ export default class App extends React.Component {
 }
 
 const AppDrawerNavigator = createDrawerNavigator({
-  Dashboard: { 
+  Dashboard: {
     screen: DashboardMobile
   },
   Logout: {
     screen: LoginMobile
   },
-},{ 
+},{
   initialRouteName: "Dashboard",
   drawerPosition: 'right',
   drawerContent: {},
@@ -68,32 +69,38 @@ const AppDrawerNavigator = createDrawerNavigator({
 });
 
 // ADD SCREENS HERE
-const AppNavigator = createStackNavigator({ 
-  Login: { 
-    screen: LoginMobile, 
-    navigationOptions: { 
-      headerShown: false // Will hide header for HomePage 
-    } 
+const AppNavigator = createStackNavigator({
+  Login: {
+    screen: LoginMobile,
+    navigationOptions: {
+      headerShown: false // Will hide header for HomePage
+    }
   },
-  Register: { 
-    screen: RegisterMobile, 
-    navigationOptions: { 
-      headerShown: false // Will hide header for HomePage 
-    } 
+  Register: {
+    screen: RegisterMobile,
+    navigationOptions: {
+      headerShown: false // Will hide header for HomePage
+    }
   },
   ForgotPassword: {
-    screen: ForgotPasswordMobile, 
-    navigationOptions: { 
-      headerShown: false // Will hide header for HomePage 
-    } 
+    screen: ForgotPasswordMobile,
+    navigationOptions: {
+      headerShown: false // Will hide header for HomePage
+    }
   },
-  Dashboard: { 
-    screen: AppDrawerNavigator, 
-    navigationOptions: { 
-      headerShown: false // Will hide header for HomePage 
-    } 
+  Dashboard: {
+    screen: AppDrawerNavigator,
+    navigationOptions: {
+      headerShown: false // Will hide header for HomePage
+    }
   },
-},{ 
+  Customization: {
+    screen: CustomizationMobile,
+    navigationOptions: {
+      headerShown: false // Will hide header for HomePage
+    }
+  }
+},{
   initialRouteName: "Login"
 });
 

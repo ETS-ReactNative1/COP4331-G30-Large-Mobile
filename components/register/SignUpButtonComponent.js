@@ -18,7 +18,7 @@ export default class SignUpButtonComponent extends Component {
 
   signUpClick = async (props) =>
   {
-    try 
+    try
     {
       // Reset attributes
       props.onUsernameValidChange(true);
@@ -42,29 +42,35 @@ export default class SignUpButtonComponent extends Component {
       };
 
       // Request user info
-      var js = JSON.stringify(obj); 
-      const response = await fetch('https://cop4331-g30-large.herokuapp.com/api/register', 
-      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
+      var js = JSON.stringify(obj);
+      const response = await fetch('https://cop4331-g30-large.herokuapp.com/api/register',
+      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
       var res = JSON.parse(await response.text());
 
       props.onEmailSentChange(true); 
 
-      if (!(res.error === ""))
+      if (response.status === 500)
       {
-        props.onMessageChange(res.error); 
+        props.onMessageChange(res.error);
+      }
+      else if (response.status === 200)
+      {
+        let endpoint_address = 'https://cop4331-g30-large.herokuapp.com/api/initializehabits:' + global.username;
+        const response_initialize = await fetch(endpoint_address, {method:'POST',body:'',headers:{'Content-Type': 'application/json'}});
+        var res_initialize = JSON.parse(await response.text());
       }
 
       //global.firstName = res.firstName;
-      //global.lastName = res.lastName; 
+      //global.lastName = res.lastName;
       //global.userId = res.id.toString();
 
       // Navigate to dashboard
       //console.log("Navigate to Dashboard");
       //props.navigation.navigate('Dashboard');
-    } 
-    catch(e) 
+    }
+    catch(e)
     {
-      props.onMessageChange(e.message); 
+      props.onMessageChange(e.message);
       //console.log(e.message);
     }
   }
