@@ -35,38 +35,33 @@ export default class CustomizationMobile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.goBackButtonComponent1Column}>
-          <GoBackButtonComponent
-            navigation={this.props.navigation}
-            style={styles.goBackButtonComponent1}
-          ></GoBackButtonComponent>
-        </View>
+        <GoBackButtonComponent
+          navigation={this.props.navigation}
+          style={styles.goBackButtonComponent1}
+        ></GoBackButtonComponent>
+
         <Text style={styles.habitTrackers}>Habit Trackers</Text>
-        <View>
-          <WaterButton
-            onWaterClicked = {this.handleWaterClicked}
-            style={styles.waterButton} // may change this
-          ></WaterButton>
-        </View>
-        <View>
-          <RecreationButton
-            onRecreationClicked = {this.handleRecreationClicked}
-            style={styles.recreationButton} // may change this
-          ></RecreationButton>
-        </View>
-        <View>
-          <SleepButton
-            onSleepClicked = {this.handleSleepClicked}
-            style={styles.sleepButton} // may change this
-          ></SleepButton>
-        </View>
-        <View>
-          <DoneButton
-            navigation = {this.props.navigation}
-            state = {this.state}
-            style={styles.doneButton}
-          ></DoneButton>
-        </View>
+
+        <WaterButton
+          onWaterClicked = {this.handleWaterClicked}
+          style={styles.waterButton}
+        ></WaterButton>
+
+        <RecreationButton
+          onRecreationClicked = {this.handleRecreationClicked}
+          style={styles.recreationButton}
+        ></RecreationButton>
+
+        <SleepButton
+          onSleepClicked = {this.handleSleepClicked}
+          style={styles.sleepButton}
+        ></SleepButton>
+
+        <DoneButton
+          navigation = {this.props.navigation}
+          state = {this.state}
+          style={styles.doneButton}
+        ></DoneButton>
       </View>
     );
   }
