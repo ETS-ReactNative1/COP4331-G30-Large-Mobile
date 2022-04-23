@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 export default class WaterButton extends Component {
   render() {
     return (
-      <View style={[styles.container, props.style]}>
+      <View style={[styles.container, this.props.style]}>
         <View style={styles.water_ShadowStack}>
           <View style={styles.water_Shadow}></View>
           <TouchableOpacity style={styles.water_Button}>
@@ -17,10 +17,10 @@ export default class WaterButton extends Component {
     );
   }
 
-  waterClick = async (props) =>
-  {
-    var obj = {water:props.state.isWaterClicked};
-  }
+  // waterClick = async (props) =>
+  // {
+  //   var obj = {water:props.state.isWaterClicked};
+  // }
 }
 
 

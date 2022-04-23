@@ -18,10 +18,11 @@ export default class DashboardMobile extends Component {
           resizeMode="stretch"
           style={styles.image3}
         ></Image>
-        
+
         <Text style={styles.header_Dashboard}>Dashboard</Text>
 
         <AddHabitButtonComponent
+          navigation = {this.props.navigation}
           style={styles.addHabitButtonComponent}
         ></AddHabitButtonComponent>
 
@@ -270,7 +271,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     borderBottomRightRadius: 0,
     borderBottomLeftRadius: 0,
-    
+
   },
   list: {
     top: "8.09%",

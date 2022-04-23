@@ -4,31 +4,33 @@ import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import IoniconsIcon from "react-native-vector-icons/Ionicons";
 
-function RecreationButton(props) {
-  return (
-    <View style={[styles.container, props.style]}>
-      <View style={styles.recreation_ShadowStack}>
-        <View style={styles.recreation_Shadow}></View>
-        <TouchableOpacity style={styles.recreation_Button}>
-          <Text style={styles.recreation2}>RECREATION</Text>
-          <FontAwesomeIcon
-            name="soccer-ball-o"
-            style={styles.icon5}
-          ></FontAwesomeIcon>
-          <View style={styles.icon7Row}>
-            <MaterialCommunityIconsIcon
-              name="football"
-              style={styles.icon7}
-            ></MaterialCommunityIconsIcon>
-            <IoniconsIcon
-              name="md-basketball"
-              style={styles.icon8}
-            ></IoniconsIcon>
-          </View>
-        </TouchableOpacity>
+export default class RecreationButton extends Component {
+  render() {
+    return (
+      <View style={[styles.container, this.props.style]}>
+        <View style={styles.recreation_ShadowStack}>
+          <View style={styles.recreation_Shadow}></View>
+          <TouchableOpacity style={styles.recreation_Button}>
+            <Text style={styles.recreation2}>RECREATION</Text>
+            <FontAwesomeIcon
+              name="soccer-ball-o"
+              style={styles.icon5}
+            ></FontAwesomeIcon>
+            <View style={styles.icon7Row}>
+              <MaterialCommunityIconsIcon
+                name="football"
+                style={styles.icon7}
+              ></MaterialCommunityIconsIcon>
+              <IoniconsIcon
+                name="md-basketball"
+                style={styles.icon8}
+              ></IoniconsIcon>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -92,5 +94,3 @@ const styles = StyleSheet.create({
     fontSize: 35
   }
 });
-
-export default RecreationButton;

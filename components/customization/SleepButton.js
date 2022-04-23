@@ -2,18 +2,20 @@ import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
-function SleepButton(props) {
-  return (
-    <View style={[styles.container, props.style]}>
-      <View style={styles.sleep_ShadowStack}>
-        <View style={styles.sleep_Shadow}></View>
-        <TouchableOpacity style={styles.sleep_Button}>
-          <Text style={styles.sleep2}>SLEEP</Text>
-          <Icon name="ios-moon" style={styles.icon4}></Icon>
-        </TouchableOpacity>
+export default class SleepButton extends Component {
+  render() {
+    return (
+      <View style={[styles.container, this.props.style]}>
+        <View style={styles.sleep_ShadowStack}>
+          <View style={styles.sleep_Shadow}></View>
+          <TouchableOpacity style={styles.sleep_Button}>
+            <Text style={styles.sleep2}>SLEEP</Text>
+            <Icon name="ios-moon" style={styles.icon4}></Icon>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -63,5 +65,3 @@ const styles = StyleSheet.create({
     left: 45
   }
 });
-
-export default SleepButton;

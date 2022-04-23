@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import GoBackButtonComponent from "../components/GoBackButtonComponent";
+import GoBackButtonComponent from "../components/customization/GoBackButtonComponent";
 import WaterButton from "../components/customization/WaterButton";
 import RecreationButton from "../components/customization/RecreationButton";
 import DoneButton from "../components/customization/DoneButton";
 import SleepButton from "../components/customization/SleepButton";
 
 export default class CustomizationMobile extends Component {
+
   state = {
     isWaterClicked: false,
     isSleepClicked: false,
@@ -36,21 +37,30 @@ export default class CustomizationMobile extends Component {
       <View style={styles.container}>
         <View style={styles.goBackButtonComponent1Column}>
           <GoBackButtonComponent
+            navigation={this.props.navigation}
             style={styles.goBackButtonComponent1}
           ></GoBackButtonComponent>
-          <Text style={styles.habitTrackers}>Habit Trackers</Text>
+        </View>
+        <Text style={styles.habitTrackers}>Habit Trackers</Text>
+        <View>
           <WaterButton
             onWaterClicked = {this.handleWaterClicked}
-            style={[styles.waterButton, this.state.isWaterClicked && !styles.clickedButton]} // may change this
+            style={styles.waterButton} // may change this
           ></WaterButton>
+        </View>
+        <View>
           <RecreationButton
             onRecreationClicked = {this.handleRecreationClicked}
-            style={[styles.recreationButton, this.state.isRecreationClicked && !styles.clickedButton]} // may change this
+            style={styles.recreationButton} // may change this
           ></RecreationButton>
+        </View>
+        <View>
           <SleepButton
             onSleepClicked = {this.handleSleepClicked}
-            style={[styles.sleepButton, this.state.isSleepClicked && !styles.clickedButton]} // may change this
+            style={styles.sleepButton} // may change this
           ></SleepButton>
+        </View>
+        <View>
           <DoneButton
             navigation = {this.props.navigation}
             state = {this.state}
@@ -64,7 +74,8 @@ export default class CustomizationMobile extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor:"rgba(255,255,255,1)"
   },
   goBackButtonComponent1: {
     position: "absolute",
