@@ -2,19 +2,27 @@ import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-function WaterButton(props) {
-  return (
-    <View style={[styles.container, props.style]}>
-      <View style={styles.water_ShadowStack}>
-        <View style={styles.water_Shadow}></View>
-        <TouchableOpacity style={styles.water_Button}>
-          <Text style={styles.water2}>WATER</Text>
-          <Icon name="cup-water" style={styles.icon2}></Icon>
-        </TouchableOpacity>
+export default class WaterButton extends Component {
+  render() {
+    return (
+      <View style={[styles.container, props.style]}>
+        <View style={styles.water_ShadowStack}>
+          <View style={styles.water_Shadow}></View>
+          <TouchableOpacity style={styles.water_Button}>
+            <Text style={styles.water2}>WATER</Text>
+            <Icon name="cup-water" style={styles.icon2}></Icon>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
+
+  waterClick = async (props) =>
+  {
+    var obj = {water:props.state.isWaterClicked};
+  }
 }
+
 
 const styles = StyleSheet.create({
   container: {},
@@ -63,5 +71,3 @@ const styles = StyleSheet.create({
     fontSize: 69
   }
 });
-
-export default WaterButton;

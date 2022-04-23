@@ -31,6 +31,8 @@ export default class LoginButtonComponent extends Component {
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
       var res = JSON.parse(await response.text());
 
+      
+
       // If no user found
       if (response.status !== 200)
       { 
@@ -41,13 +43,22 @@ export default class LoginButtonComponent extends Component {
       {
         props.onMessageChange("Success");
 
-        global.userId = res.id.toString();
-        global.firstName = res.firstName;
-        global.lastName = res.lastName;
+        global.userId = res.Id;
+        global.firstName = res.FirstName;
+        global.lastName = res.LastName;
         global.username = global.username_login;
-        global.email = res.email;
+        global.email = res.Email;
         //console.log(res.email);
-        global.phone = res.phone;
+        global.phone = res.Phone;
+
+        console.log(
+          "ID " + global.userId + "\n" +
+          "First " + global.firstName + "\n" +
+          "Last " + global.lastName + "\n" +
+          "Username " + global.username + "\n" +
+          "Email " + global.email + "\n" +
+          "Phone " + global.phone
+        );
 
         // Navigate to dashboard
         console.log("Navigate to Dashboard");

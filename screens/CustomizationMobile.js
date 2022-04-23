@@ -41,15 +41,15 @@ export default class CustomizationMobile extends Component {
           <Text style={styles.habitTrackers}>Habit Trackers</Text>
           <WaterButton
             onWaterClicked = {this.handleWaterClicked}
-            style={styles.waterButton}
+            style={[styles.waterButton, this.state.isWaterClicked && !styles.clickedButton]} // may change this
           ></WaterButton>
           <RecreationButton
             onRecreationClicked = {this.handleRecreationClicked}
-            style={styles.recreationButton}
+            style={[styles.recreationButton, this.state.isRecreationClicked && !styles.clickedButton]} // may change this
           ></RecreationButton>
           <SleepButton
             onSleepClicked = {this.handleSleepClicked}
-            style={styles.sleepButton}
+            style={[styles.sleepButton, this.state.isSleepClicked && !styles.clickedButton]} // may change this
           ></SleepButton>
           <DoneButton
             navigation = {this.props.navigation}
@@ -110,5 +110,8 @@ const styles = StyleSheet.create({
     left: 179,
     right: 28,
     height: "6.49%"
+  },
+  clickedButton: {
+    backgroundColor: "rgba(15,163,177,0.2)",
   }
 });
