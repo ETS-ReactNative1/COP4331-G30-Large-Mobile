@@ -7,7 +7,7 @@ export default class GoBackButtonComponent extends Component {
     return (
       <TouchableOpacity style={[styles.container, this.props.style]}>
         <Icon name="arrow-left-circle"
-        onPress={() => goBackClick(this.props)}
+        onPress={() => this.goBackClick(this.props)}
         style={styles.icon1}></Icon>
       </TouchableOpacity>
     );
