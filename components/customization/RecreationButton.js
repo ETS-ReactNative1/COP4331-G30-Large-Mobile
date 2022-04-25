@@ -8,8 +8,7 @@ export default class RecreationButton extends Component {
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
-        <View style={styles.recreation_ShadowStack}>
-          <View style={styles.recreation_Shadow}></View>
+        <View style={styles.recreation_Shadow}>
           <TouchableOpacity style={styles.recreation_Button}>
             <Text style={styles.recreation2}>RECREATION</Text>
             <FontAwesomeIcon

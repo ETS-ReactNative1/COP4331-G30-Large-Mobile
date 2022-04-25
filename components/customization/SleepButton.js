@@ -6,8 +6,7 @@ export default class SleepButton extends Component {
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
-        <View style={styles.sleep_ShadowStack}>
-          <View style={styles.sleep_Shadow}></View>
+        <View style={styles.sleep_Shadow}>
           <TouchableOpacity style={styles.sleep_Button}>
             <Text style={styles.sleep2}>SLEEP</Text>
             <Icon name="ios-moon" style={styles.icon4}></Icon>

@@ -6,9 +6,10 @@ export default class WaterButton extends Component {
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
-        <View style={styles.water_ShadowStack}>
-          <View style={styles.water_Shadow}></View>
-          <TouchableOpacity style={styles.water_Button}>
+        <View style={styles.water_Shadow}>
+          <TouchableOpacity
+          onPress={() => this.waterClick(this.props)}
+          style={styles.water_Button}>
             <Text style={styles.water2}>WATER</Text>
             <Icon name="cup-water" style={styles.icon2}></Icon>
           </TouchableOpacity>
@@ -17,10 +18,10 @@ export default class WaterButton extends Component {
     );
   }
 
-  // waterClick = async (props) =>
-  // {
-  //   var obj = {water:props.state.isWaterClicked};
-  // }
+  waterClick = async (props) =>
+  {
+    var obj = {water:props.state.isWaterClicked};
+  }
 }
 
 

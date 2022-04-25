@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
   },
   sleepButton: {
     position: "absolute",
+    top: "42.42%",
     left: 111,
     right: 112,
     height: "14.32%"
