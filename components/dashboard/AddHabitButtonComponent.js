@@ -7,7 +7,6 @@ export default class AddHabitButtonComponent extends Component {
   render() {
     return (
       <TouchableOpacity
-      // onPress={() => this.goToCustomize(this.props)}
       onPress={() => this.props.navigation.navigate('Customization')}
       style={[styles.container, this.props.style]}
       >
@@ -15,18 +14,6 @@ export default class AddHabitButtonComponent extends Component {
       </TouchableOpacity>
     );
   }
-
-  // goToCustomize = async (props) =>
-  // {
-  //   console.log("Trying to reach Customization screen!");
-  //   try {
-  //     props.navigation.navigate('Customization');
-  //   }
-  //   catch(e) {
-  //     console.log(e);
-  //     console.log("Why wont you work!!!");
-  //   }
-  // }
 }
 
 const styles = StyleSheet.create({

@@ -20,7 +20,7 @@ export default class WaterButton extends Component {
 
   waterClick = async (props) =>
   {
-    var obj = {water:props.state.isWaterClicked};
+    props.state.isWaterClicked = true;
   }
 }
 
