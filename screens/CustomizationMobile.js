@@ -19,7 +19,7 @@ export default class CustomizationMobile extends Component {
 
   handleWaterClicked = isClicked =>
   {
-    this.setState(({isWaterClicked}) => ({isWaterClicked:isClicked}));
+    this.setState(({isWaterClicked}) => ({isWaterClicked: isClicked}));
   }
 
   handleSleepClicked = isClicked =>
@@ -29,7 +29,7 @@ export default class CustomizationMobile extends Component {
 
   handleRecreationClicked = isClicked =>
   {
-    this.setState(({isRecreationClicked}) => ({isRecreationClicked:isClicked}));
+    this.setState(({isRecreationClicked}) => ({isRecreationClicked: isClicked}));
   }
 
   render() {
@@ -44,6 +44,7 @@ export default class CustomizationMobile extends Component {
 
         <WaterButton
           onWaterClicked = {this.handleWaterClicked}
+          onPress={true}
           style={styles.waterButton}
         ></WaterButton>
 
@@ -63,6 +64,7 @@ export default class CustomizationMobile extends Component {
           style={styles.doneButton}
         ></DoneButton>
       </View>
+
     );
   }
 }
@@ -117,8 +119,5 @@ const styles = StyleSheet.create({
     left: 179,
     right: 28,
     height: "6.49%"
-  },
-  clickedButton: {
-    backgroundColor: "rgba(15,163,177,0.2)",
   }
 });

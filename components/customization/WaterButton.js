@@ -9,7 +9,7 @@ export default class WaterButton extends Component {
         <View style={styles.water_Shadow}>
           <TouchableOpacity
           onPress={() => this.waterClick(this.props)}
-          style={styles.water_Button}>
+          style={this.props.onPress ? styles.clicked : styles.water_Button}>
             <Text style={styles.water2}>WATER</Text>
             <Icon name="cup-water" style={styles.icon2}></Icon>
           </TouchableOpacity>
@@ -18,9 +18,10 @@ export default class WaterButton extends Component {
     );
   }
 
+
   waterClick = async (props) =>
   {
-    props.state.isWaterClicked = true;
+    props.onWaterClicked(true);
   }
 }
 
@@ -70,5 +71,22 @@ const styles = StyleSheet.create({
     position: "absolute",
     color: "rgba(255,255,255,1)",
     fontSize: 69
+  },
+  clicked: {
+    top: "0%",
+    left: 0,
+    height: "100%",
+    position: "absolute",
+    backgroundColor: "rgba(255,155,66,1)",
+    borderRadius: 15,
+    shadowColor: "rgba(15,163,177,1)",
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    elevation: 5,
+    shadowOpacity: 0.01,
+    shadowRadius: 0,
+    right: 0
   }
 });
