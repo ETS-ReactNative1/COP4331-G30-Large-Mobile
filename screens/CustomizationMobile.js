@@ -9,12 +9,18 @@ import SleepButton from "../components/customization/SleepButton";
 export default class CustomizationMobile extends Component {
 
   state = {
+    message: '',
     isWaterClicked: false,
     isSleepClicked: false,
     isRecreationClicked: false,
     isExerciseClicked: false,
     isMealClicked: false,
     isMedicationClicked: false,
+  }
+
+  handleMessageChange = message =>
+  {
+    this.setState({message})
   }
 
   handleWaterClicked = isClicked =>
@@ -58,12 +64,12 @@ export default class CustomizationMobile extends Component {
         ></SleepButton>
 
         <DoneButton
+          onMessageChange = {this.handleMessageChange}
           navigation = {this.props.navigation}
           state = {this.state}
           style={styles.doneButton}
         ></DoneButton>
       </View>
-
     );
   }
 }
