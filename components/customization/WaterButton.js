@@ -3,25 +3,32 @@ import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default class WaterButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {clicked: false};
+  }
+
+  // This correct do not change.
+  onPress = async (props) => {
+    const newClicked = !this.state.clicked;
+    this.setState({clicked : newClicked});
+    props.onWaterClicked(newClicked);
+  };
+
   render() {
+    {/*const { clicked } = this.state;*/}
     return (
       <View style={[styles.container, this.props.style]}>
         <View style={styles.water_Shadow}>
           <TouchableOpacity
-          onPress={() => this.waterClick(this.props)}
-          style={this.props.onPress ? styles.clicked : styles.water_Button}>
+          onPress={() => this.onPress(this.props)}
+          style={!this.state.clicked ? styles.water_Button : styles.clicked}>
             <Text style={styles.water2}>WATER</Text>
             <Icon name="cup-water" style={styles.icon2}></Icon>
           </TouchableOpacity>
         </View>
       </View>
     );
-  }
-
-
-  waterClick = async (props) =>
-  {
-    props.onWaterClicked(true);
   }
 }
 

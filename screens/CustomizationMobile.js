@@ -44,7 +44,6 @@ export default class CustomizationMobile extends Component {
 
         <WaterButton
           onWaterClicked = {this.handleWaterClicked}
-          onPress={true}
           style={styles.waterButton}
         ></WaterButton>
 
@@ -63,6 +62,19 @@ export default class CustomizationMobile extends Component {
           state = {this.state}
           style={styles.doneButton}
         ></DoneButton>
+
+        <View style={styles.register_Verification}>
+        {
+          // Determines if email sent flag is true
+          this.state.isWaterClicked && (
+            <View style={styles.register_VerificationBackground}>
+              <Text
+              style={styles.text_verifyEmail}
+              >Email Verification Sent! Check your email.</Text>
+            </View>
+          )
+        }
+        </View>
       </View>
 
     );
@@ -119,5 +131,41 @@ const styles = StyleSheet.create({
     left: 179,
     right: 28,
     height: "6.49%"
+  },
+  register_Verification: {
+    top: "90%",
+    height: "6%",
+    position: "absolute",
+    left: 22,
+    right: 22
+  },
+  register_VerificationBackground: {
+    top: "0%",
+    left: 0,
+    height: "100%",
+    position: "absolute",
+    backgroundColor: "rgba(255,255,255,1)",
+    borderRadius: 15,
+    shadowColor: "rgba(0,0,0,1)",
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    elevation: 10,
+    shadowOpacity: 0.25,
+    shadowRadius: 10,
+    right: 0,
+    borderColor: "rgba(210,210,210,210)",
+    borderWidth: 1
+  },
+  text_verifyEmail: {
+    top: "18.74%",
+    left: 0,
+    position: "absolute",
+    fontFamily: "roboto-regular",
+    color: "rgba(0,0,0,1)",
+    fontSize: 16,
+    right: 0,
+    textAlign: "center"
   }
 });
