@@ -62,19 +62,6 @@ export default class CustomizationMobile extends Component {
           state = {this.state}
           style={styles.doneButton}
         ></DoneButton>
-
-        <View style={styles.register_Verification}>
-        {
-          // Determines if email sent flag is true
-          this.state.isWaterClicked && (
-            <View style={styles.register_VerificationBackground}>
-              <Text
-              style={styles.text_verifyEmail}
-              >Email Verification Sent! Check your email.</Text>
-            </View>
-          )
-        }
-        </View>
       </View>
 
     );

@@ -5,11 +5,25 @@ import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommun
 import IoniconsIcon from "react-native-vector-icons/Ionicons";
 
 export default class RecreationButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {clicked: false};
+  }
+
+  onPress = async (props) => {
+    const newClicked = !this.state.clicked;
+    this.setState({clicked : newClicked});
+    props.onRecreationClicked(newClicked);
+  };
+
   render() {
+    const { clicked } = this.state;
     return (
       <View style={[styles.container, this.props.style]}>
         <View style={styles.recreation_Shadow}>
-          <TouchableOpacity style={styles.recreation_Button}>
+          <TouchableOpacity
+          onPress = {() => this.onPress(this.props)}
+          style={!clicked ? styles.recreation_Button : styles.clicked}>
             <Text style={styles.recreation2}>RECREATION</Text>
             <FontAwesomeIcon
               name="soccer-ball-o"
@@ -91,5 +105,22 @@ const styles = StyleSheet.create({
     position: "absolute",
     color: "rgba(255,255,255,1)",
     fontSize: 35
+  },
+  clicked: {
+    top: "0%",
+    left: 0,
+    height: "100%",
+    position: "absolute",
+    backgroundColor: "rgba(13,136,148,0.1)",
+    borderRadius: 15,
+    shadowColor: "rgba(15,163,177,1)",
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    elevation: 5,
+    shadowOpacity: 0.01,
+    shadowRadius: 0,
+    right: 0
   }
 });

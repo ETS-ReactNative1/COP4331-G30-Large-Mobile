@@ -16,13 +16,13 @@ export default class WaterButton extends Component {
   };
 
   render() {
-    {/*const { clicked } = this.state;*/}
+    const { clicked } = this.state;
     return (
       <View style={[styles.container, this.props.style]}>
         <View style={styles.water_Shadow}>
           <TouchableOpacity
           onPress={() => this.onPress(this.props)}
-          style={!this.state.clicked ? styles.water_Button : styles.clicked}>
+          style={!clicked ? styles.water_Button : styles.clicked}>
             <Text style={styles.water2}>WATER</Text>
             <Icon name="cup-water" style={styles.icon2}></Icon>
           </TouchableOpacity>
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     left: 0,
     height: "100%",
     position: "absolute",
-    backgroundColor: "rgba(255,155,66,1)",
+    backgroundColor: "rgba(13,136,148,0.1)",
     borderRadius: 15,
     shadowColor: "rgba(15,163,177,1)",
     shadowOffset: {
