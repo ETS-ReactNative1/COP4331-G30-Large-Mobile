@@ -18,7 +18,7 @@ export default class SleepButton extends Component {
     const { clicked } = this.state;
     return (
       <View style={[styles.container, this.props.style]}>
-        <View style={styles.sleep_Shadow}>
+        <View style={!clicked ? styles.sleep_Shadow : styles.clicked_Shadow}>
           <TouchableOpacity
           onPress = {() => this.onPress(this.props)}
           style={!clicked ? styles.sleep_Button : styles.clicked}>
@@ -77,14 +77,23 @@ const styles = StyleSheet.create({
     fontSize: 69,
     left: 45
   },
+  clicked_Shadow: {
+    top: "2.83%",
+    left: 3,
+    height: "100%",
+    position: "absolute",
+    backgroundColor: "rgba(178,102,38,1)",
+    borderRadius: 15,
+    right: -3
+  },
   clicked: {
     top: "0%",
     left: 0,
     height: "100%",
     position: "absolute",
-    backgroundColor: "rgba(13,136,148,0.1)",
+    backgroundColor: "rgba(255,155,66,1)",
     borderRadius: 15,
-    shadowColor: "rgba(15,163,177,1)",
+    shadowColor: "rgba(178,102,38,1)",
     shadowOffset: {
       width: 3,
       height: 3
