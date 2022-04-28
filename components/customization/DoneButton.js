@@ -32,7 +32,7 @@ export default class DoneButton extends Component {
       };
 
       // pings the API
-      let endpoint_address_search = 'https://cop4331-g30-large.herokuapp.com/api/customizesearch:' + global.username;
+      let endpoint_address_search = 'https://cop4331-g30-large.herokuapp.com/api/getCustomization:' + global.username;
       var js = JSON.stringify(obj);
       const response_search = await fetch(endpoint_address_search, {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
       var res = JSON.parse(await response_search.text());
@@ -43,17 +43,18 @@ export default class DoneButton extends Component {
       }
       else if (endpoint_address_search.status === 200)
       {
-        let endpoint_address_customize = 'https://cop4331-g30-large.herokuapp.com/api/updatecustomization:' + global.username;
+        // check what is being brought back in res.
+
+        // Add the rest
+        obj.sleep = obj.sleep || res.Sleep;
+        obj.water = obj.water || res.Water;
+        obj.recreation = obj.water || res.Recreation;
+
+        let endpoint_address_customize = 'https://cop4331-g30-large.herokuapp.com/api/customize:' + global.username;
         js = JSON.stringify(obj);
         const response_customize = await fetch(endpoint_address_customize, {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
         res = JSON.parse(await response_customize.text());
       }
-      // check what is being brought back in res.
-
-      // Add the rest
-      // obj.sleep = obj.sleep || res.Sleep;
-      // obj.water = obj.water || res.Water;
-      // obj.recreation = obj.water || res.Recreation;
 
 
       // Back to Dashboard Screen
