@@ -47,7 +47,7 @@ export default class SignUpButtonComponent extends Component {
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
       var res = JSON.parse(await response.text());
 
-      props.onEmailSentChange(true); 
+      props.onEmailSentChange(true);
 
       if (response.status === 500)
       {
@@ -55,7 +55,7 @@ export default class SignUpButtonComponent extends Component {
       }
       else if (response.status === 200)
       {
-        let endpoint_address = 'https://cop4331-g30-large.herokuapp.com/api/initializehabits:' + global.username;
+        let endpoint_address = 'https://cop4331-g30-large.herokuapp.com/api/initialize:' + global.username;
         const response_initialize = await fetch(endpoint_address, {method:'POST',body:'',headers:{'Content-Type': 'application/json'}});
         var res_initialize = JSON.parse(await response.text());
       }
