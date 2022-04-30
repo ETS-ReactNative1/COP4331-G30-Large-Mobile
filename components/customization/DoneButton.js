@@ -15,54 +15,45 @@ export default class DoneButton extends Component {
     );
   }
 
-  // thid gives an error JSON Parse error: Unrecognized token '<'
-  doneClick = async (props) =>
-  {
+  // Working
+  doneClick = async (props) => {
     try {
-
-      props.onMessageChange("");
-
-      var obj = {
-        exercise: props.state.isExerciseClicked,
-        meal: props.state.isMealClicked,
-        medication: props.state.isMedicationClicked,
-        recreation: props.state.isRecreationClicked,
-        sleep: props.state.isSleepClicked,
-        water: props.state
-      };
-
+      var obj = {};
 
       // pings the API
-      let endpoint_address_search = 'https://cop4331-g30-large.herokuapp.com/api/getCustomization:' + global.username;
+      let endpoint_address_search = 'https://cop4331-g30-large.herokuapp.com/api/getCustomization/' + global.username.trim();
       var js = JSON.stringify(obj);
       const response_search = await fetch(endpoint_address_search, {method:'GET',headers:{'Content-Type': 'application/json'}});
       var res = JSON.parse(await response_search.text());
 
-      if (endpoint_address_search.status === 500)
+      console.log(response_search.status);
+
+      if (response_search.status === 400)
       {
-        props.onMessageChange(res.error);
+
       }
-      else if (endpoint_address_search.status === 200)
+      else if (response_search.status === 200)
       {
-        // check what is being brought back in res.
+        // Checks to see which which buttons are click
+        obj = {
+          exercise: props.state.isExerciseClicked || res.Exercise,
+          meal: false,
+          medication: false,
+          recreation: props.state.isRecreationClicked || res.Recreation,
+          sleep: props.state.isSleepClicked || res.Sleep,
+          water: props.state.isWaterClicked || res.Water
+        };
 
-        // Add the rest
-        obj.sleep = obj.sleep || res.Sleep;
-        obj.water = obj.water || res.Water;
-        obj.recreation = obj.water || res.Recreation;
-
-        let endpoint_address_customize = 'https://cop4331-g30-large.herokuapp.com/api/customize:' + global.username;
+        let endpoint_address_customize = 'https://cop4331-g30-large.herokuapp.com/api/customize/' + global.username.trim();
         js = JSON.stringify(obj);
         const response_customize = await fetch(endpoint_address_customize, {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
         res = JSON.parse(await response_customize.text());
+
+        props.navigation.navigate('Dashboard');
       }
-
-
-      // Back to Dashboard Screen
-      props.navigation.navigate('Dashboard');
     }
     catch(e) {
-      props.onMessageChange(e.message);
+
       console.log(e.message);
     }
   }

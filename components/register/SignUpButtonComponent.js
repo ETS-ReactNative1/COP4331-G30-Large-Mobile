@@ -59,10 +59,9 @@ export default class SignUpButtonComponent extends Component {
         const response_verify = await fetch(endpoint_verify, {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
         let res_verify = JSON.parse(await response_verify.text());
 
-        let endpoint_address = 'https://cop4331-g30-large.herokuapp.com/api/initialize:' + global.username.trim();
-        const response_initialize = await fetch(endpoint_address, {method:'POST',body:'',headers:{'Content-Type': 'application/json'}});
+        let endpoint_address = 'https://cop4331-g30-large.herokuapp.com/api/initialize/' + global.username.trim();
+        const response_initialize = await fetch(endpoint_address, {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
         var res_initialize = JSON.parse(await response.text());
-
       }
 
       //global.firstName = res.firstName;
