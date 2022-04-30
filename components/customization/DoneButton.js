@@ -23,7 +23,7 @@ export default class DoneButton extends Component {
       props.onMessageChange("");
 
       var obj = {
-        exercise: props.state.isExerciseClicke,
+        exercise: props.state.isExerciseClicked,
         meal: props.state.isMealClicked,
         medication: props.state.isMedicationClicked,
         recreation: props.state.isRecreationClicked,
@@ -31,10 +31,11 @@ export default class DoneButton extends Component {
         water: props.state
       };
 
+
       // pings the API
       let endpoint_address_search = 'https://cop4331-g30-large.herokuapp.com/api/getCustomization:' + global.username;
       var js = JSON.stringify(obj);
-      const response_search = await fetch(endpoint_address_search, {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+      const response_search = await fetch(endpoint_address_search, {method:'GET',headers:{'Content-Type': 'application/json'}});
       var res = JSON.parse(await response_search.text());
 
       if (endpoint_address_search.status === 500)
