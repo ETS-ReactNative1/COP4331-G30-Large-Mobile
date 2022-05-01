@@ -1,39 +1,40 @@
 import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import FontAwesomeIcon from "react-native-vector-icons/FontAwesome5";
 
-export default class SleepButton extends Component {
+export default class ExerciseButton extends Component {
   constructor(props) {
     super(props);
     this.state = {clicked: false};
   }
 
+  // This correct do not change.
   onPress = async (props) => {
     const newClicked = !this.state.clicked;
-    this.setState({clicked: newClicked});
-    props.onSleepClicked(newClicked);
-  }
+    this.setState({clicked : newClicked});
+    props.onExerciseClicked(newClicked);
+  };
 
-  render() {
+  render(){
     const { clicked } = this.state;
     return (
       <View style={[styles.container, this.props.style]}>
-        <View style={!clicked ? styles.sleep_Shadow : styles.clicked_Shadow}>
+        <View style={!clicked ? styles.exercise_Shadow : styles.clicked_Shadow}>
           <TouchableOpacity
-          onPress = {() => this.onPress(this.props)}
-          style={!clicked ? styles.sleep_Button : styles.clicked}>
-            <Text style={styles.sleep2}>SLEEP</Text>
-            <Icon name="ios-moon" style={styles.icon4}></Icon>
+          onPress={() => this.onPress(this.props)}
+          style={!clicked ? styles.exercise_Button : styles.clicked}>
+            <Text style={styles.exerciseText}>EXERCISE</Text>
+            <FontAwesomeIcon name="dumbbell" style={styles.icon2}></FontAwesomeIcon>
           </TouchableOpacity>
         </View>
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {},
-  sleep_Shadow: {
+  exercise_Shadow: {
     top: "2.83%",
     left: 3,
     height: "100%",
@@ -43,9 +44,9 @@ const styles = StyleSheet.create({
     right: -3,
     marginRight: "-50%",
     marginLeft: "50%",
-    marginTop: "-65.5%"
+    marginTop: "-110%"
   },
-  sleep_Button: {
+  exercise_Button: {
     top: "0%",
     left: 0,
     height: "97%",
@@ -62,8 +63,8 @@ const styles = StyleSheet.create({
     shadowRadius: 0,
     right: 4
   },
-  sleep2: {
-    top: "2.78%",
+  exerciseText: {
+    top: "2.83%",
     position: "absolute",
     fontFamily: "roboto-700",
     color: "rgba(255,255,255,1)",
@@ -73,12 +74,12 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0
   },
-  icon4: {
+  icon2: {
     top: 31,
+    left: 34,
     position: "absolute",
     color: "rgba(255,255,255,1)",
-    fontSize: 69,
-    left: 45
+    fontSize: 69
   },
   clicked_Shadow: {
     top: "2.83%",
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     right: -3,
     marginRight: "-50%",
     marginLeft: "50%",
-    marginTop: "-65.5%"
+    marginTop: "-110%"
   },
   clicked: {
     top: "0%",
@@ -107,6 +108,6 @@ const styles = StyleSheet.create({
     elevation: 5,
     shadowOpacity: 0.01,
     shadowRadius: 0,
-    right: 4
+    right: 0
   }
 });
