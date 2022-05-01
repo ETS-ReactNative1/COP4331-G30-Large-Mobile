@@ -1,0 +1,535 @@
+b88bd7d5e38bf41ac7c42292c3d81d69
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactNative = require("react-native");
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function cov_1fufb7iq1g() {
+  var path = "/home/nilanlinux/habit-journal-mobile/components/forgot_password/ResetPassButtonComponent.js";
+  var hash = "f96769b46a2fb54e19a996afd2ee3c32cd3e0bd4";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/home/nilanlinux/habit-journal-mobile/components/forgot_password/ResetPassButtonComponent.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 6,
+          column: 4
+        },
+        end: {
+          line: 15,
+          column: 6
+        }
+      },
+      "1": {
+        start: {
+          line: 9,
+          column: 25
+        },
+        end: {
+          line: 9,
+          column: 60
+        }
+      },
+      "2": {
+        start: {
+          line: 18,
+          column: 23
+        },
+        end: {
+          line: 50,
+          column: 3
+        }
+      },
+      "3": {
+        start: {
+          line: 20,
+          column: 4
+        },
+        end: {
+          line: 48,
+          column: 5
+        }
+      },
+      "4": {
+        start: {
+          line: 23,
+          column: 16
+        },
+        end: {
+          line: 23,
+          column: 59
+        }
+      },
+      "5": {
+        start: {
+          line: 26,
+          column: 15
+        },
+        end: {
+          line: 26,
+          column: 34
+        }
+      },
+      "6": {
+        start: {
+          line: 27,
+          column: 23
+        },
+        end: {
+          line: 28,
+          column: 75
+        }
+      },
+      "7": {
+        start: {
+          line: 31,
+          column: 6
+        },
+        end: {
+          line: 31,
+          column: 62
+        }
+      },
+      "8": {
+        start: {
+          line: 33,
+          column: 6
+        },
+        end: {
+          line: 43,
+          column: 7
+        }
+      },
+      "9": {
+        start: {
+          line: 35,
+          column: 8
+        },
+        end: {
+          line: 35,
+          column: 65
+        }
+      },
+      "10": {
+        start: {
+          line: 36,
+          column: 8
+        },
+        end: {
+          line: 36,
+          column: 40
+        }
+      },
+      "11": {
+        start: {
+          line: 38,
+          column: 11
+        },
+        end: {
+          line: 43,
+          column: 7
+        }
+      },
+      "12": {
+        start: {
+          line: 40,
+          column: 8
+        },
+        end: {
+          line: 40,
+          column: 41
+        }
+      },
+      "13": {
+        start: {
+          line: 41,
+          column: 8
+        },
+        end: {
+          line: 41,
+          column: 39
+        }
+      },
+      "14": {
+        start: {
+          line: 42,
+          column: 8
+        },
+        end: {
+          line: 42,
+          column: 38
+        }
+      },
+      "15": {
+        start: {
+          line: 47,
+          column: 6
+        },
+        end: {
+          line: 47,
+          column: 39
+        }
+      },
+      "16": {
+        start: {
+          line: 53,
+          column: 15
+        },
+        end: {
+          line: 74,
+          column: 2
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 5,
+            column: 2
+          },
+          end: {
+            line: 5,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 11
+          },
+          end: {
+            line: 16,
+            column: 3
+          }
+        },
+        line: 5
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 9,
+            column: 19
+          },
+          end: {
+            line: 9,
+            column: 20
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 25
+          },
+          end: {
+            line: 9,
+            column: 60
+          }
+        },
+        line: 9
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 18,
+            column: 23
+          },
+          end: {
+            line: 18,
+            column: 24
+          }
+        },
+        loc: {
+          start: {
+            line: 19,
+            column: 2
+          },
+          end: {
+            line: 50,
+            column: 3
+          }
+        },
+        line: 19
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 33,
+            column: 6
+          },
+          end: {
+            line: 43,
+            column: 7
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 33,
+            column: 6
+          },
+          end: {
+            line: 43,
+            column: 7
+          }
+        }, {
+          start: {
+            line: 38,
+            column: 11
+          },
+          end: {
+            line: 43,
+            column: 7
+          }
+        }],
+        line: 33
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 38,
+            column: 11
+          },
+          end: {
+            line: 43,
+            column: 7
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 38,
+            column: 11
+          },
+          end: {
+            line: 43,
+            column: 7
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 38
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0]
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "f96769b46a2fb54e19a996afd2ee3c32cd3e0bd4"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    cov_1fufb7iq1g = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_1fufb7iq1g();
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+var ResetPasswordButtonComponent = function (_Component) {
+  (0, _inherits2.default)(ResetPasswordButtonComponent, _Component);
+
+  var _super = _createSuper(ResetPasswordButtonComponent);
+
+  function ResetPasswordButtonComponent() {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, ResetPasswordButtonComponent);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+    _this.resetPasswordClick = (cov_1fufb7iq1g().s[2]++, function _callee(props) {
+      var obj, js, response;
+      return _regenerator.default.async(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              cov_1fufb7iq1g().f[2]++;
+              cov_1fufb7iq1g().s[3]++;
+              _context.prev = 2;
+              obj = (cov_1fufb7iq1g().s[4]++, {
+                email: global.email_forgot_password.trim()
+              });
+              js = (cov_1fufb7iq1g().s[5]++, JSON.stringify(obj));
+              cov_1fufb7iq1g().s[6]++;
+              _context.next = 8;
+              return _regenerator.default.awrap(fetch('https://cop4331-g30-large.herokuapp.com/api/forgotpass', {
+                method: 'POST',
+                body: js,
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              }));
+
+            case 8:
+              response = _context.sent;
+              cov_1fufb7iq1g().s[7]++;
+              console.log("Reset endpoint pinged " + response.status);
+              cov_1fufb7iq1g().s[8]++;
+
+              if (response.status === 400) {
+                cov_1fufb7iq1g().b[0][0]++;
+                cov_1fufb7iq1g().s[9]++;
+                props.onMessageChange("No account found for this email");
+                cov_1fufb7iq1g().s[10]++;
+                props.onEmailValidChange(false);
+              } else {
+                cov_1fufb7iq1g().b[0][1]++;
+                cov_1fufb7iq1g().s[11]++;
+
+                if (response.status === 200) {
+                  cov_1fufb7iq1g().b[1][0]++;
+                  cov_1fufb7iq1g().s[12]++;
+                  props.onMessageChange("Success");
+                  cov_1fufb7iq1g().s[13]++;
+                  props.onEmailValidChange(true);
+                  cov_1fufb7iq1g().s[14]++;
+                  props.onEmailSentChange(true);
+                } else {
+                  cov_1fufb7iq1g().b[1][1]++;
+                }
+              }
+
+              _context.next = 19;
+              break;
+
+            case 15:
+              _context.prev = 15;
+              _context.t0 = _context["catch"](2);
+              cov_1fufb7iq1g().s[15]++;
+              props.onMessageChange(_context.t0.message);
+
+            case 19:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, null, [[2, 15]], Promise);
+    });
+    return _this;
+  }
+
+  (0, _createClass2.default)(ResetPasswordButtonComponent, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      cov_1fufb7iq1g().f[0]++;
+      cov_1fufb7iq1g().s[0]++;
+      return _react.default.createElement(_reactNative.TouchableOpacity, {
+        style: [styles.container, this.props.style]
+      }, _react.default.createElement(_reactNative.TouchableOpacity, {
+        onPress: function onPress() {
+          cov_1fufb7iq1g().f[1]++;
+          cov_1fufb7iq1g().s[1]++;
+          return _this2.resetPasswordClick(_this2.props);
+        },
+        style: styles.reset_Button
+      }, _react.default.createElement(_reactNative.Text, {
+        style: styles.reset_Text
+      }, "Reset Password")));
+    }
+  }]);
+  return ResetPasswordButtonComponent;
+}(_react.Component);
+
+exports.default = ResetPasswordButtonComponent;
+var styles = (cov_1fufb7iq1g().s[16]++, _reactNative.StyleSheet.create({
+  container: {},
+  reset_Button: {
+    top: "0%",
+    height: "100%",
+    position: "absolute",
+    backgroundColor: "rgba(15,163,177,1)",
+    borderRadius: 50,
+    left: 0,
+    width: "100%"
+  },
+  reset_Text: {
+    top: "25%",
+    left: 0,
+    position: "absolute",
+    fontFamily: "roboto-regular",
+    color: "rgba(255,255,255,1)",
+    fontSize: 16,
+    textAlign: "center",
+    right: 0
+  }
+}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlJlc2V0UGFzc0J1dHRvbkNvbXBvbmVudC5qcyJdLCJuYW1lcyI6WyJSZXNldFBhc3N3b3JkQnV0dG9uQ29tcG9uZW50IiwicmVzZXRQYXNzd29yZENsaWNrIiwicHJvcHMiLCJvYmoiLCJlbWFpbCIsImdsb2JhbCIsImVtYWlsX2ZvcmdvdF9wYXNzd29yZCIsInRyaW0iLCJqcyIsIkpTT04iLCJzdHJpbmdpZnkiLCJmZXRjaCIsIm1ldGhvZCIsImJvZHkiLCJoZWFkZXJzIiwicmVzcG9uc2UiLCJjb25zb2xlIiwibG9nIiwic3RhdHVzIiwib25NZXNzYWdlQ2hhbmdlIiwib25FbWFpbFZhbGlkQ2hhbmdlIiwib25FbWFpbFNlbnRDaGFuZ2UiLCJtZXNzYWdlIiwic3R5bGVzIiwiY29udGFpbmVyIiwic3R5bGUiLCJyZXNldF9CdXR0b24iLCJyZXNldF9UZXh0IiwiQ29tcG9uZW50IiwiU3R5bGVTaGVldCIsImNyZWF0ZSIsInRvcCIsImhlaWdodCIsInBvc2l0aW9uIiwiYmFja2dyb3VuZENvbG9yIiwiYm9yZGVyUmFkaXVzIiwibGVmdCIsIndpZHRoIiwiZm9udEZhbWlseSIsImNvbG9yIiwiZm9udFNpemUiLCJ0ZXh0QWxpZ24iLCJyaWdodCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBOztBQUNBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7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QUcsRUFBRSxLQURLO0FBRVZLLElBQUFBLElBQUksRUFBRSxDQUZJO0FBR1ZILElBQUFBLFFBQVEsRUFBRSxVQUhBO0FBSVZLLElBQUFBLFVBQVUsRUFBRSxnQkFKRjtBQUtWQyxJQUFBQSxLQUFLLEVBQUUscUJBTEc7QUFNVkMsSUFBQUEsUUFBUSxFQUFFLEVBTkE7QUFPVkMsSUFBQUEsU0FBUyxFQUFFLFFBUEQ7QUFRVkMsSUFBQUEsS0FBSyxFQUFFO0FBUkc7QUFYbUIsQ0FBbEIsQ0FBSCxDQUFaIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IENvbXBvbmVudCB9IGZyb20gXCJyZWFjdFwiO1xuaW1wb3J0IHsgU3R5bGVTaGVldCwgVG91Y2hhYmxlT3BhY2l0eSwgVGV4dCB9IGZyb20gXCJyZWFjdC1uYXRpdmVcIjtcblxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgUmVzZXRQYXNzd29yZEJ1dHRvbkNvbXBvbmVudCBleHRlbmRzIENvbXBvbmVudCB7XG4gIHJlbmRlcigpIHtcbiAgICByZXR1cm4gKFxuICAgICAgPFRvdWNoYWJsZU9wYWNpdHkgc3R5bGU9e1tzdHlsZXMuY29udGFpbmVyLCB0aGlzLnByb3BzLnN0eWxlXX0+XG4gICAgICAgIDxUb3VjaGFibGVPcGFjaXR5XG4gICAgICAgICAgb25QcmVzcz17KCkgPT4gdGhpcy5yZXNldFBhc3N3b3JkQ2xpY2sodGhpcy5wcm9wcyl9XG4gICAgICAgICAgc3R5bGU9e3N0eWxlcy5yZXNldF9CdXR0b259XG4gICAgICAgID5cbiAgICAgICAgICA8VGV4dCBzdHlsZT17c3R5bGVzLnJlc2V0X1RleHR9PlJlc2V0IFBhc3N3b3JkPC9UZXh0PlxuICAgICAgICA8L1RvdWNoYWJsZU9wYWNpdHk+XG4gICAgICA8L1RvdWNoYWJsZU9wYWNpdHk+XG4gICAgKTtcbiAgfVxuXG4gIHJlc2V0UGFzc3dvcmRDbGljayA9IGFzeW5jIChwcm9wcykgPT5cbiAge1xuICAgIHRyeVxuICAgIHtcbiAgICAgIC8vIEdldCB0eXBlZCB1c2VybmFtZSBhbmQgcGFzc3dvcmRcbiAgICAgIHZhciBvYmogPSB7ZW1haWw6Z2xvYmFsLmVtYWlsX2ZvcmdvdF9wYXNzd29yZC50cmltKCl9OyBcblxuICAgICAgLy8gUmVxdWVzdCB1c2VyIGluZm9cbiAgICAgIHZhciBqcyA9IEpTT04uc3RyaW5naWZ5KG9iaik7IFxuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCgnaHR0cHM6Ly9jb3A0MzMxLWczMC1sYXJnZS5oZXJva3VhcHAuY29tL2FwaS9mb3Jnb3RwYXNzJywgXG4gICAgICB7bWV0aG9kOidQT1NUJyxib2R5OmpzLGhlYWRlcnM6eydDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbid9fSk7IFxuICAgICAgLy92YXIgcmVzID0gSlNPTi5wYXJzZShhd2FpdCByZXNwb25zZS50ZXh0KCkpO1xuXG4gICAgICBjb25zb2xlLmxvZyhcIlJlc2V0IGVuZHBvaW50IHBpbmdlZCBcIiArIHJlc3BvbnNlLnN0YXR1cyk7XG5cbiAgICAgIGlmIChyZXNwb25zZS5zdGF0dXMgPT09IDQwMClcbiAgICAgIHtcbiAgICAgICAgcHJvcHMub25NZXNzYWdlQ2hhbmdlKFwiTm8gYWNjb3VudCBmb3VuZCBmb3IgdGhpcyBlbWFpbFwiKTtcbiAgICAgICAgcHJvcHMub25FbWFpbFZhbGlkQ2hhbmdlKGZhbHNlKTtcbiAgICAgIH1cbiAgICAgIGVsc2UgaWYgKHJlc3BvbnNlLnN0YXR1cyA9PT0gMjAwKVxuICAgICAge1xuICAgICAgICBwcm9wcy5vbk1lc3NhZ2VDaGFuZ2UoXCJTdWNjZXNzXCIpO1xuICAgICAgICBwcm9wcy5vbkVtYWlsVmFsaWRDaGFuZ2UodHJ1ZSk7XG4gICAgICAgIHByb3BzLm9uRW1haWxTZW50Q2hhbmdlKHRydWUpO1xuICAgICAgfVxuICAgIH1cbiAgICBjYXRjaChlKVxuICAgIHtcbiAgICAgIHByb3BzLm9uTWVzc2FnZUNoYW5nZShlLm1lc3NhZ2UpOyBcbiAgICB9XG5cbiAgfVxufVxuXG5jb25zdCBzdHlsZXMgPSBTdHlsZVNoZWV0LmNyZWF0ZSh7XG4gIGNvbnRhaW5lcjoge30sXG4gIHJlc2V0X0J1dHRvbjoge1xuICAgIHRvcDogXCIwJVwiLFxuICAgIGhlaWdodDogXCIxMDAlXCIsXG4gICAgcG9zaXRpb246IFwiYWJzb2x1dGVcIixcbiAgICBiYWNrZ3JvdW5kQ29sb3I6IFwicmdiYSgxNSwxNjMsMTc3LDEpXCIsXG4gICAgYm9yZGVyUmFkaXVzOiA1MCxcbiAgICBsZWZ0OiAwLFxuICAgIHdpZHRoOiBcIjEwMCVcIlxuICB9LFxuICByZXNldF9UZXh0OiB7XG4gICAgdG9wOiBcIjI1JVwiLFxuICAgIGxlZnQ6IDAsXG4gICAgcG9zaXRpb246IFwiYWJzb2x1dGVcIixcbiAgICBmb250RmFtaWx5OiBcInJvYm90by1yZWd1bGFyXCIsXG4gICAgY29sb3I6IFwicmdiYSgyNTUsMjU1LDI1NSwxKVwiLFxuICAgIGZvbnRTaXplOiAxNixcbiAgICB0ZXh0QWxpZ246IFwiY2VudGVyXCIsXG4gICAgcmlnaHQ6IDBcbiAgfVxufSk7XG4iXX0=

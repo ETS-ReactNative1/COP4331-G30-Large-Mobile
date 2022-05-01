@@ -1,0 +1,20 @@
+dc8acecd2eb877b258418bc8f7a32528
+'use strict';
+
+var define = require('define-properties');
+
+var callBind = require('call-bind');
+
+var implementation = require('./implementation');
+
+var getPolyfill = require('./polyfill');
+
+var shim = require('./shim');
+
+var bound = callBind(implementation);
+define(bound, {
+  getPolyfill: getPolyfill,
+  implementation: implementation,
+  shim: shim
+});
+module.exports = bound;

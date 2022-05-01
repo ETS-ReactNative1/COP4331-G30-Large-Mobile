@@ -1,0 +1,1 @@
+{"version":3,"mappings":";AAAA;;AACAA,MAAM,CAACC,OAAPD,GAAiBE,OAAO,CAAC,uBAAD,CAAxBF,C","names":["module","exports","require"],"sources":["../src/index.js"],"sourcesContent":["/* eslint global-require: 0 */\nmodule.exports = require('./ReactSixteenAdapter');\n"]}

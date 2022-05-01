@@ -1,0 +1,4 @@
+f59dbde1edaced3aafd477d1950c0e56
+'use strict'; // TODO: remove, semver-major
+
+module.exports = require('get-intrinsic');

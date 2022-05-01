@@ -1,0 +1,8 @@
+29c0be87a4d0b35594a4b2a892359dbf
+'use strict';
+
+var hasSymbols = require('has-symbols/shams');
+
+module.exports = function hasToStringTagShams() {
+  return hasSymbols() && !!Symbol.toStringTag;
+};

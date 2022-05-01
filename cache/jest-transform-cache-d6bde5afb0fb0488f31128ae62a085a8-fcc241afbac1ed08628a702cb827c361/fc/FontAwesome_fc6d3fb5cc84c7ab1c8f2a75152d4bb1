@@ -1,0 +1,14 @@
+09f788b7fe498279de819d5910825834
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _mockComponent = _interopRequireDefault(require("mockComponent"));
+
+var Icon = (0, _mockComponent.default)('Icon');
+var _default = Icon;
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkZvbnRBd2Vzb21lLmpzIl0sIm5hbWVzIjpbIkljb24iXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFBQTs7QUFFQSxJQUFNQSxJQUFJLEdBQUcsNEJBQWMsTUFBZCxDQUFiO2VBR2VBLEkiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgbW9ja0NvbXBvbmVudCBmcm9tICdtb2NrQ29tcG9uZW50JztcblxuY29uc3QgSWNvbiA9IG1vY2tDb21wb25lbnQoJ0ljb24nKTtcbi8vSWNvbi5CdXR0b24gPSBtb2NrQ29tcG9uZW50KCdJY29uLkJ1dHRvbicpO1xuXG5leHBvcnQgZGVmYXVsdCBJY29uO1xuXG4vL2V4cG9ydCBjb25zdCBCdXR0b24gPSBJY29uLkJ1dHRvbjsiXX0=

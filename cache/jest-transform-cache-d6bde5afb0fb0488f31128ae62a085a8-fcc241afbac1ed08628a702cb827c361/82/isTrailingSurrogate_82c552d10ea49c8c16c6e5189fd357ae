@@ -1,0 +1,6 @@
+c3b3ee1c355ce11b9a05688149550978
+'use strict';
+
+module.exports = function isTrailingSurrogate(charCode) {
+  return typeof charCode === 'number' && charCode >= 0xDC00 && charCode <= 0xDFFF;
+};

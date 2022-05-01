@@ -1,0 +1,16 @@
+73c10c646afe81d0b19858121bfd5cae
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = mockComponent;
+
+var _react = _interopRequireDefault(require("react"));
+
+function mockComponent(name) {
+  return function (props) {
+    return _react.default.createElement(name, props, props.children);
+  };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1vY2tDb21wb25lbnQuanMiXSwibmFtZXMiOlsibW9ja0NvbXBvbmVudCIsIm5hbWUiLCJwcm9wcyIsIlJlYWN0IiwiY3JlYXRlRWxlbWVudCIsImNoaWxkcmVuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBSUE7O0FBRWUsU0FBU0EsYUFBVCxDQUF1QkMsSUFBdkIsRUFBNkI7QUFDMUMsU0FBTyxVQUFDQyxLQUFEO0FBQUEsV0FBV0MsZUFBTUMsYUFBTixDQUFvQkgsSUFBcEIsRUFBMEJDLEtBQTFCLEVBQWlDQSxLQUFLLENBQUNHLFFBQXZDLENBQVg7QUFBQSxHQUFQO0FBQ0QiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICBAZmxvd1xuICBAcHJvdmlkZXNNb2R1bGUgbW9ja0NvbXBvbmVudFxuKi9cbmltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5cbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIG1vY2tDb21wb25lbnQobmFtZSkge1xuICByZXR1cm4gKHByb3BzKSA9PiBSZWFjdC5jcmVhdGVFbGVtZW50KG5hbWUsIHByb3BzLCBwcm9wcy5jaGlsZHJlbik7XG59Il19

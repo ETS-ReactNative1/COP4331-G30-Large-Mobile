@@ -1,0 +1,1 @@
+{"version":3,"sources":["FontAwesome.js"],"names":["Icon"],"mappings":";;;;;;;AAAA;;AAEA,IAAMA,IAAI,GAAG,4BAAc,MAAd,CAAb;eAGeA,I","sourcesContent":["import mockComponent from 'mockComponent';\n\nconst Icon = mockComponent('Icon');\n//Icon.Button = mockComponent('Icon.Button');\n\nexport default Icon;\n\n//export const Button = Icon.Button;"]}

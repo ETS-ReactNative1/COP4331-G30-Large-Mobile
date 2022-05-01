@@ -1,0 +1,29 @@
+a45e081160ceb13037130430e6a8fedd
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports['default'] = mount;
+
+var _ReactWrapper = require('./ReactWrapper');
+
+var _ReactWrapper2 = _interopRequireDefault(_ReactWrapper);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    'default': obj
+  };
+}
+/**
+ * Mounts and renders a react component into the document and provides a testing wrapper around it.
+ *
+ * @param node
+ * @returns {ReactWrapper}
+ */
+
+
+function mount(node, options) {
+  return new _ReactWrapper2['default'](node, null, options);
+} //# sourceMappingURL=mount.js.map
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6Ijs7Ozs7cUJBUXdCQTs7QUFSeEI7Ozs7Ozs7OztBQUVBOzs7Ozs7OztBQU1lLFNBQVNBLEtBQVQsQ0FBZUMsSUFBZixFQUFxQkMsT0FBckIsRUFBOEI7QUFDM0MsU0FBTyxJQUFJQyx5QkFBSixDQUFpQkYsSUFBakIsRUFBdUIsSUFBdkIsRUFBNkJDLE9BQTdCLENBQVA7QUFDRCxDIiwibmFtZXMiOlsibW91bnQiLCJub2RlIiwib3B0aW9ucyIsIlJlYWN0V3JhcHBlciJdLCJzb3VyY2VzIjpbIi4uL3NyYy9tb3VudC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3RXcmFwcGVyIGZyb20gJy4vUmVhY3RXcmFwcGVyJztcblxuLyoqXG4gKiBNb3VudHMgYW5kIHJlbmRlcnMgYSByZWFjdCBjb21wb25lbnQgaW50byB0aGUgZG9jdW1lbnQgYW5kIHByb3ZpZGVzIGEgdGVzdGluZyB3cmFwcGVyIGFyb3VuZCBpdC5cbiAqXG4gKiBAcGFyYW0gbm9kZVxuICogQHJldHVybnMge1JlYWN0V3JhcHBlcn1cbiAqL1xuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gbW91bnQobm9kZSwgb3B0aW9ucykge1xuICByZXR1cm4gbmV3IFJlYWN0V3JhcHBlcihub2RlLCBudWxsLCBvcHRpb25zKTtcbn1cbiJdfQ==

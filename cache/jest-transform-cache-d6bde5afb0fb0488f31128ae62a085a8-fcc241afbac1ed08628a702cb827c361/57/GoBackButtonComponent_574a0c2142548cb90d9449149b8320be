@@ -1,0 +1,352 @@
+5c936cb2b316bd9a4f72c77cebbd961d
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactNative = require("react-native");
+
+var _Feather = _interopRequireDefault(require("react-native-vector-icons/Feather"));
+
+var _reactNavigation = require("react-navigation");
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function cov_1ig4jbx14k() {
+  var path = "/home/nilanlinux/habit-journal-mobile/components/GoBackButtonComponent.js";
+  var hash = "362e0fe2d7e2f154a02e0751596353b653966302";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/home/nilanlinux/habit-journal-mobile/components/GoBackButtonComponent.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 8,
+          column: 4
+        },
+        end: {
+          line: 14,
+          column: 6
+        }
+      },
+      "1": {
+        start: {
+          line: 11,
+          column: 25
+        },
+        end: {
+          line: 11,
+          column: 53
+        }
+      },
+      "2": {
+        start: {
+          line: 17,
+          column: 16
+        },
+        end: {
+          line: 27,
+          column: 3
+        }
+      },
+      "3": {
+        start: {
+          line: 19,
+          column: 4
+        },
+        end: {
+          line: 19,
+          column: 26
+        }
+      },
+      "4": {
+        start: {
+          line: 20,
+          column: 4
+        },
+        end: {
+          line: 20,
+          column: 25
+        }
+      },
+      "5": {
+        start: {
+          line: 21,
+          column: 4
+        },
+        end: {
+          line: 21,
+          column: 25
+        }
+      },
+      "6": {
+        start: {
+          line: 22,
+          column: 4
+        },
+        end: {
+          line: 22,
+          column: 25
+        }
+      },
+      "7": {
+        start: {
+          line: 23,
+          column: 4
+        },
+        end: {
+          line: 23,
+          column: 22
+        }
+      },
+      "8": {
+        start: {
+          line: 24,
+          column: 4
+        },
+        end: {
+          line: 24,
+          column: 22
+        }
+      },
+      "9": {
+        start: {
+          line: 26,
+          column: 4
+        },
+        end: {
+          line: 26,
+          column: 39
+        }
+      },
+      "10": {
+        start: {
+          line: 30,
+          column: 15
+        },
+        end: {
+          line: 42,
+          column: 2
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 2
+          },
+          end: {
+            line: 7,
+            column: 3
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 11
+          },
+          end: {
+            line: 15,
+            column: 3
+          }
+        },
+        line: 7
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 11,
+            column: 19
+          },
+          end: {
+            line: 11,
+            column: 20
+          }
+        },
+        loc: {
+          start: {
+            line: 11,
+            column: 25
+          },
+          end: {
+            line: 11,
+            column: 53
+          }
+        },
+        line: 11
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 17,
+            column: 16
+          },
+          end: {
+            line: 17,
+            column: 17
+          }
+        },
+        loc: {
+          start: {
+            line: 18,
+            column: 2
+          },
+          end: {
+            line: 27,
+            column: 3
+          }
+        },
+        line: 18
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "362e0fe2d7e2f154a02e0751596353b653966302"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+
+  var actualCoverage = coverage[path];
+  {
+    cov_1ig4jbx14k = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+
+cov_1ig4jbx14k();
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+var GoBackButtonComponent = function (_Component) {
+  (0, _inherits2.default)(GoBackButtonComponent, _Component);
+
+  var _super = _createSuper(GoBackButtonComponent);
+
+  function GoBackButtonComponent() {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, GoBackButtonComponent);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+    _this.goBackClick = (cov_1ig4jbx14k().s[2]++, function _callee(props) {
+      return _regenerator.default.async(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              cov_1ig4jbx14k().f[2]++;
+              cov_1ig4jbx14k().s[3]++;
+              global.firstName = "";
+              cov_1ig4jbx14k().s[4]++;
+              global.lastName = "";
+              cov_1ig4jbx14k().s[5]++;
+              global.username = "";
+              cov_1ig4jbx14k().s[6]++;
+              global.password = "";
+              cov_1ig4jbx14k().s[7]++;
+              global.email = "";
+              cov_1ig4jbx14k().s[8]++;
+              global.phone = "";
+              cov_1ig4jbx14k().s[9]++;
+              props.navigation.navigate('Login');
+
+            case 15:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, null, null, Promise);
+    });
+    return _this;
+  }
+
+  (0, _createClass2.default)(GoBackButtonComponent, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      cov_1ig4jbx14k().f[0]++;
+      cov_1ig4jbx14k().s[0]++;
+      return _react.default.createElement(_reactNative.TouchableOpacity, {
+        style: [styles.container, this.props.style]
+      }, _react.default.createElement(_Feather.default, {
+        name: "arrow-left-circle",
+        onPress: function onPress() {
+          cov_1ig4jbx14k().f[1]++;
+          cov_1ig4jbx14k().s[1]++;
+          return _this2.goBackClick(_this2.props);
+        },
+        style: styles.icon1
+      }));
+    }
+  }]);
+  return GoBackButtonComponent;
+}(_react.Component);
+
+exports.default = GoBackButtonComponent;
+var styles = (cov_1ig4jbx14k().s[10]++, _reactNative.StyleSheet.create({
+  container: {},
+  icon1: {
+    top: 0,
+    left: 0,
+    position: "absolute",
+    color: "rgba(255,255,255,1)",
+    fontSize: 50,
+    height: 50,
+    width: 50
+  }
+}));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkdvQmFja0J1dHRvbkNvbXBvbmVudC5qcyJdLCJuYW1lcyI6WyJHb0JhY2tCdXR0b25Db21wb25lbnQiLCJnb0JhY2tDbGljayIsInByb3BzIiwiZ2xvYmFsIiwiZmlyc3ROYW1lIiwibGFzdE5hbWUiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJwaG9uZSIsIm5hdmlnYXRpb24iLCJuYXZpZ2F0ZSIsInN0eWxlcyIsImNvbnRhaW5lciIsInN0eWxlIiwiaWNvbjEiLCJDb21wb25lbnQiLCJTdHlsZVNoZWV0IiwiY3JlYXRlIiwidG9wIiwibGVmdCIsInBvc2l0aW9uIiwiY29sb3IiLCJmb250U2l6ZSIsImhlaWdodCIsIndpZHRoIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7O0FBQ0E7O0FBQ0E7O0FBQ0E7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQUVxQkEscUI7Ozs7Ozs7Ozs7Ozs7OztVQVduQkMsVyw2QkFBYyxpQkFBT0MsS0FBUDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUVaQyxjQUFBQSxNQUFNLENBQUNDLFNBQVAsR0FBbUIsRUFBbkI7QUFGWTtBQUdaRCxjQUFBQSxNQUFNLENBQUNFLFFBQVAsR0FBa0IsRUFBbEI7QUFIWTtBQUlaRixjQUFBQSxNQUFNLENBQUNHLFFBQVAsR0FBa0IsRUFBbEI7QUFKWTtBQUtaSCxjQUFBQSxNQUFNLENBQUNJLFFBQVAsR0FBa0IsRUFBbEI7QUFMWTtBQU1aSixjQUFBQSxNQUFNLENBQUNLLEtBQVAsR0FBZSxFQUFmO0FBTlk7QUFPWkwsY0FBQUEsTUFBTSxDQUFDTSxLQUFQLEdBQWUsRUFBZjtBQVBZO0FBU1pQLGNBQUFBLEtBQUssQ0FBQ1EsVUFBTixDQUFpQkMsUUFBakIsQ0FBMEIsT0FBMUI7O0FBVFk7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsSzs7Ozs7O1dBVmQsa0JBQVM7QUFBQTs7QUFBQTtBQUFBO0FBQ1AsYUFDRSw2QkFBQyw2QkFBRDtBQUFrQixRQUFBLEtBQUssRUFBRSxDQUFDQyxNQUFNLENBQUNDLFNBQVIsRUFBbUIsS0FBS1gsS0FBTCxDQUFXWSxLQUE5QjtBQUF6QixTQUNFLDZCQUFDLGdCQUFEO0FBQU0sUUFBQSxJQUFJLEVBQUMsbUJBQVg7QUFDRSxRQUFBLE9BQU8sRUFBRSxtQkFBTTtBQUFBO0FBQUE7QUFBQSxpQkFBQSxNQUFJLENBQUNiLFdBQUwsQ0FBaUIsTUFBSSxDQUFDQyxLQUF0QjtBQUE0QixTQUQ3QztBQUVFLFFBQUEsS0FBSyxFQUFFVSxNQUFNLENBQUNHO0FBRmhCLFFBREYsQ0FERjtBQU9EOzs7RUFUZ0RDLGdCOzs7QUF3Qm5ELElBQU1KLE1BQU0sOEJBQUdLLHdCQUFXQyxNQUFYLENBQWtCO0FBQy9CTCxFQUFBQSxTQUFTLEVBQUUsRUFEb0I7QUFFL0JFLEVBQUFBLEtBQUssRUFBRTtBQUNMSSxJQUFBQSxHQUFHLEVBQUUsQ0FEQTtBQUVMQyxJQUFBQSxJQUFJLEVBQUUsQ0FGRDtBQUdMQyxJQUFBQSxRQUFRLEVBQUUsVUFITDtBQUtMQyxJQUFBQSxLQUFLLEVBQUUscUJBTEY7QUFNTEMsSUFBQUEsUUFBUSxFQUFFLEVBTkw7QUFPTEMsSUFBQUEsTUFBTSxFQUFFLEVBUEg7QUFRTEMsSUFBQUEsS0FBSyxFQUFFO0FBUkY7QUFGd0IsQ0FBbEIsQ0FBSCxDQUFaIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IENvbXBvbmVudCB9IGZyb20gXCJyZWFjdFwiO1xuaW1wb3J0IHsgU3R5bGVTaGVldCwgVG91Y2hhYmxlT3BhY2l0eSB9IGZyb20gXCJyZWFjdC1uYXRpdmVcIjtcbmltcG9ydCBJY29uIGZyb20gXCJyZWFjdC1uYXRpdmUtdmVjdG9yLWljb25zL0ZlYXRoZXJcIjtcbmltcG9ydCB7IGNyZWF0ZVN0YWNrTmF2aWdhdG9yLCBjcmVhdGVBcHBDb250YWluZXIgfSBmcm9tICdyZWFjdC1uYXZpZ2F0aW9uJzsgXG5cbmV4cG9ydCBkZWZhdWx0IGNsYXNzIEdvQmFja0J1dHRvbkNvbXBvbmVudCBleHRlbmRzIENvbXBvbmVudCB7XG4gIHJlbmRlcigpIHtcbiAgICByZXR1cm4gKFxuICAgICAgPFRvdWNoYWJsZU9wYWNpdHkgc3R5bGU9e1tzdHlsZXMuY29udGFpbmVyLCB0aGlzLnByb3BzLnN0eWxlXX0+XG4gICAgICAgIDxJY29uIG5hbWU9XCJhcnJvdy1sZWZ0LWNpcmNsZVwiXG4gICAgICAgICAgb25QcmVzcz17KCkgPT4gdGhpcy5nb0JhY2tDbGljayh0aGlzLnByb3BzKX1cbiAgICAgICAgICBzdHlsZT17c3R5bGVzLmljb24xfT48L0ljb24+XG4gICAgICA8L1RvdWNoYWJsZU9wYWNpdHk+XG4gICAgKTtcbiAgfVxuXG4gIGdvQmFja0NsaWNrID0gYXN5bmMgKHByb3BzKSA9PlxuICB7XG4gICAgZ2xvYmFsLmZpcnN0TmFtZSA9IFwiXCI7XG4gICAgZ2xvYmFsLmxhc3ROYW1lID0gXCJcIjtcbiAgICBnbG9iYWwudXNlcm5hbWUgPSBcIlwiO1xuICAgIGdsb2JhbC5wYXNzd29yZCA9IFwiXCI7XG4gICAgZ2xvYmFsLmVtYWlsID0gXCJcIjtcbiAgICBnbG9iYWwucGhvbmUgPSBcIlwiO1xuXG4gICAgcHJvcHMubmF2aWdhdGlvbi5uYXZpZ2F0ZSgnTG9naW4nKTtcbiAgfVxufVxuXG5jb25zdCBzdHlsZXMgPSBTdHlsZVNoZWV0LmNyZWF0ZSh7XG4gIGNvbnRhaW5lcjoge30sXG4gIGljb24xOiB7XG4gICAgdG9wOiAwLFxuICAgIGxlZnQ6IDAsXG4gICAgcG9zaXRpb246IFwiYWJzb2x1dGVcIixcbiAgICAvL2NvbG9yOiBcInJnYmEoMTUsMTYzLDE3NywxKVwiLFxuICAgIGNvbG9yOiBcInJnYmEoMjU1LDI1NSwyNTUsMSlcIixcbiAgICBmb250U2l6ZTogNTAsXG4gICAgaGVpZ2h0OiA1MCxcbiAgICB3aWR0aDogNTBcbiAgfVxufSk7XG4iXX0=
