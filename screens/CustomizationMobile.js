@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Image, Text } from "react-native";
 import GoBackButtonComponent from "../components/customization/GoBackButtonComponent";
 import WaterButton from "../components/customization/WaterButton";
 import RecreationButton from "../components/customization/RecreationButton";
@@ -47,10 +47,17 @@ export default class CustomizationMobile extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Image
+        source={require("../assets/images/background3.png")}
+        resizeMode="stretch"
+        style={styles.image3}
+        ></Image>
+
         <GoBackButtonComponent
           navigation={this.props.navigation}
           style={styles.goBackButtonComponent1}
         ></GoBackButtonComponent>
+
 
         <Text style={styles.habitTrackers}>Habit Trackers</Text>
 
@@ -98,12 +105,22 @@ const styles = StyleSheet.create({
     width: 48,
     right: 29
   },
+  image3: {
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    bottom: 209,
+    opacity: 0.9,
+    backgroundColor: "rgba(100,100,100,1)"
+  },
   habitTrackers: {
     top: "13.78%",
     left: 27,
     position: "absolute",
     fontFamily: "roboto-700",
-    color: "rgba(15,163,177,1)",
+    color: "rgba(255,255,255,1)",
     fontSize: 30,
     textAlign: "left",
     right: 27,
