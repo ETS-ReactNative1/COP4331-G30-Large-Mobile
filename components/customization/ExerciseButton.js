@@ -108,6 +108,6 @@ const styles = StyleSheet.create({
     elevation: 5,
     shadowOpacity: 0.01,
     shadowRadius: 0,
-    right: 0
+    right: 4
   }
 });
