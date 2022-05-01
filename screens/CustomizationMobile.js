@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Image, Text } from "react-native";
 import GoBackButtonComponent from "../components/customization/GoBackButtonComponent";
 import WaterButton from "../components/customization/WaterButton";
 import RecreationButton from "../components/customization/RecreationButton";
 import DoneButton from "../components/customization/DoneButton";
 import SleepButton from "../components/customization/SleepButton";
+import ExerciseButton from "../components/customization/ExerciseButton";
 
 export default class CustomizationMobile extends Component {
 
@@ -38,13 +39,25 @@ export default class CustomizationMobile extends Component {
     this.setState(({isRecreationClicked}) => ({isRecreationClicked: isClicked}));
   }
 
+  handleExcerciseClicked = isClicked =>
+  {
+    this.setState(({isExerciseClicked}) => ({isExerciseClicked: isClicked}));
+  }
+
   render() {
     return (
       <View style={styles.container}>
+        <Image
+        source={require("../assets/images/background3.png")}
+        resizeMode="stretch"
+        style={styles.image3}
+        ></Image>
+
         <GoBackButtonComponent
           navigation={this.props.navigation}
           style={styles.goBackButtonComponent1}
         ></GoBackButtonComponent>
+
 
         <Text style={styles.habitTrackers}>Habit Trackers</Text>
 
@@ -63,6 +76,11 @@ export default class CustomizationMobile extends Component {
           style={styles.sleepButton}
         ></SleepButton>
 
+        <ExerciseButton
+          onExerciseClicked = {this.handleExcerciseClicked}
+          style={styles.exerciseButton}
+        ></ExerciseButton>
+
         <DoneButton
           onMessageChange = {this.handleMessageChange}
           navigation = {this.props.navigation}
@@ -77,6 +95,7 @@ export default class CustomizationMobile extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexWrap: "wrap",
     backgroundColor:"rgba(255,255,255,1)"
   },
   goBackButtonComponent1: {
@@ -86,12 +105,22 @@ const styles = StyleSheet.create({
     width: 48,
     right: 29
   },
+  image3: {
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    bottom: 209,
+    opacity: 0.9,
+    backgroundColor: "rgba(100,100,100,1)"
+  },
   habitTrackers: {
     top: "13.78%",
     left: 27,
     position: "absolute",
     fontFamily: "roboto-700",
-    color: "rgba(15,163,177,1)",
+    color: "rgba(255,255,255,1)",
     fontSize: 30,
     textAlign: "left",
     right: 27,
@@ -101,7 +130,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "23.39%",
     left: 111,
-    right: 112,
+    right: 111,
     height: "14.32%"
   },
   sleepButton: {
@@ -118,47 +147,18 @@ const styles = StyleSheet.create({
     right: 111,
     height: "14.32%"
   },
+  exerciseButton: {
+    position: "absolute",
+    top: "72.17%",
+    left: 111,
+    right: 111,
+    height: "14.32%"
+  },
   doneButton: {
     position: "absolute",
     top: "87.25%",
     left: 179,
     right: 28,
     height: "6.49%"
-  },
-  register_Verification: {
-    top: "90%",
-    height: "6%",
-    position: "absolute",
-    left: 22,
-    right: 22
-  },
-  register_VerificationBackground: {
-    top: "0%",
-    left: 0,
-    height: "100%",
-    position: "absolute",
-    backgroundColor: "rgba(255,255,255,1)",
-    borderRadius: 15,
-    shadowColor: "rgba(0,0,0,1)",
-    shadowOffset: {
-      width: 3,
-      height: 3
-    },
-    elevation: 10,
-    shadowOpacity: 0.25,
-    shadowRadius: 10,
-    right: 0,
-    borderColor: "rgba(210,210,210,210)",
-    borderWidth: 1
-  },
-  text_verifyEmail: {
-    top: "18.74%",
-    left: 0,
-    position: "absolute",
-    fontFamily: "roboto-regular",
-    color: "rgba(0,0,0,1)",
-    fontSize: 16,
-    right: 0,
-    textAlign: "center"
   }
 });

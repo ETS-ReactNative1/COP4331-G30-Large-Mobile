@@ -58,7 +58,7 @@ export default class App extends React.Component {
     global.email_forgot_password = "";
 
     // DELETE THIS
-    global.username = "Test";
+    //global.username = "Test";
   }
 
   render() {
@@ -141,7 +141,7 @@ const AppNavigator = createStackNavigator({
     }
   }
 },{
-  initialRouteName: "RecreationHabit",
+  initialRouteName: "Login",
 });
 
 
