@@ -6,7 +6,6 @@ export default class SignUpButtonComponent extends Component {
     return (
       <TouchableOpacity style={[styles.container, this.props.style]}>
         <TouchableOpacity
-          //onPress={() => console.log("Navigate to Untitled")}
           onPress = {() => this.signUpClick(this.props)}
           style={styles.signUp_Button}
         >
@@ -47,25 +46,11 @@ export default class SignUpButtonComponent extends Component {
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
       var res = JSON.parse(await response.text());
 
-      props.onEmailSentChange(true); 
-
-      if (!(res.error === ""))
-      {
-        props.onMessageChange(res.error); 
-      }
-
-      //global.firstName = res.firstName;
-      //global.lastName = res.lastName; 
-      //global.userId = res.id.toString();
-
-      // Navigate to dashboard
-      //console.log("Navigate to Dashboard");
-      //props.navigation.navigate('Dashboard');
+      props.onEmailSentChange(true);
     } 
     catch(e) 
     {
       props.onMessageChange(e.message); 
-      //console.log(e.message);
     }
   }
 

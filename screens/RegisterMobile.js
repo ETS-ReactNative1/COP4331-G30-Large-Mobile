@@ -7,12 +7,13 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { render } from "react-dom";
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
+/*
 global.firstName = "";
 global.lastName = "";
 global.username = "";
 global.password = "";
 global.email = "";
-global.phone = "";
+global.phone = "";*/
 
 export default class RegisterMobile extends Component {
   state = {
@@ -63,7 +64,7 @@ export default class RegisterMobile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ImageBackground source={require("../assets/images/background.png")} 
+        <ImageBackground source={require("../assets/images/background3.png")} 
           resizeMode="cover"
           style={styles.background}>
 

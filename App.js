@@ -11,6 +11,10 @@ import SliderNativeComponent from 'react-native/Libraries/Components/Slider/Slid
 import AppLoading from 'expo-app-loading';
 import ForgotPasswordMobile from './screens/ForgotPasswordMobile';
 import DrawerContentComponent from './components/dashboard/DrawerContentComponent';
+import WaterMobile from './screens/WaterMobile';
+import SleepMobile from './screens/SleepMobile';
+import RecreationMobile from './screens/RecreationMobile';
+import CustomizationMobile from './screens/CustomizationMobile';
 
 //import { AppLoading } from "expo";
 //import './stylesheets/font.css';
@@ -36,6 +40,25 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this._loadFontsAsync();
+
+    // For Login
+    global.username_login = "";
+    global.password_login = "";
+    global.userId = "";
+
+    // For Register/Dashboard
+    global.firstName = "";
+    global.lastName = "";
+    global.username = "";
+    global.password = "";
+    global.email = "";
+    global.phone = "";
+
+    // For Forgot Password
+    global.email_forgot_password = "";
+
+    // DELETE THIS
+    global.username = "Test";
   }
 
   render() {
@@ -93,8 +116,33 @@ const AppNavigator = createStackNavigator({
       headerShown: false // Will hide header for HomePage 
     } 
   },
-},{ 
-  initialRouteName: "Login"
+  WaterHabit: { 
+    screen: WaterMobile, 
+    navigationOptions: { 
+      headerShown: false // Will hide header for HomePage 
+    } 
+  },
+  SleepHabit: {
+    screen: SleepMobile, 
+    navigationOptions: { 
+      headerShown: false // Will hide header for HomePage 
+    } 
+  },
+  RecreationHabit: {
+    screen: RecreationMobile, 
+    navigationOptions: { 
+      headerShown: false // Will hide header for HomePage 
+    } 
+  },
+  Customization: {
+    screen: CustomizationMobile,
+    navigationOptions: {
+      headerShown: false // Will hide header for HomePage
+    }
+  }
+},{
+  initialRouteName: "RecreationHabit",
 });
+
 
 const AppContainer = createAppContainer(AppNavigator);

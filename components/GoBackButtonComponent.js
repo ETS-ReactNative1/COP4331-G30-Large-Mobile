@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     position: "absolute",
-    color: "rgba(15,163,177,1)",
+    //color: "rgba(15,163,177,1)",
+    color: "rgba(255,255,255,1)",
     fontSize: 50,
     height: 50,
     width: 50

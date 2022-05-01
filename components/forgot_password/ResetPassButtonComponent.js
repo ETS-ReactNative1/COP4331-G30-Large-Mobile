@@ -17,7 +17,43 @@ export default class ResetPasswordButtonComponent extends Component {
 
   resetPasswordClick = async (props) =>
   {
-    console.log("Not Finished Yet");
+    try
+    {
+      props.onEmailValidChange(true);
+
+      // Get typed username and password
+      var obj = {email:global.email_forgot_password.trim()}; 
+
+      // Request user info
+      var js = JSON.stringify(obj); 
+      const response = await fetch('https://cop4331-g30-large.herokuapp.com/api/forgotpass', 
+      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
+      //var res = JSON.parse(await response.text());
+
+      console.log("Reset endpoint pinged " + response.status);
+
+      if (response.status === 400)
+      {
+        props.onMessageChange("No account found for this email");
+        props.onEmailValidChange(false);
+      }
+      else if (response.status === 200)
+      {
+        props.onMessageChange("Success");
+        props.onEmailValidChange(true);
+        props.onEmailSentChange(true);
+
+        global.email_forgot_password = "";
+      }
+
+      return response.status;
+    }
+    catch(e)
+    {
+      props.onMessageChange(e.message);
+
+      return e.message;
+    }
   }
 }
 

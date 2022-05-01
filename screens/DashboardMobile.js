@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, ScrollView, TouchableOpacity, FlatList} from "react-native";
 import AddHabitButtonComponent from "../components/dashboard/AddHabitButtonComponent";
 import MenuButtonComponent from "../components/dashboard/MenuButtonComponent";
 import HabitViewerComponent from "../components/dashboard/HabitViewerComponent";
@@ -8,8 +8,74 @@ import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+import HabitComponent from "../components/dashboard/HabitComponent";
 
 export default class DashboardMobile extends Component {
+  state = {
+    exerciseIsTracked: false,
+    recreationIsTracked: false,
+    sleepIsTracked: false,
+    waterIsTracked: false,
+    exerciseTask: '',
+    recreationTask: '',
+    sleepTask: '',
+    waterTask: '' 
+  }
+
+  async getHabits ()
+  {
+    try
+    {
+      var obj = {};
+
+      // pings the API
+      let endpoint_address_search = 'https://cop4331-g30-large.herokuapp.com/api/getCustomization/' + global.username.trim();
+      var js = JSON.stringify(obj);
+      const response_search = await fetch(endpoint_address_search, {method:'GET',headers:{'Content-Type': 'application/json'}});
+      var res = JSON.parse(await response_search.text());
+
+      //console.log(response_search.status);
+
+      if (response_search.status === 400)
+      {
+
+      }
+      else if (response_search.status === 200)
+      {
+        this.setState(({exerciseIsTracked}) => ({exerciseIsTracked: res.Exercise}));
+        this.setState(({recreationIsTracked}) => ({recreationIsTracked: res.Recreation}));
+        this.setState(({sleepIsTracked}) => ({sleepIsTracked: res.Sleep}));
+        this.setState(({waterIsTracked}) => ({waterIsTracked: res.Water}));
+      }
+    }
+    catch (e)
+    {
+
+    }
+  }
+
+  // define a separate function to get triggered on focus
+  onFocusFunction = () => {
+    (async () => this.getHabits())();
+  }
+
+  // add a focus listener onDidMount
+  async componentDidMount () {
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.onFocusFunction()
+    })
+  }
+
+  // and don't forget to remove the listener
+  componentWillUnmount () {
+    this.focusListener.remove();
+  }
+/*
+  componentDidMount()
+  {
+    (async () => this.getHabits())();
+  }
+*/
   render() {
     return (
       <View style={styles.container}>
@@ -22,6 +88,7 @@ export default class DashboardMobile extends Component {
         <Text style={styles.header_Dashboard}>Dashboard</Text>
 
         <AddHabitButtonComponent
+          navigation = {this.props.navigation}
           style={styles.addHabitButtonComponent}
         ></AddHabitButtonComponent>
 
@@ -51,10 +118,50 @@ export default class DashboardMobile extends Component {
             {/*<Text style={styles.welcome_Name}>{global.username}! </Text>*/}
           </View>
         </View>
+
         <View style={styles.dashboard_Habits}>
           <View style={styles.dashboard_HabitsBackground}>
             <View style={styles.dashboard_HabitsContainer}>
-              <HabitViewerComponent></HabitViewerComponent>
+              <View style={styles.dashboard_Scroll}>
+                <ScrollView>
+                  {
+                    this.state.exerciseIsTracked && (
+                      <HabitComponent
+                        name = "Exercise"
+                        task = {this.state.exerciseTask}
+                        navigation = {this.props.navigation}
+                      ></HabitComponent>
+                    )
+                  }
+                  {
+                    this.state.recreationIsTracked && (
+                      <HabitComponent
+                        name = "Recreation"
+                        task = {this.state.recreationTask}
+                        navigation = {this.props.navigation}
+                      ></HabitComponent>
+                    )
+                  }
+                  {
+                    this.state.sleepIsTracked && (
+                      <HabitComponent
+                        name = "Sleep"
+                        task = {this.state.sleepTask}
+                        navigation = {this.props.navigation}
+                      ></HabitComponent>
+                    )
+                  }
+                  {
+                    this.state.waterIsTracked && (
+                      <HabitComponent
+                        name = "Water"
+                        task = {this.state.waterTask}
+                        navigation = {this.props.navigation}
+                      ></HabitComponent>
+                    )
+                  }
+                </ScrollView>
+              </View>
               {/*
               <View style={styles.list}>
                 <View style={styles.habit}>
@@ -271,6 +378,12 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 0,
     borderBottomLeftRadius: 0,
     
+  },
+  dashboard_Scroll: {
+    borderRadius: 50,
+    overflow: 'hidden',
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
   },
   list: {
     top: "8.09%",

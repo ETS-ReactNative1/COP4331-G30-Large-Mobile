@@ -5,7 +5,7 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
-  FlatList
+  FlatList,
 } from "react-native";
 import { DrawerItems, SafeAreaView } from "react-navigation";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
@@ -155,27 +155,27 @@ export default class HabitViewerComponent extends Component {
   // Gets icon according to habit name
   getHabitIcon = (str) =>
   {
-    if (str === "Sleep")
+    if (str === "sleep")
     {
       return "power-sleep";
     }
-    else if (str === "Water")
+    else if (str === "water")
     {
       return "cup-water";
     }
-    else if (str === "Recreation")
+    else if (str === "recreation")
     {
       return "gamepad-variant";
     }
-    else if (str === "Exercise")
+    else if (str === "exercise")
     {
       return "dumbbell";
     }
-    else if (str === "Medication")
+    else if (str === "medication")
     {
       return "pill";
     }
-    else if (str === "Meal")
+    else if (str === "meal")
     {
       return "food-fork-drink";
     }

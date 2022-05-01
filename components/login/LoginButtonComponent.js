@@ -22,14 +22,17 @@ export default class LoginButtonComponent extends Component {
     {
       // Get typed username and password
       var obj = {username:global.username_login.trim(),password:global.password_login.trim()}; 
-
       props.onMessageChange("");
+
+      console.log(obj.username + " " + obj.password);
 
       // Request user info
       var js = JSON.stringify(obj); 
       const response = await fetch('https://cop4331-g30-large.herokuapp.com/api/login', 
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
       var res = JSON.parse(await response.text());
+
+      console.log(response.status);
 
       // If no user found
       if (response.status !== 200)
@@ -41,17 +44,27 @@ export default class LoginButtonComponent extends Component {
       {
         props.onMessageChange("Success");
 
-        global.userId = res.id.toString();
-        global.firstName = res.firstName;
-        global.lastName = res.lastName;
+        global.userId = res.Id;
+        global.firstName = res.FirstName;
+        global.lastName = res.LastName;
         global.username = global.username_login;
-        global.email = res.email;
-        //console.log(res.email);
-        global.phone = res.phone;
+        global.email = res.Email;
+        global.phone = res.Phone;
+
+        console.log(
+          "ID " + global.userId + "\n" +
+          "First " + global.firstName + "\n" +
+          "Last " + global.lastName + "\n" +
+          "Username " + global.username + "\n" +
+          "Email " + global.email + "\n" +
+          "Phone " + global.phone
+        );
 
         // Navigate to dashboard
         console.log("Navigate to Dashboard");
-        props.navigation.navigate('Dashboard');
+
+        (!props.test)
+          props.navigation.navigate('Dashboard');
       } 
     } 
     catch(e) 
@@ -63,8 +76,6 @@ export default class LoginButtonComponent extends Component {
     //global.username = "";
   }
 }
-
-
 
 const styles = StyleSheet.create({
   container: {},

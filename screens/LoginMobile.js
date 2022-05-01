@@ -8,16 +8,11 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { render } from "react-dom";
 import { borderColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
+/*
 global.username_login = "";
 global.password_login = "";
-global.userId = "";
+global.userId = "";*/
 
-//import { ImageBackground } from "react-native-web";
-//import Logo from './assets/images/dailygrind3.PNG';
-
-//const LOGO = Image.resolveAssetSource(Logo).uri;
-
-//function LoginMobile(props) {
 export default class LoginMobile extends Component {
 /*
 constructor() 
@@ -52,7 +47,7 @@ constructor()
   render() {
     return (
       <View style={styles.container}>
-        <ImageBackground source={require("../assets/images/background.png")} 
+        <ImageBackground source={require("../assets/images/background3.png")} 
           resizeMode="cover"
           style={styles.background}>
 
