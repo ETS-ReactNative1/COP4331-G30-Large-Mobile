@@ -20,8 +20,9 @@ export default class SleepButton extends Component {
       <View style={[styles.container, this.props.style]}>
         <View style={!clicked ? styles.sleep_Shadow : styles.clicked_Shadow}>
           <TouchableOpacity
-          onPress = {() => this.onPress(this.props)}
-          style={!clicked ? styles.sleep_Button : styles.clicked}>
+            onPress = {() => this.onPress(this.props)}
+            style={!clicked ? styles.sleep_Button : styles.clicked}
+          >
             <Text style={styles.sleep2}>SLEEP</Text>
             <Icon name="ios-moon" style={styles.icon4}></Icon>
           </TouchableOpacity>
@@ -40,12 +41,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     backgroundColor: "rgba(13,136,148,1)",
     borderRadius: 15,
-    right: -3
+    right: -3,
+    marginRight: "-50%",
+    marginLeft: "50%",
+    //marginTop: "-65.5%"
   },
   sleep_Button: {
     top: "0%",
     left: 0,
-    height: "100%",
+    height: "97%",
     position: "absolute",
     backgroundColor: "rgba(15,163,177,1)",
     borderRadius: 15,
@@ -57,10 +61,10 @@ const styles = StyleSheet.create({
     elevation: 5,
     shadowOpacity: 0.01,
     shadowRadius: 0,
-    right: 0
+    right: 4
   },
   sleep2: {
-    top: "2.78%",
+    top: "2.83%",
     position: "absolute",
     fontFamily: "roboto-700",
     color: "rgba(255,255,255,1)",
@@ -84,12 +88,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     backgroundColor: "rgba(178,102,38,1)",
     borderRadius: 15,
-    right: -3
+    right: -3,
+    marginRight: "-50%",
+    marginLeft: "50%",
+    //marginTop: "-65.5%"
   },
   clicked: {
     top: "0%",
     left: 0,
-    height: "100%",
+    height: "97%",
     position: "absolute",
     backgroundColor: "rgba(255,155,66,1)",
     borderRadius: 15,
@@ -101,6 +108,6 @@ const styles = StyleSheet.create({
     elevation: 5,
     shadowOpacity: 0.01,
     shadowRadius: 0,
-    right: 0
+    right: 4
   }
 });

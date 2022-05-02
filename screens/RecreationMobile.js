@@ -47,6 +47,7 @@ export default class RecreationMobile extends Component {
       currentDate: "",
 
       isPickerOpen: false,
+      isResultsReturned: false
     };
   }
 
@@ -133,11 +134,20 @@ export default class RecreationMobile extends Component {
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
       var res = JSON.parse(await response.text());
 
+      console.log(response.status);
       // Search result found
-      this.setState(({searchResultDate}) => ({searchResultDate: res.Date}));
-      //this.setState(({searchResultAmount}) => ({searchResultAmount: res.Ounces}));
-      this.setState(({searchResultActivities}) => ({searchResultActivities: res}));
-      this.setState(({searchResultExists}) => ({searchResultExists: true}));
+      if (response.status === 200)
+      {
+        this.setState(({searchResultDate}) => ({searchResultDate: res.Date}));
+        //this.setState(({searchResultAmount}) => ({searchResultAmount: res.Ounces}));
+        this.setState(({searchResultActivities}) => ({searchResultActivities: res}));
+        this.setState(({searchResultExists}) => ({searchResultExists: true}));
+      }
+      else
+      {
+        // Search result not found
+        this.setState(({searchResultExists}) => ({searchResultExists: false}));
+      }
     }
     catch (e)
     {
@@ -153,37 +163,46 @@ export default class RecreationMobile extends Component {
     this.setState(({showSearchResult}) => ({showSearchResult: false}));
 
     // If is valid date
-    if (reg.test(this.state.inputSearchValue))
+    if (reg.test(this.state.inputSearchValue) && !this.state.isHidden)
     {
       // DELETE THIS 
       //global.username = "Test";
 
+      var toValue = 0;
+
       // Get results
       (async () => {
-        const status = await this.getRecreationResults();
-      })();
+        await this.getRecreationResults();
 
-      var toValue = 0;
-      
-      if(!this.state.isHidden) {
-          toValue = 350;
-      }
-
-      // Do transition animation
-      Animated.spring(
-        this.state.bounceValue,
+        if (this.state.searchResultExists)
         {
-          toValue: toValue,
-          velocity: 3,
-          tension: 2,
-          friction: 8,
-          useNativeDriver: true
+          if(!this.state.isHidden) {
+              toValue = 350;
+          }
         }
-      ).start();
-      
-      this.setState(({isHidden}) => ({isHidden: !this.state.isHidden}));
+        else
+        {
+          if(!this.state.isHidden) {
+              toValue = 200;
+          }
+        }
+  
+        // Do transition animation
+        Animated.spring(
+          this.state.bounceValue,
+          {
+            toValue: toValue,
+            velocity: 3,
+            tension: 2,
+            friction: 8,
+            useNativeDriver: true
+          }
+        ).start();
+        
+        this.setState(({isHidden}) => ({isHidden: !this.state.isHidden}));
 
-      this.setState(({isSearchInputValid}) => ({isSearchInputValid: true}));
+        this.setState(({isSearchInputValid}) => ({isSearchInputValid: true}));
+      })();
     }
     else
     {
@@ -205,12 +224,13 @@ export default class RecreationMobile extends Component {
 
         this.setState(({isHidden}) => ({isHidden: !this.state.isHidden}));
       }
-
-      this.setState(({isSearchInputValid}) => ({isSearchInputValid: false}));
+      
+      if (!reg.test(this.state.inputSearchValue))
+        this.setState(({isSearchInputValid}) => ({isSearchInputValid: false}));
     }
-
+    
     // Let elements load
-    setTimeout(() => { this.setState(({showSearchResult}) => ({showSearchResult: true})); }, 300);
+    setTimeout(() => { this.setState(({showSearchResult}) => ({showSearchResult: true})); }, 750);
   }
 
   amountChangedHandler = amount =>
@@ -238,17 +258,17 @@ export default class RecreationMobile extends Component {
   // Changes registration message
   handleMessageChange = message =>
   {
-    if (message === "Water Entry Successfully Added")
+    if (message === "Recreation Entry Successfully Added")
     {
       //this.counter(this.state.waterIntakeToday, this.state.waterIntakeToday + Number(this.state.addLog_Amount));
 
       // Update today's water intake
-      /*
+      
       if ((this.state.addLog_Date === this.getCurrentDate().trim()))
-        this.setState(({waterIntakeToday}) => 
-          ({waterIntakeToday: this.state.waterIntakeToday + Number(this.state.addLog_Amount)})
+        this.setState(({totalRecreationTime}) => 
+          ({totalRecreationTime: this.state.totalRecreationTime + Number(this.state.addLog_TimeSpent)})
         );
-*/
+      
       this.setState({message})
 
       setTimeout(() => { this.setState(({message}) => ({message: ""})); }, 5000);
@@ -405,7 +425,7 @@ export default class RecreationMobile extends Component {
                       {label: 'Other', value: 'Other'},
                     ]}
                     //defaultIndex={0}
-                    containerStyle={{height: 40}}
+                    containerStyle={{height: "10%"}}
                     open={this.state.isPickerOpen}
                     value={this.state.addLog_Activity}
                     onPress={() => {

@@ -188,37 +188,46 @@ export default class SleepMobile extends Component {
     this.setState(({showSearchResult}) => ({showSearchResult: false}));
 
     // If is valid date
-    if (reg.test(this.state.inputSearchValue))
+    if (reg.test(this.state.inputSearchValue) && !this.state.isHidden)
     {
       // DELETE THIS 
       //global.username = "Test";
 
+      var toValue = 0;
+
       // Get results
       (async () => {
-        const status = await this.getSleepResults();
-      })();
+        await this.getSleepResults();
 
-      var toValue = 0;
-      
-      if(!this.state.isHidden) {
-        toValue = 200;
-      }
-
-      // Do transition animation
-      Animated.spring(
-        this.state.bounceValue,
+        if (this.state.searchResultExists)
         {
-          toValue: toValue,
-          velocity: 3,
-          tension: 2,
-          friction: 8,
-          useNativeDriver: true
+          if(!this.state.isHidden) {
+              toValue = 200;
+          }
         }
-      ).start();
-      
-      this.setState(({isHidden}) => ({isHidden: !this.state.isHidden}));
+        else
+        {
+          if(!this.state.isHidden) {
+              toValue = 200;
+          }
+        }
+  
+        // Do transition animation
+        Animated.spring(
+          this.state.bounceValue,
+          {
+            toValue: toValue,
+            velocity: 3,
+            tension: 2,
+            friction: 8,
+            useNativeDriver: true
+          }
+        ).start();
+        
+        this.setState(({isHidden}) => ({isHidden: !this.state.isHidden}));
 
-      this.setState(({isSearchInputValid}) => ({isSearchInputValid: true}));
+        this.setState(({isSearchInputValid}) => ({isSearchInputValid: true}));
+      })();
     }
     else
     {
@@ -240,12 +249,13 @@ export default class SleepMobile extends Component {
 
         this.setState(({isHidden}) => ({isHidden: !this.state.isHidden}));
       }
-
-      this.setState(({isSearchInputValid}) => ({isSearchInputValid: false}));
+      
+      if (!reg.test(this.state.inputSearchValue))
+        this.setState(({isSearchInputValid}) => ({isSearchInputValid: false}));
     }
-
+    
     // Let elements load
-    setTimeout(() => { this.setState(({showSearchResult}) => ({showSearchResult: true})); }, 300);
+    setTimeout(() => { this.setState(({showSearchResult}) => ({showSearchResult: true})); }, 750);
   }
 
   // Changes validity of date input

@@ -55,12 +55,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     backgroundColor: "rgba(13,136,148,1)",
     borderRadius: 15,
-    right: -3
+    right: -3,
+    marginRight: "57.5%",
+    marginLeft: "-57.5%",
+    //marginTop: "-60%"
   },
   recreation_Button: {
     top: "0%",
     left: 0,
-    height: "100%",
+    height: "97%",
     position: "absolute",
     backgroundColor: "rgba(15,163,177,1)",
     borderRadius: 15,
@@ -72,7 +75,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     shadowOpacity: 0.01,
     shadowRadius: 0,
-    right: 0
+    right: 4
   },
   recreation2: {
     top: "2.83%",
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     shadowOpacity: 0.01,
     shadowRadius: 0,
-    right: 0
+    right: 4
   },
   clicked_Shadow: {
     top: "2.83%",
@@ -130,12 +133,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     backgroundColor: "rgba(178,102,38,1)",
     borderRadius: 15,
-    right: -3
+    right: -3,
+    marginRight: "57.5%",
+    marginLeft: "-57.5%",
+    //marginTop: "-60%"
   },
   clicked: {
     top: "0%",
     left: 0,
-    height: "100%",
+    height: "97%",
     position: "absolute",
     backgroundColor: "rgba(255,155,66,1)",
     borderRadius: 15,

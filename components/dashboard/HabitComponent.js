@@ -34,15 +34,21 @@ export default class HabitComponent extends Component {
               {/* Habit Description */}
               <View style ={styles.habit_Desc}>
                 <Text style={styles.habit_Title}>{this.props.name}</Text>
-                <Text style={styles.habit_Task}>{this.props.task}</Text>
+                {/*<Text style={styles.habit_Task}>{this.props.task}</Text>*/}
               </View>
 
+              <MaterialCommunityIconsIcon
+                name={this.getHabitIcon(this.props.name)}
+                style={styles.habit_CheckIcon}
+              ></MaterialCommunityIconsIcon>
+
               {/* Habit Status */}
+              {/*
               <FontAwesomeIcon
                 name = "circle-o"
                 //name={item.isFinished ? "check-circle" : (item.isInProgress ? "minus-circle" : "circle-o")}
                 style={styles.habit_CheckIcon}
-              ></FontAwesomeIcon>
+              ></FontAwesomeIcon>*/}
 
               </View>
             </View>
@@ -220,13 +226,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   habit_Title: {
-    top: "10%",
+    top: "25%",
     left: 0,
     right: 0,
     //position: "absolute",
     fontFamily: "roboto-700",
     color: "rgba(255,255,255,1)",
-    fontSize: 18,
+    fontSize: 28,
     textAlign: "center",
     alignSelf: "center",
   },

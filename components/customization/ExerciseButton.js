@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     right: -3,
     marginRight: "-50%",
     marginLeft: "50%",
-    marginTop: "-110%"
+    //marginTop: "-110%"
   },
   exercise_Button: {
     top: "0%",
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     right: -3,
     marginRight: "-50%",
     marginLeft: "50%",
-    marginTop: "-110%"
+    //marginTop: "-110%"
   },
   clicked: {
     top: "0%",

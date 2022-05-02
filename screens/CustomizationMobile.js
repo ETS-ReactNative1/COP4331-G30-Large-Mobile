@@ -58,35 +58,37 @@ export default class CustomizationMobile extends Component {
           style={styles.goBackButtonComponent1}
         ></GoBackButtonComponent>
 
-
         <Text style={styles.habitTrackers}>Habit Trackers</Text>
+        
+        <Text style={styles.instruction}>Choose the habit's you would like{"\n"}to track for your Daily Grind!</Text>
+        <View style={styles.customization_Background}>
+          <WaterButton
+            onWaterClicked = {this.handleWaterClicked}
+            style={styles.waterButton}
+          ></WaterButton>
 
-        <WaterButton
-          onWaterClicked = {this.handleWaterClicked}
-          style={styles.waterButton}
-        ></WaterButton>
+          <RecreationButton
+            onRecreationClicked = {this.handleRecreationClicked}
+            style={styles.recreationButton}
+          ></RecreationButton>
 
-        <RecreationButton
-          onRecreationClicked = {this.handleRecreationClicked}
-          style={styles.recreationButton}
-        ></RecreationButton>
+          <SleepButton
+            onSleepClicked = {this.handleSleepClicked}
+            style={styles.sleepButton}
+          ></SleepButton>
 
-        <SleepButton
-          onSleepClicked = {this.handleSleepClicked}
-          style={styles.sleepButton}
-        ></SleepButton>
+          <ExerciseButton
+            onExerciseClicked = {this.handleExcerciseClicked}
+            style={styles.exerciseButton}
+          ></ExerciseButton>
 
-        <ExerciseButton
-          onExerciseClicked = {this.handleExcerciseClicked}
-          style={styles.exerciseButton}
-        ></ExerciseButton>
-
-        <DoneButton
-          onMessageChange = {this.handleMessageChange}
-          navigation = {this.props.navigation}
-          state = {this.state}
-          style={styles.doneButton}
-        ></DoneButton>
+          <DoneButton
+            onMessageChange = {this.handleMessageChange}
+            navigation = {this.props.navigation}
+            state = {this.state}
+            style={styles.doneButton}
+          ></DoneButton>
+        </View>
       </View>
     );
   }
@@ -98,9 +100,40 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     backgroundColor:"rgba(255,255,255,1)"
   },
+  instruction: {
+    top: "17.5%",
+    position: "absolute",
+    fontFamily: "roboto-700",
+    color: "rgba(255,255,255,1)",
+    fontSize: 22,
+    //height: 34,
+    left: 0,
+    right: 0,
+    textAlign: "center"
+  },
+  customization_Background: {
+    top: "27.5%",
+    left: "2.5%",
+    height: "60%",
+    width: "95%",
+    position: "absolute",
+    backgroundColor: "rgba(255,255,255,1)",
+    borderRadius: 15,
+    shadowColor: "rgba(0,0,0,1)",
+    shadowOffset: {
+      width: 3,
+      height: 3
+    },
+    elevation: 10,
+    shadowOpacity: 0.25,
+    shadowRadius: 10,
+    right: "2.5%",
+    borderColor: "rgba(210,210,210,210)",
+    borderWidth: 1
+  },
   goBackButtonComponent1: {
     position: "absolute",
-    top: "5.16%",
+    top: "5.29%",
     height: 50,
     width: 48,
     right: 29
@@ -116,49 +149,53 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(100,100,100,1)"
   },
   habitTrackers: {
-    top: "13.78%",
-    left: 27,
+    top: "5.29%",
     position: "absolute",
     fontFamily: "roboto-700",
     color: "rgba(255,255,255,1)",
-    fontSize: 30,
-    textAlign: "left",
-    right: 27,
-    height: "5%"
+    fontSize: 28,
+    height: 34,
+    left: 0,
+    right: 0,
+    textAlign: "center"
   },
   waterButton: {
     position: "absolute",
-    top: "23.39%",
+    top: "10%",
     left: 111,
     right: 111,
-    height: "14.32%"
+    width: "45%",
+    height: "25.32%"
   },
   sleepButton: {
     position: "absolute",
-    top: "42.42%",
+    top: "10%",
     left: 111,
-    right: 112,
-    height: "14.32%"
+    right: 111,
+    width: "45%",
+    height: "25.32%"
   },
   recreationButton: {
     position: "absolute",
-    top: "62.17%",
+    top: "40%",
     left: 111,
     right: 111,
-    height: "14.32%"
+    width: "45%",
+    height: "25.32%"
   },
   exerciseButton: {
     position: "absolute",
-    top: "72.17%",
+    top: "40%",
     left: 111,
     right: 111,
-    height: "14.32%"
+    width: "45%",
+    height: "25.32%"
   },
   doneButton: {
     position: "absolute",
-    top: "87.25%",
-    left: 179,
-    right: 28,
-    height: "6.49%"
+    top: "80%",
+    left: "15%",
+    right: "15%",
+    height: "10%"
   }
 });

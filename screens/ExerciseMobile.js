@@ -10,17 +10,17 @@ import {
 } from "react-native";
 
 import { TextInputMask } from 'react-native-masked-text';
-import GoBackButtonComponent from "../components/water/GoBackButtonComponent";
-import DeleteWaterHabitComponent from "../components/water/DeleteWaterHabitComponent";
+import GoBackButtonComponent from "../components/exercise/GoBackButtonComponent";
+import DeleteExerciseHabitComponent from "../components/exercise/DeleteExerciseHabitComponent";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import WaterAddButtonComponent from "../components/water/WaterAddButtonComponent";
-import WaterSearchResultComponent from "../components/water/WaterSearchResultComponent";
+import ExerciseAddButtonComponent from "../components/exercise/ExerciseAddButtonComponent";
+import ExerciseSearchResultComponent from "../components/exercise/ExerciseSearchResultComponent";
 import NoResultComponent from "../components/NoResultComponent";
 
 var inputSearchRef;
 var isDataLoaded = false;
 
-export default class WaterMobile extends Component {
+export default class ExerciseMobile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,14 +33,17 @@ export default class WaterMobile extends Component {
       isDateValid: true,
       addLog_Amount: "",
       isAmountValid: true,
+      addLog_Exercise: "",
 
       message: "",
       searchResultExists: false,
       searchResultDate: "",
       searchResultAmount: 0,
       showSearchResult: false,
+      searchResultWorkouts: [],
 
       waterIntakeToday: 0,
+      totalWorkoutsToday: 0,
       currentDate: ""
     };
   }
@@ -91,7 +94,7 @@ export default class WaterMobile extends Component {
         };
 
         // Get water data for current date
-        const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getWater/' + global.username.trim();
+        const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getExercise/' + global.username.trim();
         var js = JSON.stringify(obj); 
         const response = await fetch(endpoint, 
         {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
@@ -100,7 +103,7 @@ export default class WaterMobile extends Component {
         //this.counter(0, res.Ounces);
 
         //console.log(res.Ounces);
-        this.setState(({waterIntakeToday}) => ({waterIntakeToday: res.Ounces}));
+        this.setState(({totalWorkoutsToday}) => ({totalWorkoutsToday: res.length}));
       }
       catch (e)
       {
@@ -110,7 +113,7 @@ export default class WaterMobile extends Component {
   }
 
   // Do log search
-  getWaterResults = async () =>
+  getExerciseResults = async () =>
   {
     try
     {
@@ -119,16 +122,17 @@ export default class WaterMobile extends Component {
       };
 
       // Get water data for set date
-      const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getWater/' + global.username.trim();
+      const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getExercise/' + global.username.trim();
       var js = JSON.stringify(obj); 
       const response = await fetch(endpoint, 
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
       var res = JSON.parse(await response.text());
 
       // Search result found
-      this.setState(({searchResultDate}) => ({searchResultDate: res.Date}));
-      this.setState(({searchResultAmount}) => ({searchResultAmount: res.Ounces}));
+      this.setState(({searchResultDate}) => ({searchResultDate: this.state.addLog_Date}));
+      this.setState(({searchResultWorkouts}) => ({searchResultWorkouts: res}));
       this.setState(({searchResultExists}) => ({searchResultExists: true}));
+      console.log(this.state.searchResultWorkouts);
     }
     catch (e)
     {
@@ -153,12 +157,12 @@ export default class WaterMobile extends Component {
 
       // Get results
       (async () => {
-        await this.getWaterResults();
+        await this.getExerciseResults();
 
         if (this.state.searchResultExists)
         {
           if(!this.state.isHidden) {
-              toValue = 200;
+              toValue = 325;
           }
         }
         else
@@ -239,14 +243,15 @@ export default class WaterMobile extends Component {
   // Changes registration message
   handleMessageChange = message =>
   {
-    if (message === "Water Entry Successfully Added")
+    if (message === "Exercise Entry Successfully Added")
     {
       //this.counter(this.state.waterIntakeToday, this.state.waterIntakeToday + Number(this.state.addLog_Amount));
 
       // Update today's water intake
       if ((this.state.addLog_Date === this.getCurrentDate().trim()))
-        this.setState(({waterIntakeToday}) => 
-          ({waterIntakeToday: this.state.waterIntakeToday + Number(this.state.addLog_Amount)})
+
+        this.setState(({totalWorkoutsToday}) => 
+            ({totalWorkoutsToday: this.state.totalWorkoutsToday + 1})
         );
 
       this.setState({message})
@@ -268,17 +273,17 @@ export default class WaterMobile extends Component {
             style={styles.image1}
           ></Image>
 
-          <Text style={styles.header_Water}>Water</Text>
+          <Text style={styles.header_Exercise}>Exercise</Text>
 
           <GoBackButtonComponent
             style={styles.goBackButtonComponent1}
             navigation={this.props.navigation}
           ></GoBackButtonComponent>
 
-          <DeleteWaterHabitComponent
-            style={styles.deleteWaterHabitComponent}
+          <DeleteExerciseHabitComponent
+            style={styles.deleteExerciseHabitComponent}
             navigation={this.props.navigation}
-          ></DeleteWaterHabitComponent>
+          ></DeleteExerciseHabitComponent>
 
           {/* Search for habit */}
           <View style={styles.searchLog}>
@@ -326,12 +331,12 @@ export default class WaterMobile extends Component {
               this.state.searchResultExists 
               ? 
                 (
-                  <WaterSearchResultComponent
-                    amount={this.state.searchResultAmount}
-                    date={this.state.searchResultDate}
+                  <ExerciseSearchResultComponent
+                    exercise={this.state.searchResultWorkouts}
+                    date={this.state.inputSearchValue}
                     style={styles.searchResult}
                     onDeletion={() => this._toggleSubview()}
-                  ></WaterSearchResultComponent>
+                  ></ExerciseSearchResultComponent>
                 )
               :
               // If entry doesn't exist
@@ -346,27 +351,27 @@ export default class WaterMobile extends Component {
           <Animated.View
             style={[styles.addLogView, {transform: [{translateY: this.state.bounceValue}]} ]}
           >
-            {/* Current Intake */}
-            <View style={styles.currentIntake}>
-                <Text style={styles.currentIntake_Text}>
-                  Today&#39;s Water Intake:{"\n"}{this.state.waterIntakeToday} FL OZ
+            {/* Current Workouts */}
+            <View style={styles.currentWorkouts}>
+                <Text style={styles.currentWorkouts_Text}>
+                  Today&#39;s Total Exercises:{"\n"}{this.state.totalWorkoutsToday} Workouts
                 </Text>
             </View>
 
-            {/* Recommended Intake */}
-            <View style={styles.recommendedIntake}>
-                <Text style={styles.recommendedIntake_Text}>
-                  Recommended:{"\n"}64 FL OZ
+            {/* Recommended Workouts */}
+            <View style={styles.recommendedWorkouts}>
+                <Text style={styles.recommendedWorkouts_Text}>
+                  Recommended:{"\n"} 3 Workouts
                 </Text>
             </View>
 
-            {/* Add Water Entry */}
-            <View style={styles.water_Habits}>
-              <View style={styles.water_HabitBackground}>
-                <View style={styles.water_HabitContainer}>
+            {/* Add Exercise Entry */}
+            <View style={styles.exercise_Habits}>
+              <View style={styles.exercise_HabitBackground}>
+                <View style={styles.exercise_HabitContainer}>
 
                   <Text 
-                    style={[ (this.state.isDateValid && this.state.isAmountValid) ? styles.text_Correct : styles.text_Incorrect ]}
+                    style={[ this.state.isDateValid ? styles.text_Correct : styles.text_Incorrect ]}
                   >{this.state.message}</Text>
 
                   {/* Date Input */}
@@ -389,40 +394,38 @@ export default class WaterMobile extends Component {
                     />
                   </View>
 
-                  {/* Amount Input */}
-                  <View style={styles.amount}>
-                    <Text style={styles.amount_Header}>Amount:</Text>
+                  {/* Exercise Input */}
+                  <View style={styles.exercise}>
+                    <Text style={styles.exercise_Header}>Workout:</Text>
                     <TextInput
-                      placeholder="Ex: 16.9"
-                      style={[styles.amount_Field, !this.state.isAmountValid && styles.incorrect]}
+                      placeholder="Ex: 2x10 Pushups"
+                      style={styles.exercise_Field}
                       //onChangeText={(val) => {this.amountChangedHandler(val)}}
                       onChangeText={text => {
                         this.setState({
-                          addLog_Amount: text
+                          addLog_Exercise: text
                         })
                       }}
-                      keyboardType={"number-pad"}
                     ></TextInput>
-                    <Text style={styles.amount_Measurement}>FL OZ</Text>
                   </View>
 
-                  {/* Unit conversions */}
+                  {/* Exercise Recommendations */}
                   <Text style={styles.measurementConversions}>
-                    1 water bottle = 16.9 FL OZ{"\n\n"}1 glass = 8 FL OZ
+                    Recommended log format: Sets x Reps{"\n\n"}
+                    Example: 2x10 Pushups is 2 cycles{"\n"}of 10 pushups!
                   </Text>
 
                   {/* Add Log Button */}
-                  <WaterAddButtonComponent
+                  <ExerciseAddButtonComponent
                     navigation = {this.props.navigation}
                     state = {this.state}
-                    amount = {this.state.addLog_Amount}
+                    exercise = {this.state.addLog_Exercise}
                     date = {this.state.addLog_Date}
                     onDateValidChange = {this.handleDateValidChange}
-                    onAmountValidChange = {this.handleAmountValidChange}
                     onMessageChange = {this.handleMessageChange}
                     resetSearch = {this.handleResultDeleted}
                     style={styles.waterAddButtonComponent}
-                  ></WaterAddButtonComponent>
+                  ></ExerciseAddButtonComponent>
 
                 </View>
               </View>
@@ -470,7 +473,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     opacity: 0.9,
   },
-  header_Water: {
+  header_Exercise: {
     top: "5.29%",
     position: "absolute",
     fontFamily: "roboto-700",
@@ -490,7 +493,7 @@ const styles = StyleSheet.create({
     zIndex: 100,
     left: "2%"
   },
-  deleteWaterHabitComponent: {
+  deleteExerciseHabitComponent: {
     position: "absolute",
     top: "5.29%",
     height: 50,
@@ -576,7 +579,7 @@ const styles = StyleSheet.create({
     //borderColor: "rgba(0,0,0,1)",
     bottom: 0,
   },
-  currentIntake: {
+  currentWorkouts: {
     top: "25.06%",
     left: "5%",
     height: "8.92%",
@@ -595,7 +598,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  currentIntake_Text: {
+  currentWorkouts_Text: {
     //position: "absolute",
     fontFamily: "roboto-700",
     color: "rgba(255,155,66,1)",
@@ -606,7 +609,7 @@ const styles = StyleSheet.create({
     //alignItems: 'center',
     //justifyContent: 'center',
   },
-  recommendedIntake: {
+  recommendedWorkouts: {
     top: "36.15%",
     left: "5%",
     height: "8.78%",
@@ -625,7 +628,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  recommendedIntake_Text: {
+  recommendedWorkouts_Text: {
     //position: "absolute",
     fontFamily: "roboto-700",
     color: "rgba(255,155,66,1)",
@@ -636,7 +639,7 @@ const styles = StyleSheet.create({
     //alignItems: 'center',
     //justifyContent: 'center',
   },
-  water_Habits: {
+  exercise_Habits: {
     top: "47.7%",
     left: 0,
     height: "52.3%",
@@ -644,7 +647,7 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0
   },
-  water_HabitBackground: {
+  exercise_HabitBackground: {
     top: "0%",
     left: 0,
     position: "absolute",
@@ -657,7 +660,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50
   },
-  water_HabitContainer: {
+  exercise_HabitContainer: {
     top: "3.5%",
     left: 8,
     position: "absolute",
@@ -709,14 +712,14 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     right: 0
   },
-  amount: {
+  exercise: {
     top: "35.49%",
     left: 38,
     height: 49,
     position: "absolute",
     right: 38
   },
-  amount_Header: {
+  exercise_Header: {
     top: 7,
     left: 0,
     position: "absolute",
@@ -724,7 +727,7 @@ const styles = StyleSheet.create({
     color: "rgba(15,163,177,1)",
     fontSize: 28
   },
-  amount_Field: {
+  exercise_Field: {
     position: "absolute",
     fontFamily: "roboto-regular",
     color: "#121212",
@@ -734,11 +737,11 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontSize: 16,
     top: 2,
-    left: 120,
+    left: 127,
     borderTopWidth: 0,
     borderRightWidth: 0,
     borderLeftWidth: 0,
-    right: 47
+    right: 0
   },
   amount_Measurement: {
     top: 13,

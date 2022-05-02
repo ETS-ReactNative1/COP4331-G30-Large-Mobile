@@ -19,11 +19,14 @@ export default class DashboardMobile extends Component {
     exerciseTask: '',
     recreationTask: '',
     sleepTask: '',
-    waterTask: '' 
+    waterTask: '',
+    totalHabits: 0,
   }
 
   async getHabits ()
   {
+    var totalHabitsTracked = 0;
+
     try
     {
       var obj = {};
@@ -33,8 +36,6 @@ export default class DashboardMobile extends Component {
       var js = JSON.stringify(obj);
       const response_search = await fetch(endpoint_address_search, {method:'GET',headers:{'Content-Type': 'application/json'}});
       var res = JSON.parse(await response_search.text());
-
-      //console.log(response_search.status);
 
       if (response_search.status === 400)
       {
@@ -46,6 +47,25 @@ export default class DashboardMobile extends Component {
         this.setState(({recreationIsTracked}) => ({recreationIsTracked: res.Recreation}));
         this.setState(({sleepIsTracked}) => ({sleepIsTracked: res.Sleep}));
         this.setState(({waterIsTracked}) => ({waterIsTracked: res.Water}));
+
+        global.isExerciseTracked = this.state.exerciseIsTracked;
+        global.isRecreationTracked = this.state.recreationIsTracked;
+        global.isSleepTracked = this.state.sleepIsTracked;
+        global.isWaterTracked = this.state.waterIsTracked;
+
+        if (this.state.exerciseIsTracked)
+          totalHabitsTracked++;
+
+        if (this.state.recreationIsTracked)
+          totalHabitsTracked++;
+        
+        if (this.state.sleepIsTracked)
+          totalHabitsTracked++;
+
+        if (this.state.waterIsTracked)
+          totalHabitsTracked++;
+
+        this.setState(({totalHabits}) => ({totalHabits: totalHabitsTracked}));
       }
     }
     catch (e)
@@ -64,6 +84,8 @@ export default class DashboardMobile extends Component {
     this.focusListener = this.props.navigation.addListener('didFocus', () => {
       this.onFocusFunction()
     })
+
+    this.getHabits();
   }
 
   // and don't forget to remove the listener
@@ -97,27 +119,30 @@ export default class DashboardMobile extends Component {
           style={styles.menuButtonComponent}
         ></MenuButtonComponent>
 
+        {/*
         <View style={styles.dashboard_Milestone}>
           <Text style={styles.milestone_Text}>x Month Milestone</Text>
           <View style={styles.progressBar}>
             <View style={styles.progress}></View>
           </View>
-        </View>
+        </View>*/}
         <View style={styles.dashboard_Profile}>
           <Image
-            source={require("../assets/images/Pingu_1.png")}
+            source={require("../assets/images/Default_profile3.png")}
             resizeMode="cover"
             style={styles.profilePicture}
           ></Image>
           <View style={styles.welcome_Group}>
             <Text style={styles.welcome_Message}>
-              Welcome{"\n"}
-              Back,{"\n"}
-              {global.firstName === "" ? global.username : global.firstName}!
+              Hi there{"\n"}
+              {global.firstName === "" ? global.username : global.firstName}!{"\n\n"}
+              You have: {"\n"}{this.state.totalHabits} Habits Tracked
             </Text>
             {/*<Text style={styles.welcome_Name}>{global.username}! </Text>*/}
           </View>
         </View>
+
+        {/*<Text style={styles.header_Counter}>{this.state.totalHabits} Habits Tracked</Text>*/}
 
         <View style={styles.dashboard_Habits}>
           <View style={styles.dashboard_HabitsBackground}>
@@ -158,6 +183,16 @@ export default class DashboardMobile extends Component {
                         task = {this.state.waterTask}
                         navigation = {this.props.navigation}
                       ></HabitComponent>
+                    )
+                  }
+                  {
+                    (!this.state.recreationIsTracked && !this.state.exerciseIsTracked && 
+                    !this.state.sleepIsTracked && !this.state.waterIsTracked) && (
+                      <Text style={styles.noHabits}>
+                        No Habits Yet!{"\n\n"}
+                        Click the "+" icon in the upper{"\n"}
+                        left corner to get started!
+                      </Text>
                     )
                   }
                 </ScrollView>
@@ -225,6 +260,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "rgba(255,255,255,1)"
   },
+  noHabits: {
+    width: "100%",
+    textAlign: "center",
+    marginTop: "25%",
+    color: "rgba(100,100,100,0.5)",
+    fontFamily: "roboto-700",
+    fontSize: 22
+  },
   image3: {
     top: 0,
     left: 0,
@@ -235,7 +278,18 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(100,100,100,1)"
   },
   header_Dashboard: {
-    top: 47,
+    top: "5.29%",
+    position: "absolute",
+    fontFamily: "roboto-700",
+    color: "rgba(255,255,255,1)",
+    fontSize: 28,
+    height: 34,
+    left: 0,
+    right: 0,
+    textAlign: "center"
+  },
+  header_Counter: {
+    top: "40%",
     position: "absolute",
     fontFamily: "roboto-700",
     color: "rgba(255,255,255,1)",
@@ -247,14 +301,14 @@ const styles = StyleSheet.create({
   },
   addHabitButtonComponent: {
     position: "absolute",
-    top: 39,
+    top: "5.29%",
     left: 15,
     height: 50,
     width: 50
   },
   menuButtonComponent: {
     position: "absolute",
-    top: 42,
+    top: "5.29%",
     height: 45,
     width: 45,
     right: 15
@@ -294,28 +348,28 @@ const styles = StyleSheet.create({
     bottom: 0
   },
   dashboard_Profile: {
-    top: "24%",
+    top: "15%",
     left: 0,
     position: "absolute",
     right: 0,
     height: "23.24%"
   },
   profilePicture: {
-    top: "3.47%",
-    left: "10%",
-    width: 185,
-    height: 185,
+    top: "20%",
+    left: "6.25%",
+    width: 200,
+    height: 200,
     position: "absolute",
     borderWidth: 4,
     borderColor: "rgba(255,155,66,1)",
     borderRadius: 100,
-    borderStyle: "solid"
+    //borderStyle: "solid"
   },
   welcome_Group: {
     top: "16.85%",
     left: 221,
     position: "absolute",
-    right: "10%",
+    right: "6.25%",
     height: "66.28%"
   },
   welcome_Message: {

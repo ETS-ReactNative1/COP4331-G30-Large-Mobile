@@ -14,6 +14,7 @@ import DrawerContentComponent from './components/dashboard/DrawerContentComponen
 import WaterMobile from './screens/WaterMobile';
 import SleepMobile from './screens/SleepMobile';
 import RecreationMobile from './screens/RecreationMobile';
+import ExerciseMobile from './screens/ExerciseMobile';
 import CustomizationMobile from './screens/CustomizationMobile';
 
 //import { AppLoading } from "expo";
@@ -62,8 +63,9 @@ export default class App extends React.Component {
   }
 
   render() {
+  /*
     while (Font.isLoading('roboto_regular') && Font.isLoading('roboto_700'))
-    {}
+    {}*/
 
     // App starts
     return <AppContainer />;
@@ -130,6 +132,12 @@ const AppNavigator = createStackNavigator({
   },
   RecreationHabit: {
     screen: RecreationMobile, 
+    navigationOptions: { 
+      headerShown: false // Will hide header for HomePage 
+    } 
+  },
+  ExerciseHabit: {
+    screen: ExerciseMobile, 
     navigationOptions: { 
       headerShown: false // Will hide header for HomePage 
     } 
