@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/Feather";
+import Icon from "@expo/vector-icons/Feather";
 import { createStackNavigator, createAppContainer } from 'react-navigation'; 
 
 export default class GoBackButtonComponent extends Component {

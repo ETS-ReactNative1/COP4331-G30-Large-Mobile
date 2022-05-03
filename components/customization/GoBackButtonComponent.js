@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/Feather";
+import Icon from "@expo/vector-icons/Feather";
 
 export default class GoBackButtonComponent extends Component {
   render() {
     return (
-      <TouchableOpacity style={[styles.container, this.props.style]}>
-        <Icon name="arrow-left-circle"
+      <TouchableOpacity 
+        style={[styles.container, this.props.style]}
         onPress={() => this.goBackClick(this.props)}
-        style={styles.icon1}></Icon>
+      >
+        <Icon name="arrow-left-circle"
+          style={styles.icon1}
+        ></Icon>
       </TouchableOpacity>
     );
   }

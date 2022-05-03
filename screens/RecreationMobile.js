@@ -11,7 +11,7 @@ import {
 import { TextInputMask } from 'react-native-masked-text';
 import GoBackButtonComponent from "../components/recreation/GoBackButtonComponent";
 import DeleteRecreationHabitComponent from "../components/recreation/DeleteRecreationHabitComponent";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import FontAwesomeIcon from "@expo/vector-icons/FontAwesome";
 import RecreationAddButtonComponent from "../components/recreation/RecreationAddButtonComponent";
 import RecreationSearchResultComponent from "../components/recreation/RecreationSearchResultComponent";
 import NoResultComponent from "../components/NoResultComponent";
@@ -594,10 +594,10 @@ const styles = StyleSheet.create({
   },
   searchLog_GoButton: {
     //top: 4,
-    width: 20,
+    width: 35,
     height: 35,
     position: "absolute",
-    right: 9,
+    right: "2%",
     flexDirection: "column",
     flex: 1,
     justifyContent: "center"
@@ -624,12 +624,14 @@ const styles = StyleSheet.create({
     position: "absolute",
     height: "100%",
     width: "100%",
+    top: "23%",
     //borderWidth: 1,
     //borderColor: "rgba(0,0,0,1)",
     bottom: 0,
   },
   currentRecreation: {
-    top: "25.06%",
+    //top: "25.06%",
+    top: "2.25%",
     left: "5%",
     height: "8.92%",
     position: "absolute",
@@ -659,7 +661,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
   },
   recommendedRecreation: {
-    top: "36.15%",
+    top: "13.34%",
     left: "5%",
     height: "8.78%",
     position: "absolute",
@@ -689,7 +691,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
   },
   recreation_Habits: {
-    top: "47.7%",
+    top: "24.89%",
     left: 0,
     height: "52.3%",
     position: "absolute",

@@ -9,7 +9,7 @@ import {
   Alert
 } from "react-native";
 import { DrawerItems, SafeAreaView } from "react-navigation";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import FontAwesomeIcon from "@expo/vector-icons/FontAwesome";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import Icon from "react-native-vector-icons/Entypo";
 
@@ -153,11 +153,11 @@ const styles = StyleSheet.create({
     fontSize: 14
   },
   recreationHabit_RemoveButton: {
-    top: 12,
+    top: "10%",
     width: 32,
     height: 40,
     position: "absolute",
-    right: 12
+    right: "5%"
   },
   recreationHabit_RemoveIcon: {
     top: 0,

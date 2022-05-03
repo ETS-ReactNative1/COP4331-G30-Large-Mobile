@@ -8,8 +8,8 @@ import {
   FlatList,
 } from "react-native";
 import { DrawerItems, SafeAreaView } from "react-navigation";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import FontAwesomeIcon from "@expo/vector-icons/FontAwesome5";
+import MaterialCommunityIconsIcon from "@expo/vector-icons/MaterialCommunityIcons";
 import Icon from "react-native-vector-icons/Entypo";
 
 export default class HabitViewerComponent extends Component {

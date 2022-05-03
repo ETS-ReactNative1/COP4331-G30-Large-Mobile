@@ -58,6 +58,11 @@ export default class App extends React.Component {
     // For Forgot Password
     global.email_forgot_password = "";
 
+    global.isExerciseTracked = false;
+    global.isRecreationTracked = false;
+    global.isSleepTracked = false;
+    global.isWaterTracked = false;
+
     // DELETE THIS
     //global.username = "Test";
   }
@@ -79,6 +84,21 @@ const AppDrawerNavigator = createDrawerNavigator({
   Logout: {
     screen: LoginMobile
   },
+  WaterHabit: { 
+    screen: WaterMobile, 
+  },
+  SleepHabit: {
+    screen: SleepMobile, 
+  },
+  RecreationHabit: {
+    screen: RecreationMobile, 
+  },
+  ExerciseHabit: {
+    screen: ExerciseMobile, 
+  },
+  Customization: {
+    screen: CustomizationMobile,
+  }
 },{ 
   initialRouteName: "Dashboard",
   drawerPosition: 'right',

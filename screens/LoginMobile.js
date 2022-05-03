@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Image, TextInput, Text, ImageBackground } from "react-native";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+//import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import FontAwesomeIcon from "@expo/vector-icons/FontAwesome";
 import LoginButtonComponent from "../components/login/LoginButtonComponent";
 import ForgotPasswordButtonComponent from "../components/login/ForgotPasswordButtonComponent";
 import RegisterButtonComponent from "../components/login/RegisterButtonComponent";

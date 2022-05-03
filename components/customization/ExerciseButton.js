@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome5";
+import FontAwesomeIcon from "@expo/vector-icons/FontAwesome5";
 
 export default class ExerciseButton extends Component {
   constructor(props) {
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
   icon2: {
     top: 31,
-    left: 34,
+    left: "25%",
     position: "absolute",
     color: "rgba(255,255,255,1)",
     fontSize: 69

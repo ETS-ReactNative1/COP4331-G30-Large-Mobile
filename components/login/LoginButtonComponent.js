@@ -24,7 +24,7 @@ export default class LoginButtonComponent extends Component {
       var obj = {username:global.username_login.trim(),password:global.password_login.trim()}; 
       props.onMessageChange("");
 
-      console.log(obj.username + " " + obj.password);
+      //console.log(obj.username + " " + obj.password);
 
       // Request user info
       var js = JSON.stringify(obj); 
@@ -32,15 +32,19 @@ export default class LoginButtonComponent extends Component {
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
       var res = JSON.parse(await response.text());
 
-      console.log(response.status);
+      //console.log(response.status);
 
       // If no user found
-      if (response.status !== 200)
+      if (response.status === 400)
       { 
         // Change message on login screen
         props.onMessageChange("Username or Password Incorrect");
-      } 
-      else 
+      }
+      else if (response.status === 500)
+      {
+        props.onMessageChange("User not verified");
+      }
+      else if (response.status === 200)
       {
         props.onMessageChange("Success");
 

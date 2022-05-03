@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default class WaterButton extends Component {
   constructor(props) {
@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
   },
   icon2: {
     top: 31,
-    left: 34,
+    left: "30%",
+    right: 0,
     position: "absolute",
     color: "rgba(255,255,255,1)",
     fontSize: 69

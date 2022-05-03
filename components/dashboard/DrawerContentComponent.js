@@ -156,6 +156,7 @@ export default class MenuButtonComponent extends Component {
     global.password = "";
     global.email = "";
     global.phone = "";
+    global.userId = "";
 
     global.username_login = "";
     global.password_login = "";
@@ -164,6 +165,8 @@ export default class MenuButtonComponent extends Component {
     global.isRecreationTracked = false;
     global.isSleepTracked = false;
     global.isWaterTracked = false;
+
+    global.email_forgot_password = "";
 
     props.navigation.navigate('Login');
   }

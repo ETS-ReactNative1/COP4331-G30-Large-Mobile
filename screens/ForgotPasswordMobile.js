@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, TextInput, ImageBackground } from "react-native";
 import GoBackButtonComponent from "../components/GoBackButtonComponent";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "@expo/vector-icons/FontAwesome";
 import ResetPassButtonComponent from "../components/forgot_password/ResetPassButtonComponent";
 
 /*

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, TextInput, ImageBackground } from "react-native";
 import GoBackButtonComponent from "../components/GoBackButtonComponent";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import FontAwesomeIcon from "@expo/vector-icons/FontAwesome";
 import SignUpButtonComponent from "../components/register/SignUpButtonComponent";
 import { createStackNavigator, createAppContainer } from 'react-navigation'; 
 import { render } from "react-dom";
@@ -132,6 +132,7 @@ export default class RegisterMobile extends Component {
                   placeholder="Password *"
                   style={[styles.passwordField, !this.state.isPasswordValid && styles.incorrect]}
                   onChangeText={(val) => {this.passwordChangedHandler(val)}}
+                  secureTextEntry={true}
                 ></TextInput>
                 <FontAwesomeIcon
                   name="key"

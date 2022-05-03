@@ -4,9 +4,9 @@ import AddHabitButtonComponent from "../components/dashboard/AddHabitButtonCompo
 import MenuButtonComponent from "../components/dashboard/MenuButtonComponent";
 import HabitViewerComponent from "../components/dashboard/HabitViewerComponent";
 //import { Center } from "@builderx/utils";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
-import EntypoIcon from "react-native-vector-icons/Entypo";
+import FontAwesomeIcon from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIconsIcon from "@expo/vector-icons/MaterialCommunityIcons";
+import EntypoIcon from "@expo/vector-icons/Entypo";
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import HabitComponent from "../components/dashboard/HabitComponent";
 

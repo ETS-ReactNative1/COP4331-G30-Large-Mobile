@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import Icon from "@expo/vector-icons/Ionicons";
 
 export default class SleepButton extends Component {
   constructor(props) {
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     color: "rgba(255,255,255,1)",
     fontSize: 69,
-    left: 45
+    left: "30%",
   },
   clicked_Shadow: {
     top: "2.83%",

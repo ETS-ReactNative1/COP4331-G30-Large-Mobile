@@ -13,7 +13,7 @@ import {
 import { TextInputMask } from 'react-native-masked-text';
 import GoBackButtonComponent from "../components/sleep/GoBackButtonComponent";
 import DeleteSleepHabitComponent from "../components/sleep/DeleteSleepHabitComponent";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import FontAwesomeIcon from "@expo/vector-icons/FontAwesome";
 import SleepAddButtonComponent from "../components/sleep/SleepAddButtonComponent";
 import SleepSearchResultComponent from "../components/sleep/SleepSearchResultComponent";
 import NoResultComponent from "../components/NoResultComponent";
@@ -100,57 +100,60 @@ export default class SleepMobile extends Component {
       }
   }
 
-  componentDidMount ()
+  async getSleepHabit()
   {     
-    (async () => {
       // DELETE THIS
       //global.username = "Test";
 
-      try
-      {
-        var array = new Array()
+    try
+    {
+      var array = new Array()
 
-        // Get current date
-        var currDate = this.getCurrentDate().trim();
-        var yestDate = this.getYesterdayDate().trim();
+      // Get current date
+      var currDate = this.getCurrentDate().trim();
+      var yestDate = this.getYesterdayDate().trim();
 
-        console.log(yestDate);
+      console.log(yestDate);
 
-        // Automatically set dates
-        this.setState(({currentDate}) => ({currentDate: currDate}));
-        this.setState(({addLog_Date}) => ({addLog_Date: currDate}));
-        this.setState(({yesterdayDate}) => ({yesterdayDate: yestDate}));
+      // Automatically set dates
+      this.setState(({currentDate}) => ({currentDate: currDate}));
+      this.setState(({addLog_Date}) => ({addLog_Date: currDate}));
+      this.setState(({yesterdayDate}) => ({yesterdayDate: yestDate}));
 
-        //console.log(currDate);
+      //console.log(currDate);
 
-        var obj = {
-          date: yestDate
-        };
+      var obj = {
+        date: yestDate
+      };
 
-        // Get water data for current date
-        const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getSleep/' + global.username.trim();
-        var js = JSON.stringify(obj); 
-        const response = await fetch(endpoint, 
-        {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
-        var res = JSON.parse(await response.text());
+      // Get water data for current date
+      const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getSleep/' + global.username.trim();
+      var js = JSON.stringify(obj); 
+      const response = await fetch(endpoint, 
+      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
+      var res = JSON.parse(await response.text());
 
-        //this.counter(0, res.Ounces);
+      //this.counter(0, res.Ounces);
 
-        //console.log(res.Ounces);
-        this.setState(({sleepTimeYesterday}) => ({sleepTimeYesterday: res.Hours}));
+      //console.log(res.Ounces);
+      this.setState(({sleepTimeYesterday}) => ({sleepTimeYesterday: res.Hours}));
 
-        array = res.Hours.toString().split('.');
-        array[1] = Math.round((array[1] / 100) * 60);
-        this.setState(({sleepTimeYesterdayArray}) => ({sleepTimeYesterdayArray: array}));
-      }
-      catch (e)
-      {
-        array[0] = 0;
-        array[1] = 0;
-        this.setState(({sleepTimeYesterdayArray}) => ({sleepTimeYesterdayArray: array}));
-        console.log(e);
-      }
-    })();
+      array = res.Hours.toString().split('.');
+      array[1] = Math.round((array[1] / 100) * 60);
+      this.setState(({sleepTimeYesterdayArray}) => ({sleepTimeYesterdayArray: array}));
+    }
+    catch (e)
+    {
+      array[0] = 0;
+      array[1] = 0;
+      this.setState(({sleepTimeYesterdayArray}) => ({sleepTimeYesterdayArray: array}));
+      console.log(e);
+    }
+  }
+  
+  // add a focus listener onDidMount
+  componentDidMount () {
+    (async () => this.getSleepHabit())();
   }
 
   // Do log search
@@ -300,6 +303,8 @@ export default class SleepMobile extends Component {
     {
       //this.counter(this.state.waterIntakeToday, this.state.waterIntakeToday + Number(this.state.addLog_Amount));
 
+      (async () => this.getSleepHabit())();
+
       this.setState({message})
 
       setTimeout(() => { this.setState(({message}) => ({message: ""})); }, 5000);
@@ -318,7 +323,7 @@ export default class SleepMobile extends Component {
           resizeMode="stretch"
           style={styles.image1}
         ></Image>
-
+        
         <Text style={styles.header_Sleep}>Sleep</Text>
 
         <GoBackButtonComponent
@@ -707,10 +712,10 @@ const styles = StyleSheet.create({
   },
   searchLog_GoButton: {
     //top: 4,
-    width: 20,
+    width: 35,
     height: 35,
     position: "absolute",
-    right: 9,
+    right: "2%",
     flexDirection: "column",
     flex: 1,
     justifyContent: "center"
@@ -737,12 +742,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     height: "100%",
     width: "100%",
+    top: "23%",
     //borderWidth: 1,
     //borderColor: "rgba(0,0,0,1)",
+    zIndex: -1,
     bottom: 0,
   },
   currentSleep: {
-    top: "25.06%",
+    //top: "25.06%",
+    top: "2.25%",
     left: "5%",
     height: "8.92%",
     position: "absolute",
@@ -772,7 +780,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
   },
   recommendedSleep: {
-    top: "36.15%",
+    top: "13.34%",
     left: "5%",
     height: "8.78%",
     position: "absolute",
@@ -802,7 +810,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
   },
   sleep_Habits: {
-    top: "47.7%",
+    top: "24.89%",
     left: 0,
     height: "52.3%",
     position: "absolute",

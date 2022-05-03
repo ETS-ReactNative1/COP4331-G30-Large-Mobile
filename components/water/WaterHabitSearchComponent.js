@@ -8,7 +8,7 @@ import {
   FlatList,
 } from "react-native";
 import { DrawerItems, SafeAreaView } from "react-navigation";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import FontAwesomeIcon from "@expo/vector-icons/FontAwesome";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import Icon from "react-native-vector-icons/Entypo";
 

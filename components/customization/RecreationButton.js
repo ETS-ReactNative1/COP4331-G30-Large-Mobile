@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
-import IoniconsIcon from "react-native-vector-icons/Ionicons";
+import FontAwesomeIcon from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIconsIcon from "@expo/vector-icons/MaterialCommunityIcons";
+import IoniconsIcon from "@expo/vector-icons/Ionicons";
 
 export default class RecreationButton extends Component {
   constructor(props) {
@@ -25,11 +25,11 @@ export default class RecreationButton extends Component {
           onPress = {() => this.onPress(this.props)}
           style={!clicked ? styles.recreation_Button : styles.clicked}>
             <Text style={styles.recreation2}>RECREATION</Text>
-            <FontAwesomeIcon
-              name="soccer-ball-o"
-              style={styles.icon5}
-            ></FontAwesomeIcon>
             <View style={styles.icon7Row}>
+              <FontAwesomeIcon
+                name="soccer-ball-o"
+                style={styles.icon5}
+              ></FontAwesomeIcon>
               <MaterialCommunityIconsIcon
                 name="football"
                 style={styles.icon7}
@@ -77,6 +77,9 @@ const styles = StyleSheet.create({
     shadowRadius: 0,
     right: 4
   },
+  icon7Row: {
+    left: "30%"
+  },
   recreation2: {
     top: "2.83%",
     position: "absolute",
@@ -90,21 +93,21 @@ const styles = StyleSheet.create({
   },
   icon5: {
     top: 33,
-    left: 51,
+    left: 17,
     position: "absolute",
     color: "rgba(255,255,255,1)",
     fontSize: 35
   },
   icon7: {
     top: 68,
-    left: 34,
+    left: 0,
     position: "absolute",
     color: "rgba(255,255,255,1)",
     fontSize: 35
   },
   icon8: {
     top: 68,
-    left: 72,
+    left: 38,
     position: "absolute",
     color: "rgba(255,255,255,1)",
     fontSize: 35
