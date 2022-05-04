@@ -57,6 +57,8 @@ export default class RecreationAddButtonComponent extends Component {
       var res = JSON.parse(await response.text());
 
       props.onMessageChange("Recreation Entry Successfully Added");
+
+      props.updateTracker();
     }
     catch(e)
     {

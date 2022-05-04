@@ -69,6 +69,8 @@ export default class WaterAddButtonComponent extends Component {
       var res = JSON.parse(await response.text());
 
       props.onMessageChange("Water Entry Successfully Added");
+
+      props.updateTracker();
     }
     catch(e)
     {

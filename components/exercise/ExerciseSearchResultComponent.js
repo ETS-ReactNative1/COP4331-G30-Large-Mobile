@@ -91,6 +91,9 @@ export default class ExerciseSearchResultComponent extends Component {
       this.setState(({isLogDeleted}) => ({isLogDeleted: true}));
 
       props.onDeletion();
+
+      console.log("exercise updated");
+      await props.updateTracker();
       //props.resetSearch(false);
       //props.onMessageChange("Water Entry Successfully Added");
     }

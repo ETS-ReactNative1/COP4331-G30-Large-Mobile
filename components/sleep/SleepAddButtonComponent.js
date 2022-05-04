@@ -15,23 +15,6 @@ export default class SleepAddButtonComponent extends Component {
     );
   }
 
-/*
-  isAsleepPM = {this.state.isAsleepPM}
-  isAwakePM = {this.state.isAwakePM}
-  asleepHr = {this.state.addLog_AsleepHr}
-  asleepMin = {this.state.addLog_AsleepMin}
-  awakeHr = {this.state.addLog_AwakeHr}
-  awakeMin = {this.state.addLog_AwakeMin}
-  date = {this.state.addLog_Date}
-
-  onAsleepHrValidChange = {this.handleAsleepHrValidChange}
-  onAsleepMinValidChange = {this.handleAsleepMinValidChange}
-  onAwakeHrValidChange = {this.handleAwakeHrValidChange}
-  onAwakeMinValidChange = {this.handleAwakeMinValidChange}
-  onDateValidChange = {this.handleDateValidChange}
-  onMessageChange = {this.handleMessageChange}
-*/
-
   addLogClick = async (props) =>
   {
     // Reset incorrect states
@@ -42,13 +25,13 @@ export default class SleepAddButtonComponent extends Component {
     props.onAwakeMinValidChange(true);
     props.onMessageChange('');
 
-    console.log(global.username + "PRESSED");
-
     var dateReg = new RegExp('(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/[0-9]{4}');
-    var hourReg = new RegExp('((0[1-9]|1[0-2])|([1-9]))');
-    var minuteReg = new RegExp('(([0-5][0-9])|[0-9]|60)');
-
-    console.log(props.date);
+    //var hourReg = new RegExp('1[0-2]|0[1-9]');
+    //var minuteReg = new RegExp('[1-5]?[0-9]');
+    let asleepHrNum = Number(props.asleepHr);
+    let asleepMinNum = Number(props.asleepMin);
+    let awakeHrNum = Number(props.awakeHr);
+    let awakeMinNum = Number(props.awakeMin);
 
     // Verify date format
     if (!dateReg.test(props.date))
@@ -58,10 +41,8 @@ export default class SleepAddButtonComponent extends Component {
       return;
     }
 
-    console.log(props.asleepHr);
     // Verify asleep hour format
-    console.log(hourReg.test(props.asleepHr));
-    if (!hourReg.test(props.asleepHr))
+    if (asleepHrNum < 1 || asleepHrNum > 12)
     {
       props.onMessageChange("Asleep hour must be 1-12");
       props.onAsleepHrValidChange(false);
@@ -69,7 +50,7 @@ export default class SleepAddButtonComponent extends Component {
     }
 
     // Verify asleep minute format
-    if (!minuteReg.test(props.asleepMin))
+    if (asleepMinNum < 0 || asleepMinNum > 60)
     {
       props.onMessageChange("Asleep minute must be 0-60");
       props.onAsleepMinValidChange(false);
@@ -77,7 +58,7 @@ export default class SleepAddButtonComponent extends Component {
     }
 
     // Verify awake hour format
-    if (!hourReg.test(props.awakeHr))
+    if (awakeHrNum < 1 || awakeHrNum > 12)
     {
       props.onMessageChange("Awake hour must be 1-12");
       props.onAwakeHrValidChange(false);
@@ -85,7 +66,7 @@ export default class SleepAddButtonComponent extends Component {
     }
 
     // Verify awake minute format
-    if (!minuteReg.test(props.awakeMin))
+    if (awakeMinNum < 0 || awakeMinNum > 60)
     {
       props.onMessageChange("Awake minute must be 0-60");
       props.onAwakeMinValidChange(false);
@@ -94,18 +75,6 @@ export default class SleepAddButtonComponent extends Component {
 
     try
     {
-      //global.username = "Test"
-
-/*
-  const date = req.body.date;
-  let startHour = req.body.startHour;
-  let startMin = req.body.startMin;
-  const startMeridiam = req.body.startMeridiam;
-  let endHour = req.body.endHour;
-  let endMin = req.body.endMin;
-  const endMeridiam = req.body.endMeridiam;
-*/
-
       var obj = {
         date:props.date.trim(),
         startHour:Number(props.asleepHr),
@@ -115,7 +84,8 @@ export default class SleepAddButtonComponent extends Component {
         endMin:Number(props.awakeMin),
         endMeridiam: (props.isAwakePM ? "pm" : "am"),
       };
-
+      
+      /*
       console.log(
           "starthour: " + props.asleepHr +
           " startmin: " + props.asleepMin +
@@ -123,23 +93,24 @@ export default class SleepAddButtonComponent extends Component {
           " endmin: " + props.awakeMin +
           " start: " + obj.startMeridiam + 
           " end: " + obj.endMeridiam
-      );
+      );*/
 
-      // Save/update water log
-      const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/sleep/' + global.username.trim();
-
-
+      /*
       console.log(
         "user: " + global.username.trim() +
         " date: " + obj.date
-      );
+      );*/
 
+      // Save/update water log
+      const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/sleep/' + global.username.trim();
       var js = JSON.stringify(obj); 
       const response = await fetch(endpoint, 
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
       var res = JSON.parse(await response.text());
 
       props.onMessageChange("Sleep Entry Successfully Added");
+
+      props.updateTracker();
     }
     catch(e)
     {

@@ -100,11 +100,8 @@ export default class SleepMobile extends Component {
       }
   }
 
-  async getSleepHabit()
+  async updateSleepTracker()
   {     
-      // DELETE THIS
-      //global.username = "Test";
-
     try
     {
       var array = new Array()
@@ -113,14 +110,10 @@ export default class SleepMobile extends Component {
       var currDate = this.getCurrentDate().trim();
       var yestDate = this.getYesterdayDate().trim();
 
-      console.log(yestDate);
-
       // Automatically set dates
       this.setState(({currentDate}) => ({currentDate: currDate}));
       this.setState(({addLog_Date}) => ({addLog_Date: currDate}));
       this.setState(({yesterdayDate}) => ({yesterdayDate: yestDate}));
-
-      //console.log(currDate);
 
       var obj = {
         date: yestDate
@@ -133,9 +126,6 @@ export default class SleepMobile extends Component {
       {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
       var res = JSON.parse(await response.text());
 
-      //this.counter(0, res.Ounces);
-
-      //console.log(res.Ounces);
       this.setState(({sleepTimeYesterday}) => ({sleepTimeYesterday: res.Hours}));
 
       array = res.Hours.toString().split('.');
@@ -151,9 +141,8 @@ export default class SleepMobile extends Component {
     }
   }
   
-  // add a focus listener onDidMount
   componentDidMount () {
-    (async () => this.getSleepHabit())();
+    (async () => this.updateSleepTracker())();
   }
 
   // Do log search
@@ -301,10 +290,6 @@ export default class SleepMobile extends Component {
   {
     if (message === "Sleep Entry Successfully Added")
     {
-      //this.counter(this.state.waterIntakeToday, this.state.waterIntakeToday + Number(this.state.addLog_Amount));
-
-      (async () => this.getSleepHabit())();
-
       this.setState({message})
 
       setTimeout(() => { this.setState(({message}) => ({message: ""})); }, 5000);
@@ -386,6 +371,7 @@ export default class SleepMobile extends Component {
                   hours={this.state.searchResultHours}
                   date={this.state.searchResultDate}
                   style={styles.searchResult}
+                  updateTracker = {() => this.updateSleepTracker()}
                   onDeletion={() => this._toggleSubview()}
                 ></SleepSearchResultComponent>
               )
@@ -575,24 +561,26 @@ export default class SleepMobile extends Component {
                 </View>
 
                 <SleepAddButtonComponent
-                    navigation = {this.props.navigation}
-                    state = {this.state}
-                    isAsleepPM = {this.state.isAsleepPM}
-                    isAwakePM = {this.state.isAwakePM}
-                    asleepHr = {this.state.addLog_AsleepHr}
-                    asleepMin = {this.state.addLog_AsleepMin}
-                    awakeHr = {this.state.addLog_AwakeHr}
-                    awakeMin = {this.state.addLog_AwakeMin}
-                    date = {this.state.addLog_Date}
+                  navigation = {this.props.navigation}
+                  state = {this.state}
+                  isAsleepPM = {this.state.isAsleepPM}
+                  isAwakePM = {this.state.isAwakePM}
+                  asleepHr = {this.state.addLog_AsleepHr}
+                  asleepMin = {this.state.addLog_AsleepMin}
+                  awakeHr = {this.state.addLog_AwakeHr}
+                  awakeMin = {this.state.addLog_AwakeMin}
+                  date = {this.state.addLog_Date}
 
-                    onAsleepHrValidChange = {this.handleAsleepHrValidChange}
-                    onAsleepMinValidChange = {this.handleAsleepMinValidChange}
-                    onAwakeHrValidChange = {this.handleAwakeHrValidChange}
-                    onAwakeMinValidChange = {this.handleAwakeMinValidChange}
-                    onDateValidChange = {this.handleDateValidChange}
-                    onMessageChange = {this.handleMessageChange}
+                  onAsleepHrValidChange = {this.handleAsleepHrValidChange}
+                  onAsleepMinValidChange = {this.handleAsleepMinValidChange}
+                  onAwakeHrValidChange = {this.handleAwakeHrValidChange}
+                  onAwakeMinValidChange = {this.handleAwakeMinValidChange}
+                  onDateValidChange = {this.handleDateValidChange}
+                  onMessageChange = {this.handleMessageChange}
 
-                    resetSearch = {this.handleResultDeleted}
+                  updateTracker = {() => this.updateSleepTracker()}
+
+                  resetSearch = {this.handleResultDeleted}
                   style={styles.sleepAddButtonComponent}
                 ></SleepAddButtonComponent>
               </View>

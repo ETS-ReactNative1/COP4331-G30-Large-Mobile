@@ -50,7 +50,7 @@ export default class SignUpButtonComponent extends Component {
 
       if (response.status === 500)
       {
-        //props.onMessageChange(res.error);
+        props.onMessageChange(res.error);
       }
       else if (response.status === 200)
       {
@@ -65,7 +65,7 @@ export default class SignUpButtonComponent extends Component {
     } 
     catch(e) 
     {
-      props.onMessageChange(e.message); 
+      //props.onMessageChange(e.message); 
     }
   }
 

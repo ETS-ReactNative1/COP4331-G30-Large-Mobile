@@ -75,47 +75,47 @@ export default class RecreationMobile extends Component {
       }
   }
 
+  async updateRecreationTracker()
+  {
+    try
+    {
+      // Get current date
+      var currDate = this.getCurrentDate().trim();
+
+      // Automatically set dates
+      this.setState(({currentDate}) => ({currentDate: currDate}));
+      this.setState(({addLog_Date}) => ({addLog_Date: currDate}));
+
+      //console.log(currDate);
+
+      var obj = {
+        date: currDate
+      };
+
+      // Get water data for current date
+      const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getRecreation/' + global.username.trim();
+      var js = JSON.stringify(obj); 
+      const response = await fetch(endpoint, 
+      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
+      var res = JSON.parse(await response.text());
+
+      //this.counter(0, res.Ounces);
+
+      //console.log(res.Gaming);
+      var total = res.ScreenTime + res.Television + res.Gaming + res.Sport + 
+                  res.Art + res.Chores + res.Work + res.Other;
+      //console.log(total);
+      this.setState(({totalRecreationTime}) => ({totalRecreationTime: total}));
+    }
+    catch (e)
+    {
+      this.setState(({totalRecreationTime}) => ({totalRecreationTime: 0}));
+    }
+  }
+
   componentDidMount ()
   {     
-    (async () => {
-      // DELETE THIS
-      //global.username = "Test";
-
-      try
-      {
-        // Get current date
-        var currDate = this.getCurrentDate().trim();
-
-        // Automatically set dates
-        this.setState(({currentDate}) => ({currentDate: currDate}));
-        this.setState(({addLog_Date}) => ({addLog_Date: currDate}));
-
-        //console.log(currDate);
-
-        var obj = {
-          date: currDate
-        };
-
-        // Get water data for current date
-        const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getRecreation/' + global.username.trim();
-        var js = JSON.stringify(obj); 
-        const response = await fetch(endpoint, 
-        {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
-        var res = JSON.parse(await response.text());
-
-        //this.counter(0, res.Ounces);
-
-        //console.log(res.Gaming);
-        var total = res.ScreenTime + res.Television + res.Gaming + res.Sport + 
-                    res.Art + res.Chores + res.Work + res.Other;
-        //console.log(total);
-        this.setState(({totalRecreationTime}) => ({totalRecreationTime: total}));
-      }
-      catch (e)
-      {
-        this.setState(({totalRecreationTime}) => ({totalRecreationTime: 0}));
-      }
-    })();
+    (async () => this.updateRecreationTracker())();
   }
 
   // Do log search
@@ -263,11 +263,11 @@ export default class RecreationMobile extends Component {
       //this.counter(this.state.waterIntakeToday, this.state.waterIntakeToday + Number(this.state.addLog_Amount));
 
       // Update today's water intake
-      
+      /*
       if ((this.state.addLog_Date === this.getCurrentDate().trim()))
         this.setState(({totalRecreationTime}) => 
           ({totalRecreationTime: this.state.totalRecreationTime + Number(this.state.addLog_TimeSpent)})
-        );
+        );*/
       
       this.setState({message})
 
@@ -351,6 +351,7 @@ export default class RecreationMobile extends Component {
                     activities={this.state.searchResultActivities}
                     date={this.state.searchResultDate}
                     style={styles.searchResult}
+                    updateTracker={() => this.updateRecreationTracker()}
                     onDeletion={() => this._toggleSubview()}
                   ></RecreationSearchResultComponent>
                 )
@@ -475,6 +476,7 @@ export default class RecreationMobile extends Component {
                   onDateValidChange = {this.handleDateValidChange}
                   onMessageChange = {this.handleMessageChange}
                   resetSearch = {this.handleResultDeleted}
+                  updateTracker = {() => this.updateRecreationTracker()}
                   style={styles.recreationAddButtonComponent}
                 ></RecreationAddButtonComponent>
               </View>

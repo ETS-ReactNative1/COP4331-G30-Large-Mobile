@@ -65,6 +65,8 @@ export default class SleepSearchResultComponent extends Component {
       this.setState(({isLogDeleted}) => ({isLogDeleted: true}));
 
       props.onDeletion();
+
+      props.updateTracker();
       //props.resetSearch(false);
       //props.onMessageChange("sleep Entry Successfully Added");
     }

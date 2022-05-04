@@ -72,44 +72,45 @@ export default class ExerciseMobile extends Component {
       }
   }
 
+  async updateExerciseTracker()
+  {
+    try
+    {
+      // Get current date
+      var currDate = this.getCurrentDate().trim();
+
+      // Automatically set dates
+      this.setState(({currentDate}) => ({currentDate: currDate}));
+      this.setState(({addLog_Date}) => ({addLog_Date: currDate}));
+
+      //console.log(currDate);
+
+      var obj = {
+        date: currDate
+      };
+
+      // Get water data for current date
+      const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getExercise/' + global.username.trim();
+      var js = JSON.stringify(obj); 
+      const response = await fetch(endpoint, 
+      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
+      var res = JSON.parse(await response.text());
+
+      //this.counter(0, res.Ounces);
+
+      console.log(res.Ounces);
+      this.setState(({totalWorkoutsToday}) => ({totalWorkoutsToday: res.length}));
+    }
+    catch (e)
+    {
+      console.log(e);
+      this.setState(({totalWorkoutsToday}) => ({totalWorkoutsToday: 0}));
+    }
+  }
+
   componentDidMount ()
   {     
-    (async () => {
-      // DELETE THIS
-      //global.username = "Test";
-
-      try
-      {
-        // Get current date
-        var currDate = this.getCurrentDate().trim();
-
-        // Automatically set dates
-        this.setState(({currentDate}) => ({currentDate: currDate}));
-        this.setState(({addLog_Date}) => ({addLog_Date: currDate}));
-
-        //console.log(currDate);
-
-        var obj = {
-          date: currDate
-        };
-
-        // Get water data for current date
-        const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getExercise/' + global.username.trim();
-        var js = JSON.stringify(obj); 
-        const response = await fetch(endpoint, 
-        {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
-        var res = JSON.parse(await response.text());
-
-        //this.counter(0, res.Ounces);
-
-        //console.log(res.Ounces);
-        this.setState(({totalWorkoutsToday}) => ({totalWorkoutsToday: res.length}));
-      }
-      catch (e)
-      {
-
-      }
-    })();
+    (async () => this.updateExerciseTracker())();
   }
 
   // Do log search
@@ -246,13 +247,13 @@ export default class ExerciseMobile extends Component {
     if (message === "Exercise Entry Successfully Added")
     {
       //this.counter(this.state.waterIntakeToday, this.state.waterIntakeToday + Number(this.state.addLog_Amount));
-
+/*
       // Update today's water intake
       if ((this.state.addLog_Date === this.getCurrentDate().trim()))
 
         this.setState(({totalWorkoutsToday}) => 
             ({totalWorkoutsToday: this.state.totalWorkoutsToday + 1})
-        );
+        );*/
 
       this.setState({message})
 
@@ -335,6 +336,7 @@ export default class ExerciseMobile extends Component {
                     exercise={this.state.searchResultWorkouts}
                     date={this.state.inputSearchValue}
                     style={styles.searchResult}
+                    updateTracker={() => this.updateExerciseTracker()}
                     onDeletion={() => this._toggleSubview()}
                   ></ExerciseSearchResultComponent>
                 )
@@ -424,6 +426,8 @@ export default class ExerciseMobile extends Component {
                     onDateValidChange = {this.handleDateValidChange}
                     onMessageChange = {this.handleMessageChange}
                     resetSearch = {this.handleResultDeleted}
+
+                    updateTracker = {() => this.updateExerciseTracker()}
                     style={styles.waterAddButtonComponent}
                   ></ExerciseAddButtonComponent>
 

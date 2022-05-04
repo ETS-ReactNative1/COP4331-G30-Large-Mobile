@@ -65,6 +65,8 @@ export default class WaterSearchResultComponent extends Component {
       this.setState(({isLogDeleted}) => ({isLogDeleted: true}));
 
       props.onDeletion();
+
+      props.updateTracker();
       //props.resetSearch(false);
       //props.onMessageChange("Water Entry Successfully Added");
     }

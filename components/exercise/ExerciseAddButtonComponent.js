@@ -57,6 +57,8 @@ export default class ExerciseAddButtonComponent extends Component {
       var res = JSON.parse(await response.text());
 
       props.onMessageChange("Exercise Entry Successfully Added");
+
+      props.updateTracker();
     }
     catch(e)
     {

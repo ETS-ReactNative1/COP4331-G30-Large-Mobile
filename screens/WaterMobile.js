@@ -69,44 +69,42 @@ export default class WaterMobile extends Component {
       }
   }
 
+  async updateWaterTracker()
+  {
+    try {
+      // Get current date
+      var currDate = this.getCurrentDate().trim();
+
+      // Automatically set dates
+      this.setState(({currentDate}) => ({currentDate: currDate}));
+      this.setState(({addLog_Date}) => ({addLog_Date: currDate}));
+
+      var obj = {
+        date: currDate
+      };
+
+      // Get water data for current date
+      const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getWater/' + global.username.trim();
+      var js = JSON.stringify(obj); 
+      const response = await fetch(endpoint, 
+      {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
+      var res = JSON.parse(await response.text());
+
+      //this.counter(0, res.Ounces);
+
+      //console.log(res.Ounces);
+      this.setState(({waterIntakeToday}) => ({waterIntakeToday: res.Ounces}));
+    }
+    catch (e)
+    {
+      console.log(e);
+      this.setState(({waterIntakeToday}) => ({waterIntakeToday: 0}));
+    }
+  }
+
   componentDidMount ()
   {     
-    (async () => {
-      // DELETE THIS
-      //global.username = "Test";
-
-      try
-      {
-        // Get current date
-        var currDate = this.getCurrentDate().trim();
-
-        // Automatically set dates
-        this.setState(({currentDate}) => ({currentDate: currDate}));
-        this.setState(({addLog_Date}) => ({addLog_Date: currDate}));
-
-        //console.log(currDate);
-
-        var obj = {
-          date: currDate
-        };
-
-        // Get water data for current date
-        const endpoint = 'https://cop4331-g30-large.herokuapp.com/api/getWater/' + global.username.trim();
-        var js = JSON.stringify(obj); 
-        const response = await fetch(endpoint, 
-        {method:'POST',body:js,headers:{'Content-Type': 'application/json'}}); 
-        var res = JSON.parse(await response.text());
-
-        //this.counter(0, res.Ounces);
-
-        //console.log(res.Ounces);
-        this.setState(({waterIntakeToday}) => ({waterIntakeToday: res.Ounces}));
-      }
-      catch (e)
-      {
-
-      }
-    })();
+    (async () => this.updateWaterTracker())();
   }
 
   // Do log search
@@ -244,10 +242,11 @@ export default class WaterMobile extends Component {
       //this.counter(this.state.waterIntakeToday, this.state.waterIntakeToday + Number(this.state.addLog_Amount));
 
       // Update today's water intake
+      /*
       if ((this.state.addLog_Date === this.getCurrentDate().trim()))
         this.setState(({waterIntakeToday}) => 
           ({waterIntakeToday: this.state.waterIntakeToday + Number(this.state.addLog_Amount)})
-        );
+        );*/
 
       this.setState({message})
 
@@ -330,6 +329,7 @@ export default class WaterMobile extends Component {
                     amount={this.state.searchResultAmount}
                     date={this.state.searchResultDate}
                     style={styles.searchResult}
+                    updateTracker = {() => this.updateWaterTracker()}
                     onDeletion={() => this._toggleSubview()}
                   ></WaterSearchResultComponent>
                 )
@@ -421,6 +421,8 @@ export default class WaterMobile extends Component {
                     onAmountValidChange = {this.handleAmountValidChange}
                     onMessageChange = {this.handleMessageChange}
                     resetSearch = {this.handleResultDeleted}
+
+                    updateTracker = {() => this.updateWaterTracker()}
                     style={styles.waterAddButtonComponent}
                   ></WaterAddButtonComponent>
 
