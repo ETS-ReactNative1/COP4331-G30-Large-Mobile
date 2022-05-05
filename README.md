@@ -4,8 +4,8 @@ Main DailyGrind Application: https://github.com/NilanL/COP4331-G30-Large
 
 <dl>
   <dt>Run the App</dt>
+  <dd>Disclaimer: These commands were done in Ubuntu bash</dd>
   <ol>
-    In Linux Bash:
     <li>sudo npm install / yarn install / expo install (If error use --force)</li>
     <li>npm start / expo start / expo start --tunnel</li>
   </ol>
