@@ -5,7 +5,7 @@ Main DailyGrind Application: https://github.com/NilanL/COP4331-G30-Large
 <dl>
   <dt>Run the App</dt>
   <ol>
-    <li>sudo npm install / yarn install / expo install</li>
+    <li>sudo npm install --force / yarn install / expo install</li>
     <li>npm start / expo start / expo start --tunnel</li>
   </ol>
   
