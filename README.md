@@ -1,6 +1,6 @@
 <h1>DailyGrind Mobile App</h1>
 
-Main DailyGrind Application: https://github.com/NilanL/COP4331-G30-Large
+DailyGrind Web Application: https://github.com/NilanL/COP4331-G30-Large
 
 <dl>
   <dt>Run the App</dt>
