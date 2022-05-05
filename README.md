@@ -8,6 +8,12 @@ Main DailyGrind Application: https://github.com/NilanL/COP4331-G30-Large
     <li>sudo npm install / yarn install / expo install</li>
     <li>npm start / expo start / expo start --tunnel</li>
   </ol>
+  
+  <dt>Technologies</dt>
+  <ul>
+    <li>React Native</li>
+  </ul>
+  
   <dt>Developers</dt>
   <ul>
     <li>Nilan Larios</li>
